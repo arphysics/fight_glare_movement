@@ -30,6 +30,14 @@ CONTENT / POLISH
   [ ] Decide whether fonts-preview.html stays in the repo — it's a scratch
       page, publicly reachable at /fonts-preview.html.
 
+COLLABORATION SETUP
+  [ ] Settings -> Collaborators -> add teammates (they need free GitHub accounts)
+  [ ] Settings -> Rules -> require a pull request before merging to main, so no
+      edit goes live unreviewed. Do this BEFORE adding people.
+  [ ] Send teammates the link to EDITING.md
+  [ ] Consider Cloudflare Pages for per-PR preview URLs — without it, reviewing
+      a teammate's change means reading a diff, not seeing the page
+
 LATER
   [ ] Aditya wants a walkthrough of how GitHub Actions works
   [ ] Possible migration to Cloudflare Pages (faster CDN, preview deploys per

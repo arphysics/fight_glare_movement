@@ -4,6 +4,9 @@ Source for [fightglare.org](https://fightglare.org) — a resident-led movement
 asking Irvine, CA to adopt its first outdoor lighting ordinance: warm,
 well-shielded, night-friendly streetlights.
 
+**Helping edit the site and not a developer?** See [EDITING.md](EDITING.md) —
+a step-by-step guide that needs nothing installed.
+
 ## Running it locally
 
 No build step, no dependencies. Open `index.html` in a browser, or serve the
