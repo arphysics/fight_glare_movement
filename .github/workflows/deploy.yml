@@ -25,7 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # enablement lets the workflow create the Pages site itself, so this
+      # doesn't require flipping Settings -> Pages -> Source by hand first
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # No build step — the site is plain HTML/CSS/JS served from the repo root
       - uses: actions/upload-pages-artifact@v3
