@@ -9,15 +9,12 @@ DONE
   [x] GoDaddy DNS: www CNAME -> arphysics.github.io
   [x] Custom domain registered in repo Settings -> Pages
 
-IN FLIGHT
-  [ ] Wait for cert reissue to cover www.fightglare.org. Right now the cert
-      covers only the apex, so https://www.fightglare.org throws a browser
-      warning (plain http://www. is fine — it 301s to the apex). GitHub
-      reissues automatically within ~an hour of the www CNAME change. If it
-      stalls: Settings -> Pages, clear the custom domain, save, re-enter it.
-  [ ] Tick Enforce HTTPS in Settings -> Pages. http://fightglare.org currently
-      serves 200 instead of redirecting. Checkbox may be locked until the cert
-      reissue finishes.
+  [x] Enforce HTTPS on — http:// 301s to https://
+  [x] Cert covers both fightglare.org and www.fightglare.org (Let's Encrypt,
+      auto-renews, expires 2026-10-23)
+
+  Deployment is fully done. All four URL variants (http/https x apex/www)
+  return 200 and the live page matches the committed index.html.
 
 BLOCKING SHARING THE LINK
   [ ] Replace PETITION_URL in index.html — currently "#", so petition buttons
