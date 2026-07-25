@@ -4,12 +4,22 @@ Updated 2026-07-25
 DONE
   [x] Repo created, site pushed to github.com/arphysics/fight_glare_movement
   [x] GitHub Pages deploying from main on every push
-  [x] Site live at https://arphysics.github.io/fight_glare_movement/
+  [x] SITE IS LIVE at https://fightglare.org
+  [x] GoDaddy DNS: four GitHub A records on @, parking record deleted
+  [x] GoDaddy DNS: www CNAME -> arphysics.github.io
+  [x] Custom domain registered in repo Settings -> Pages
 
-BLOCKING LAUNCH
-  [ ] Point fightglare.org at GitHub Pages (GoDaddy DNS — see steps below)
-  [ ] Enforce HTTPS in repo Settings -> Pages (only possible after DNS resolves
-      and the cert issues; checkbox is greyed out until then)
+IN FLIGHT
+  [ ] Wait for cert reissue to cover www.fightglare.org. Right now the cert
+      covers only the apex, so https://www.fightglare.org throws a browser
+      warning (plain http://www. is fine — it 301s to the apex). GitHub
+      reissues automatically within ~an hour of the www CNAME change. If it
+      stalls: Settings -> Pages, clear the custom domain, save, re-enter it.
+  [ ] Tick Enforce HTTPS in Settings -> Pages. http://fightglare.org currently
+      serves 200 instead of redirecting. Checkbox may be locked until the cert
+      reissue finishes.
+
+BLOCKING SHARING THE LINK
   [ ] Replace PETITION_URL in index.html — currently "#", so petition buttons
       pop an alert instead of navigating. Do this before sharing the link.
   [ ] Set up mail for hello@fightglare.org (footer links it; GoDaddy can
@@ -29,11 +39,9 @@ LATER
       branch, analytics). Clean to do anytime: change nameservers, connect the
       repo, delete CNAME + .github/workflows/deploy.yml.
 
-GODADDY DNS — EXACT RECORDS
-  Delete: the existing @ A record(s) pointing at GoDaddy parking
-  Add:    A      @      185.199.108.153
-          A      @      185.199.109.153
-          A      @      185.199.110.153
-          A      @      185.199.111.153
-  Edit:   CNAME  www    arphysics.github.io
-  Also:   turn OFF domain forwarding if it's on — it conflicts with A records
+GODADDY DNS — FINAL STATE (done, for reference)
+  A      @      185.199.108.153
+  A      @      185.199.109.153
+  A      @      185.199.110.153
+  A      @      185.199.111.153
+  CNAME  www    arphysics.github.io
