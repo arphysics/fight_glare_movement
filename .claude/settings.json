@@ -9,8 +9,7 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git pull:*)",
-      "Bash(python3 -m http.server:*)",
-      "Read(//Users/adityaranganathan/Dropbox/fight_glare/**)"
+      "Bash(python3 -m http.server:*)"
     ]
   }
 }
