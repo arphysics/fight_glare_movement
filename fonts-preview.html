@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fight Glare — Font Pairing Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;700&family=Lexend:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy-deep: #0b1c33;
+    --navy: #0e2841;
+    --periwinkle-soft: #b4c0ff;
+    --amber: #e69138;
+    --amber-bright: #f4a94a;
+    --ink: #f3f4fb;
+    --ink-dim: #cdd4e8;
+    --card: rgba(255,255,255,0.05);
+    --card-border: rgba(180,192,255,0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--navy-deep); color: var(--ink); -webkit-font-smoothing: antialiased; padding: 40px 20px 80px; }
+  .page { max-width: 900px; margin: 0 auto; }
+
+  .page-head { text-align: center; margin-bottom: 44px; }
+  .page-head h1 { font-family: 'Roboto Mono', monospace; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+  .page-head p { font-family: 'Lexend', sans-serif; color: var(--ink-dim); margin-top: 10px; font-size: 0.95rem; }
+
+  /* Each variant panel */
+  .variant { background: var(--navy); border: 1px solid var(--card-border); border-radius: 20px; padding: 40px; margin-bottom: 28px; }
+  .variant-label { font-family: 'Roboto Mono', monospace; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; color: var(--amber-bright); border: 1px solid rgba(244,169,74,0.4); border-radius: 999px; padding: 5px 14px; display: inline-block; margin-bottom: 28px; }
+  .variant-label.warn { color: #f4b4a0; border-color: rgba(244,180,160,0.4); }
+
+  .eyebrow { font-family: 'Roboto Mono', monospace; text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; font-weight: 600; color: var(--amber-bright); display: block; margin-bottom: 14px; }
+
+  /* Headlines always Roboto Mono */
+  .v-h1 { font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: clamp(1.8rem, 4.5vw, 2.6rem); letter-spacing: -1px; line-height: 1.1; }
+  .v-h1 .accent { color: var(--amber-bright); }
+  .v-h2 { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 1.35rem; letter-spacing: -0.5px; margin: 30px 0 6px; }
+  .v-h3 { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 1.05rem; letter-spacing: -0.3px; margin-bottom: 8px; }
+
+  /* Body font swapped per variant via class on .variant */
+  .lead, .body, .card p, .btn { }
+  .lead { font-size: 1.15rem; color: var(--ink-dim); margin-top: 18px; max-width: 46ch; }
+  .body { color: var(--ink-dim); margin-top: 16px; max-width: 60ch; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+  .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 22px; }
+  .card p { color: var(--ink-dim); font-size: 0.96rem; }
+  .btn { display: inline-block; margin-top: 28px; background: var(--amber); color: #23140a; padding: 13px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+
+  /* Body font families */
+  .body-lexend .lead, .body-lexend .body, .body-lexend .card p, .body-lexend .btn { font-family: 'Lexend', system-ui, sans-serif; }
+  .body-garamond .lead, .body-garamond .body, .body-garamond .card p { font-family: 'EB Garamond', Georgia, serif; font-size: 1.22rem; }
+  .body-garamond .lead { font-size: 1.35rem; }
+  .body-garamond .btn { font-family: 'EB Garamond', Georgia, serif; font-size: 1.05rem; }
+  .body-avenir .lead, .body-avenir .body, .body-avenir .card p, .body-avenir .btn { font-family: 'Avenir Next', 'Avenir', system-ui, sans-serif; }
+
+  .caveat { font-family: 'Lexend', sans-serif; font-size: 0.85rem; color: #f4b4a0; margin-top: 22px; padding: 12px 16px; background: rgba(244,180,160,0.08); border-left: 3px solid #f4b4a0; border-radius: 0 10px 10px 0; }
+  @media (max-width: 620px) { .row { grid-template-columns: 1fr; } .variant { padding: 28px 22px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-head">
+    <h1>Fight Glare — font pairing test</h1>
+    <p>Same content, three body-font options. Headlines are Roboto Mono in every version. Open on your computer and see which body font you like against the mono headlines.</p>
+  </div>
+
+  <!-- VARIANT A: Lexend -->
+  <div class="variant body-lexend">
+    <span class="variant-label">Option A · Roboto Mono + Lexend</span>
+    <span class="eyebrow">Irvine &amp; Orange County, CA</span>
+    <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
+    <p class="lead">A grassroots movement for warm, well-shielded, night-friendly lighting that protects our health, our comfort, and our night sky.</p>
+    <a class="btn" href="#">✍️ Sign the Petition</a>
+    <div class="v-h2">The three R's of good lighting</div>
+    <p class="body">You don't need more light to feel safe — you need better light. It comes down to three simple ideas: reduce, restrict, and redirect.</p>
+    <div class="row">
+      <div class="card"><div class="v-h3">Visual stress</div><p>Intense glare and blue-white light strain the eyes and make it harder to see clearly at night.</p></div>
+      <div class="card"><div class="v-h3">Light in your home</div><p>Unshielded fixtures spill into bedrooms and yards, disrupting sleep for people who never asked for it.</p></div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: EB Garamond -->
+  <div class="variant body-garamond">
+    <span class="variant-label">Option B · Roboto Mono + EB Garamond</span>
+    <span class="eyebrow">Irvine &amp; Orange County, CA</span>
+    <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
+    <p class="lead">A grassroots movement for warm, well-shielded, night-friendly lighting that protects our health, our comfort, and our night sky.</p>
+    <a class="btn" href="#">✍️ Sign the Petition</a>
+    <div class="v-h2">The three R's of good lighting</div>
+    <p class="body">You don't need more light to feel safe — you need better light. It comes down to three simple ideas: reduce, restrict, and redirect.</p>
+    <div class="row">
+      <div class="card"><div class="v-h3">Visual stress</div><p>Intense glare and blue-white light strain the eyes and make it harder to see clearly at night.</p></div>
+      <div class="card"><div class="v-h3">Light in your home</div><p>Unshielded fixtures spill into bedrooms and yards, disrupting sleep for people who never asked for it.</p></div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Avenir -->
+  <div class="variant body-avenir">
+    <span class="variant-label warn">Option C · Roboto Mono + Avenir</span>
+    <span class="eyebrow">Irvine &amp; Orange County, CA</span>
+    <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
+    <p class="lead">A grassroots movement for warm, well-shielded, night-friendly lighting that protects our health, our comfort, and our night sky.</p>
+    <a class="btn" href="#">✍️ Sign the Petition</a>
+    <div class="v-h2">The three R's of good lighting</div>
+    <p class="body">You don't need more light to feel safe — you need better light. It comes down to three simple ideas: reduce, restrict, and redirect.</p>
+    <div class="row">
+      <div class="card"><div class="v-h3">Visual stress</div><p>Intense glare and blue-white light strain the eyes and make it harder to see clearly at night.</p></div>
+      <div class="card"><div class="v-h3">Light in your home</div><p>Unshielded fixtures spill into bedrooms and yards, disrupting sleep for people who never asked for it.</p></div>
+    </div>
+    <div class="caveat">Note: Avenir isn't a free web font. If it looks right to you here, that's because it's installed on your Mac — most visitors (Windows, Android, many phones) would see a fallback font instead. For a public site I'd recommend Lexend or EB Garamond, which load reliably for everyone.</div>
+  </div>
+
+</div>
+</body>
+</html>

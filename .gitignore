@@ -1,0 +1,14 @@
+# macOS / Dropbox
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local settings (machine-specific; .claude/settings.json is shared)
+.claude/settings.local.json
