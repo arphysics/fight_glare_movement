@@ -30,13 +30,18 @@ CONTENT / POLISH
   [ ] Decide whether fonts-preview.html stays in the repo — it's a scratch
       page, publicly reachable at /fonts-preview.html.
 
-COLLABORATION SETUP
-  [ ] Settings -> Collaborators -> add teammates (they need free GitHub accounts)
-  [ ] Settings -> Rules -> require a pull request before merging to main, so no
-      edit goes live unreviewed. Do this BEFORE adding people.
-  [ ] Send teammates the link to EDITING.md
-  [ ] Consider Cloudflare Pages for per-PR preview URLs — without it, reviewing
-      a teammate's change means reading a diff, not seeing the page
+COLLABORATION — scoped to one teammate doing one cleanup pass
+  [ ] Settings -> Collaborators -> add the teammate (write access, free GitHub
+      account required)
+  [ ] Send them EDITING.md, and ask for ONE branch with ONE pull request at the
+      end rather than a PR per fix
+  [ ] Review the diff, merge, confirm the site updates (~1 min after merge)
+
+  Deliberately skipped for now, revisit if more people join:
+  - Branch protection on main. It would block Aditya's own direct pushes too,
+    and a stray commit to main is recoverable with a one-click Revert.
+  - Cloudflare Pages PR previews. A diff is the right review surface for
+    wording changes; only worth it once someone edits layout.
 
 LATER
   [ ] Aditya wants a walkthrough of how GitHub Actions works
