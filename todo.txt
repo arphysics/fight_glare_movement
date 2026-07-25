@@ -1,0 +1,39 @@
+FIGHT GLARE — TODO
+Updated 2026-07-25
+
+DONE
+  [x] Repo created, site pushed to github.com/arphysics/fight_glare_movement
+  [x] GitHub Pages deploying from main on every push
+  [x] Site live at https://arphysics.github.io/fight_glare_movement/
+
+BLOCKING LAUNCH
+  [ ] Point fightglare.org at GitHub Pages (GoDaddy DNS — see steps below)
+  [ ] Enforce HTTPS in repo Settings -> Pages (only possible after DNS resolves
+      and the cert issues; checkbox is greyed out until then)
+  [ ] Replace PETITION_URL in index.html — currently "#", so petition buttons
+      pop an alert instead of navigating. Do this before sharing the link.
+  [ ] Set up mail for hello@fightglare.org (footer links it; GoDaddy can
+      forward). Right now that address goes nowhere.
+
+CONTENT / POLISH
+  [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
+      544x544. Social cards want ~1200x630, so previews will crop oddly.
+  [ ] Remove unused assets: owl-logo-v1.png is referenced nowhere, and
+      IMG_3840.png is byte-identical to owl-logo.png.
+  [ ] Decide whether fonts-preview.html stays in the repo — it's a scratch
+      page, publicly reachable at /fonts-preview.html.
+
+LATER
+  [ ] Aditya wants a walkthrough of how GitHub Actions works
+  [ ] Possible migration to Cloudflare Pages (faster CDN, preview deploys per
+      branch, analytics). Clean to do anytime: change nameservers, connect the
+      repo, delete CNAME + .github/workflows/deploy.yml.
+
+GODADDY DNS — EXACT RECORDS
+  Delete: the existing @ A record(s) pointing at GoDaddy parking
+  Add:    A      @      185.199.108.153
+          A      @      185.199.109.153
+          A      @      185.199.110.153
+          A      @      185.199.111.153
+  Edit:   CNAME  www    arphysics.github.io
+  Also:   turn OFF domain forwarding if it's on — it conflicts with A records
