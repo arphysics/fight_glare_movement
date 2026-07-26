@@ -53,11 +53,17 @@ teammate edits from a clone in the Claude desktop app, where nothing on screen
 shows which branch she's on, so this file is the only guardrail in her way. It
 isn't a guardrail Aditya needs — he's the reviewer.
 
-### Things that need real values
+### Contact points
 
-- `PETITION_URL` at the top of the `<script>` block is `"#"`. Until it's a real
-  link, petition buttons show an alert instead of navigating.
-- `hello@fightglare.org` in the footer — make sure mail is actually routed there.
+- `PETITION_URL` at the top of the `<script>` block drives all four "Sign the
+  Petition" buttons. It's live (change.org). Setting it back to `"#"` disables
+  every button at once and restores a placeholder alert — that's the intended
+  kill switch if the petition ever moves.
+- `fightglareirvine@gmail.com` appears twice, in the CTA block and the footer.
+  Change both or neither.
+- `.note-placeholder` is a dashed amber badge for marking unfinished values.
+  Nothing uses it now. It renders **visibly on the live page**, so anything
+  wearing it is public — use it only for things being fixed the same day.
 
 ## Accessibility
 

@@ -20,8 +20,16 @@ BLOCKING SHARING THE LINK
   [x] PETITION_URL set to the change.org petition. All four buttons navigate;
       opens in a new tab. Tracking param (?source_location=...) stripped — it
       was an artifact of where the link was copied from, not part of the link.
-  [ ] Set up mail for hello@fightglare.org (footer links it; GoDaddy can
-      forward). Right now that address goes nowhere. LAST blocker.
+  [x] Contact address is fightglareirvine@gmail.com, in the CTA block and the
+      footer. Went with a real mailbox instead of setting up GoDaddy forwarding
+      for hello@fightglare.org — no DNS/MX work, and it can't silently break.
+      Also removed the visible "update email" placeholder badge that had been
+      showing on the live page next to it.
+
+  Nothing is blocking sharing the link now.
+
+  If a branded address is ever wanted, GoDaddy forwarding for
+  hello@fightglare.org is still the path — it would land in the same mailbox.
 
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
