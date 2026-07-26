@@ -1,5 +1,5 @@
 FIGHT GLARE — TODO
-Updated 2026-07-25
+Updated 2026-07-26
 
 DONE
   [x] Repo created, site pushed to github.com/arphysics/fight_glare_movement
@@ -31,11 +31,20 @@ CONTENT / POLISH
       page, publicly reachable at /fonts-preview.html.
 
 COLLABORATION — scoped to one teammate doing one cleanup pass
-  [ ] Settings -> Collaborators -> add the teammate (write access, free GitHub
-      account required)
-  [ ] Send them EDITING.md, and ask for ONE branch with ONE pull request at the
-      end rather than a PR per fix
+  [x] Settings -> Collaborators -> teammate added
+  [ ] Confirm she ACCEPTED the invite — a pending invite looks identical from
+      our side, and she can't push branches until she accepts
+  [ ] Confirm she has Claude Pro. Claude Code on the web is Pro/Max only, not
+      available on free accounts. EDITING.md assumes she has it.
+  [ ] Send her EDITING.md. Ask her to keep the whole cleanup pass in ONE
+      claude.ai/code session so it lands as ONE pull request, not six
   [ ] Review the diff, merge, confirm the site updates (~1 min after merge)
+
+  Editing flow is now Claude Code on the web (claude.ai/code) against this
+  repo, not copy/pasting index.html into claude.ai. Claude edits the real file
+  and opens the PR itself, so no truncation risk and the diff stays targeted.
+  Our CLAUDE.md loads into her sessions, so the content and accessibility rules
+  apply automatically.
 
   Deliberately skipped for now, revisit if more people join:
   - Branch protection on main. It would block Aditya's own direct pushes too,

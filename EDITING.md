@@ -1,143 +1,163 @@
 # How to edit fightglare.org
 
-For anyone helping with the website. **You don't need to install anything** and
-you don't need to know how to code. You need a free GitHub account and access to
-claude.ai.
+For anyone helping with the website. **You don't need to install anything and
+you don't need to know how to code.** You describe the change you want in plain
+English, and Claude makes it.
 
 Nothing you do here can break the live site. Your changes go to Aditya for
-review first, and the site keeps running exactly as-is until he approves.
+review first, and fightglare.org keeps running exactly as-is until he approves.
 
 ---
 
-## The short version
+## What you need before you start
 
-1. Copy the website's code from GitHub
-2. Paste it into claude.ai and describe your change
-3. Paste Claude's version back into GitHub
-4. Click "Propose changes" — this sends it to Aditya, it does **not** go live
-5. Aditya reviews and publishes
+- **A GitHub account**, with an accepted invite to the project. Aditya sends
+  the invite; check your email (and spam) for "invited you to collaborate" and
+  click Accept. Free account is fine.
+- **A Claude Pro subscription** (or Max). The tool below is not available on
+  free Claude accounts.
 
-Budget about 15 minutes the first time, 5 minutes after that.
+Setup takes about ten minutes and you only do it once.
 
 ---
 
-## Step 1 — Open the file
+## One-time setup
 
-Go to https://github.com/arphysics/fight_glare_movement and click on
-**`index.html`** in the file list.
+1. Go to **[claude.ai/code](https://claude.ai/code)** and sign in.
+2. It will ask you to connect GitHub. Follow the prompt to install the **Claude
+   GitHub App** and give it access to your repositories.
+3. It then asks you to create an "environment." **Leave every field at its
+   default** and click **Create environment**. The defaults are correct for
+   this project — you'll never need to touch this again.
 
-That one file is the entire website — all the text, colors, and layout.
+That's it. You won't repeat any of this.
 
-Click the **pencil icon** (top right of the file, "Edit this file"). You're now
-in a text editor. Don't worry about the code looking dense; you won't be
-reading it.
+> One thing to know before you connect: a Claude session can reach any GitHub
+> repository your account can see. If your GitHub account is also tied to work
+> repositories, use a personal GitHub account here instead.
 
-## Step 2 — Copy everything
+---
 
-Click anywhere in the code, then press **Cmd+A** (Mac) or **Ctrl+A** (Windows)
-to select all of it, then **Cmd+C** / **Ctrl+C** to copy.
+## Making a change
 
-Leave this browser tab open. You'll come back to it.
+### 1. Pick the project
 
-## Step 3 — Ask Claude for the change
+At [claude.ai/code](https://claude.ai/code), click the **repository selector**
+below the message box and choose **`arphysics/fight_glare_movement`**.
 
-Go to claude.ai, start a new chat, and paste this template. Replace the
-description with what you actually want, then paste the code underneath.
+### 2. Describe what you want
 
-> I'm editing a one-page website. Below is the complete `index.html`.
->
-> Please make this change: **[describe your change in plain English]**
->
-> Important:
-> - Return the **complete file**, from `<!DOCTYPE html>` to `</html>`
-> - Change **only** what I asked for — leave everything else byte-for-byte identical
-> - Don't reformat, don't "improve" other things, don't remove comments
-> - Keep all image paths starting with `assets/` exactly as they are
->
-> Here's the file:
->
-> [paste the code here]
+Type it in plain English and press Enter. Be specific about *where* on the page
+and *what* it should say. Good examples:
 
-Examples of changes that work well:
+- "In the section 'We're already making headway,' change the third milestone to
+  say we presented to the City Council on March 12."
+- "Add a question to the FAQ about whether warmer streetlights are less safe,
+  with a short answer."
+- "The email template at the bottom should mention the new ordinance draft."
 
-- "Change the third milestone under 'We're already making headway' to say we
-  presented to the City Council on March 12"
-- "Add a new question and answer to the FAQ section about whether warmer lights
-  are less safe"
-- "Update the email template so it mentions the new ordinance draft"
+Vague requests like "make the top section better" produce vague results. If
+you're not sure how to word it, describe the problem instead: "the third
+milestone is out of date, it should reflect the March council meeting."
 
-**Ask for one change at a time.** Several at once is where mistakes creep in.
+Claude will open the project, find the right spot, and make the edit. This
+takes a minute or two. You can close the tab — it keeps working, and you can
+check back from your phone.
 
-## Step 4 — Check what Claude gave you
+### 3. Look at what changed
 
-Before pasting it back, look at two things:
+When it's done you'll see a small indicator like **`+12 −4`** (lines added and
+removed). Click it to see the change side by side: the old version and the new
+one, with the differences highlighted.
 
-- Does the response **start** with `<!DOCTYPE html>`?
-- Does it **end** with `</html>`?
+**Read this before moving on.** You're checking one thing: did it change what
+you asked for, and nothing else? A change to one sentence should show a small
+number of edited lines. If you asked for one sentence and see fifty lines
+changed, something went wrong — say so in the chat and ask it to try again
+more narrowly.
 
-If either is missing, Claude truncated the file. Reply with "Please send the
-complete file again, including the very end" and check again. **Do not paste in
-a truncated file** — that's the one mistake that produces a broken page.
+If a specific line looks wrong, click that line, type what's wrong with it, and
+press Enter. Your note gets attached to that exact spot, so you don't have to
+explain where you mean.
 
-## Step 5 — Paste it back into GitHub
+### 4. Send it to Aditya
 
-Return to your GitHub tab. Select all the code again (**Cmd+A**), then paste
-(**Cmd+V**). This replaces the old version with Claude's.
+When the change looks right, click **Create PR** at the top of the diff view.
 
-## Step 6 — Propose the change
+"PR" is short for pull request — it just means "here's a proposed change,
+please review it." Aditya gets a notification showing exactly what you changed.
+**This does not put anything on the live site.**
 
-Click the green **"Commit changes..."** button.
+You can keep chatting after this. If you think of a fix, ask for it and the
+pull request updates automatically.
 
-In the box that appears:
+---
 
-- **Description**: write what you changed in plain English, e.g. "Update March
-  council meeting milestone". This is what Aditya sees.
-- Select **"Create a new branch for this commit and start a pull request"** —
-  this is important. The other option publishes straight to the live site.
-- Click **Propose changes**, then **Create pull request** on the next screen.
+## Doing several changes at once
 
-Done. Aditya gets a notification with your exact changes highlighted.
+If you're working through a batch of fixes, **do them all in one session** —
+keep talking to the same conversation and ask for the next change after the
+last one looks right. Everything collects into a single pull request, which is
+one thing for Aditya to review instead of six.
+
+Start a new session only when the work is genuinely unrelated.
 
 ---
 
 ## Adding an image
 
-1. On the repo's main page, click into the **`assets`** folder
-2. **Add file → Upload files**, drag your image in
-3. Same as above: choose "Create a new branch", then Propose changes
-4. Mention the filename when you ask Claude to place it on the page
+Upload it first, then ask for it to be placed:
 
-Keep images under ~500KB or the page gets slow on phones. Name them plainly:
-`council-meeting-march.jpg`, not `IMG_4821.jpg`.
+1. Go to https://github.com/arphysics/fight_glare_movement
+2. Click into the **`assets`** folder
+3. **Add file → Upload files**, drag your image in
+4. Choose **"Create a new branch for this commit"**, then **Propose changes**
+5. Back in Claude, mention the filename: "put `council-meeting-march.jpg` at
+   the top of the progress section"
+
+Keep images under about 500KB or the page gets slow on phones. Name them
+plainly — `council-meeting-march.jpg`, not `IMG_4821.jpg`.
 
 ---
 
 ## Things to leave alone
 
-Editing these will break the site or take it offline:
+If Claude proposes changing any of these, say no and mention it to Aditya:
 
-| File | What it does |
+| What | Why |
 | --- | --- |
-| `CNAME` | Points fightglare.org at this site |
-| `.github/workflows/deploy.yml` | Publishes the site when changes are approved |
-| Anything starting with `assets/` in the code | Image paths — renaming breaks the owl logo |
+| `CNAME` | Points fightglare.org at this site. Deleting it takes the domain down. |
+| `.github/workflows/deploy.yml` | Publishes the site. Breaking it stops updates. |
+| Image paths starting with `assets/` | Renaming these breaks the owl logo. |
 
-If Claude suggests changing one of these, say no and mention it to Aditya.
+Two content rules that matter more than they look:
+
+- **No statistics, dates, or claims about the City of Irvine's position without
+  a source we can link to.** This site is aimed at a city council. An unsourced
+  number is a liability, not a detail.
+- **Don't change colors or fonts to specific values.** They're defined once at
+  the top of the file and reused everywhere. Ask for "warmer amber" and let
+  Claude change it in the right place.
 
 ---
 
 ## If something looks wrong
 
-Nothing you do in a pull request affects the live site, so there's no emergency.
-Comment on your pull request describing what you expected versus what you got,
-and Aditya will sort it out. If you want to abandon it entirely, click **Close
-pull request** — that discards it cleanly.
+There's no emergency — nothing in a pull request touches the live site.
+
+- **The change looks wrong in the diff**: say so in the chat and ask for a fix.
+- **You want to abandon it**: on GitHub, open the pull request and click
+  **Close pull request**. That discards it cleanly, nothing is lost.
+- **You're stuck or confused**: comment on the pull request describing what you
+  expected versus what you got. Aditya will sort it out.
 
 ---
 
-## Why the review step exists
+## Why Aditya reviews everything
 
-Claude is good at this but not perfect — the usual failure is quietly changing
-something you didn't ask about, or dropping the end of the file. A human reading
-the diff catches both in seconds. The review isn't about trusting you; it's
-about the tool.
+Claude is good at this but not perfect. The usual failure is quietly changing
+something you didn't ask about. A human reading the diff catches that in
+seconds.
+
+The review step isn't about trusting you — it's about the tool. It stays even
+when Aditya makes changes himself.

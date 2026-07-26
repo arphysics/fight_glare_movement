@@ -64,10 +64,19 @@ and an unsourced number is a liability.
 
 ## Contributors
 
-Aditya works in Claude Code. One teammate does browser-only editing via
-`EDITING.md` — copy `index.html` into claude.ai, paste back, open a PR. If a PR
-comes in, review the diff for unrelated drift (the known failure mode of
-whole-file AI edits) before merging.
+Aditya works in Claude Code locally. One teammate edits through Claude Code on
+the web (claude.ai/code) against this repo and opens a PR — see `EDITING.md`,
+which is written for a non-technical reader. She needs Claude Pro for that;
+it isn't available on free accounts.
+
+This file is loaded into her sessions too, so the conventions above are the
+actual guardrails on her edits — that's the reason they're written out rather
+than left implicit. Still review incoming PRs for unrelated drift before
+merging.
+
+The earlier workflow was copy `index.html` into claude.ai and paste the whole
+file back. It was replaced because whole-file paste-back invites truncation and
+silent edits to untouched sections; the web flow produces a targeted diff.
 
 Branch protection on `main` is deliberately OFF so direct pushes keep working;
 a stray commit is recoverable with Revert. Cloudflare Pages was considered for
