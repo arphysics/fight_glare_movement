@@ -39,6 +39,19 @@ tooling.
 - Vanilla JS at the bottom of the file, no libraries. Guard DOM lookups with
   null checks, matching the existing style.
 
+### Branch before committing
+
+**Default to creating a branch and opening a PR. Commit to `main` only when
+asked to in so many words.**
+
+Branch protection is off, so a commit to `main` from any clone deploys to
+fightglare.org within a minute, unreviewed. Aditya pushes to `main` on purpose
+and will say so; anyone else is here to propose a change, not publish one.
+
+This is a real guardrail rather than etiquette: the teammate edits from a clone
+in the Claude desktop app, where nothing on screen shows which branch she's on.
+This file is the only thing standing between a stray commit and the live site.
+
 ### Things that need real values
 
 - `PETITION_URL` at the top of the `<script>` block is `"#"`. Until it's a real
@@ -65,14 +78,15 @@ and an unsourced number is a liability.
 ## Contributors
 
 Aditya works in Claude Code locally. One teammate (Claude Max) uses the Claude
-desktop app in a Local session on a clone of this repo, with GitHub Desktop for
-branch/commit/PR — see `EDITING.md`, written for a non-technical reader.
+desktop app in a Local session on a clone of this repo, and asks Claude to do
+the git work in plain English — see `EDITING.md`, written for a non-technical
+reader, with the one-time machine setup in its appendix.
 
 This file loads into her sessions too, so the conventions above are the actual
 guardrails on her edits — that's why they're written out rather than left
 implicit. Still review incoming PRs for unrelated drift before merging.
 
-Two earlier approaches and why they were dropped:
+Earlier approaches and why they were dropped:
 
 - Copy `index.html` into claude.ai and paste the whole file back. Whole-file
   paste-back invites truncation and silent edits to untouched sections.
@@ -80,20 +94,18 @@ Two earlier approaches and why they were dropped:
   a cloud session gives her no way to *see* the rendered page — only a diff.
   Desktop Local sessions open static HTML in the Browser pane and auto-verify
   with screenshots, which is the whole reason for the extra setup cost.
+- GitHub Desktop alongside the Claude app, for branch/commit/PR. Dropped as
+  one GUI too many. Claude runs the git commands for her instead, which is why
+  "Branch before committing" above is a rule rather than a note — GitHub
+  Desktop used to show the current branch on screen, and nothing does now.
 
-Her working copy is a real clone, so `main` is checkable out locally and
-pushable. `EDITING.md` leads with "make a branch first" because branch
-protection is off — a commit straight to `main` from her machine would deploy.
-That risk didn't exist in the browser-only flow, where GitHub's editor forced
-the choice.
-
-Per-PR preview URLs (Cloudflare Pages) are still deferred — see `todo.txt`.
-They'd let her preview from a phone and let a reviewer see a rendered page
-rather than a diff.
+Her clone authenticates as her own GitHub account, not Aditya's, so PR
+attribution is hers and no credential of his sits on her machine.
 
 Branch protection on `main` is deliberately OFF so direct pushes keep working;
-a stray commit is recoverable with Revert. Cloudflare Pages was considered for
-per-PR preview URLs and deferred — see `todo.txt`.
+a stray commit is recoverable with Revert. Per-PR preview URLs (Cloudflare
+Pages) are deferred — they'd let her preview from a phone and let a reviewer
+see a rendered page rather than a diff. See `todo.txt`.
 
 ## Deploying
 

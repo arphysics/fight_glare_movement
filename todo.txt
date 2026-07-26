@@ -33,23 +33,28 @@ CONTENT / POLISH
 COLLABORATION — scoped to one teammate doing one cleanup pass
   [x] Settings -> Collaborators -> teammate added, invite accepted
   [x] She has Claude Max
-  [ ] Send her EDITING.md and let her do the ~20 min install (GitHub Desktop +
-      Claude desktop app). Offer to sit on a call for it — two apps with
-      different jobs is the confusing part, not the editing
+  [ ] Set up her Mac yourself — see the appendix at the bottom of EDITING.md.
+      Command Line Tools, clone, `gh auth login` AS HER, git user.name/email
+      AS HER, then the Claude desktop app. Run the verify block before you
+      leave her machine; a broken push discovered mid-edit costs her an evening
+  [ ] Send her EDITING.md (she only needs the part above the appendix)
   [ ] Ask her to keep the whole cleanup pass on ONE branch so it lands as ONE
       pull request, not six
   [ ] Review the diff, merge, confirm the site updates (~1 min after merge)
 
-  Editing flow is the Claude desktop app in a Local session on a clone, with
-  GitHub Desktop for branch/commit/PR. Chosen over Claude Code on the web
-  because a cloud session can't show her the rendered page — only a diff. The
-  desktop Browser pane opens index.html directly and screenshots its own work.
-  Our CLAUDE.md loads into her sessions, so the content and accessibility rules
-  apply automatically.
+  Editing flow is the Claude desktop app in a Local session on a clone. She
+  asks Claude for the git work in plain English; no second app. Chosen over
+  Claude Code on the web because a cloud session can't show her the rendered
+  page — only a diff. The desktop Browser pane opens index.html directly and
+  screenshots its own work.
 
   Watch for: she has a real clone, so a commit straight to main from her
-  machine would deploy without review. EDITING.md leads with "branch first"
-  for that reason. If it ever happens, Revert on GitHub fixes it.
+  machine would deploy without review, and nothing on her screen shows which
+  branch she's on. CLAUDE.md now carries a "Branch before committing" rule,
+  which loads into her sessions and is the actual guardrail. Side effect worth
+  knowing: it applies to Aditya's sessions too, so Claude will branch by
+  default here unless told to commit to main. If a stray commit does land,
+  Revert on GitHub fixes it.
 
   Deliberately skipped for now, revisit if more people join:
   - Branch protection on main. It would block Aditya's own direct pushes too,

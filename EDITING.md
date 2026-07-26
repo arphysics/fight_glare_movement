@@ -7,77 +7,32 @@ page update in front of you before anyone else sees it.
 Nothing you do here can break the live site. Your changes go to Aditya for
 review first, and fightglare.org keeps running exactly as-is until he approves.
 
----
-
-## What you need
-
-- **A Mac or Windows PC** (this doesn't work on a phone or iPad)
-- **A GitHub account**, with the project invite accepted
-- **Claude Pro or Max**
-
-You'll install two apps. Each has one job, and keeping them straight is the
-only genuinely confusing part of this:
-
-| App | What you use it for |
-| --- | --- |
-| **Claude** | Making the change and looking at the result |
-| **GitHub Desktop** | Sending the finished change to Aditya |
-
-Setup takes about twenty minutes, once.
-
----
-
-## One-time setup
-
-### 1. GitHub Desktop — get the project onto your computer
-
-1. Download from **[desktop.github.com](https://desktop.github.com/)** and install it.
-2. Open it and sign in with your GitHub account.
-3. Choose **Clone a repository from the Internet**.
-4. Find **`arphysics/fight_glare_movement`** in the list and click **Clone**.
-5. Note the folder it saves to — usually `Documents/GitHub/fight_glare_movement`.
-   You'll point Claude at this folder in a moment.
-
-"Clone" just means downloading your own copy to work in.
-
-### 2. Claude — install the desktop app
-
-*On Windows only:* install [Git for Windows](https://git-scm.com/downloads/win)
-first, then restart. Macs already have what's needed.
-
-1. Download the Claude desktop app for
-   [Mac](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect) or
-   [Windows](https://claude.ai/api/desktop/win32/x64/setup/latest/redirect).
-2. Install it, open it, sign in.
-3. Click the **Code** tab at the top.
-4. Choose **Local**, click **Select folder**, and pick the
-   `fight_glare_movement` folder from step 1.
-
-Done. From now on you start at "Making a change" below.
+You use **one app**: Claude. Aditya sets your computer up once, and after that
+everything below happens in a single window.
 
 ---
 
 ## Making a change
 
-### Step 1 — Start a branch first
+Open the Claude app, click the **Code** tab, and pick the
+**fight_glare_movement** project. Then:
 
-**Do this before you edit anything.** In GitHub Desktop:
+### 1. Start a branch
 
-1. Click **Current Branch** at the top, then **New Branch**
-2. Name it after what you're doing: `march-council-update`, `faq-safety`
-3. Click **Create Branch**
+Type:
 
-A branch is a private workspace for your change. It keeps your work separate
-until Aditya approves it.
+> start a new branch for this
 
-> **This step matters more than it looks.** If you skip it, you're working
-> directly on the live version, and your changes can reach fightglare.org
-> without anyone reviewing them. Thirty seconds here prevents that entirely.
+A branch is a private workspace. It keeps your work separate from the live site
+until Aditya approves it. Claude is set up to do this on its own, but asking
+costs nothing and makes it certain.
 
-### Step 2 — Ask Claude for the change
+If you ever want to know where you are, ask: **"what branch am I on?"** The
+answer should be anything except `main`.
 
-In the Claude app, on the **Code** tab, type what you want in plain English.
-Be specific about *where* on the page and *what* it should say:
+### 2. Say what you want changed
+
+Plain English. Be specific about *where* on the page and *what* it should say:
 
 - "In the section 'We're already making headway,' change the third milestone to
   say we presented to the City Council on March 12."
@@ -90,73 +45,64 @@ unsure how to word it, describe the problem instead: "the third milestone is out
 of date, it should reflect the March council meeting."
 
 Claude proposes each change and waits for you to click **Accept** or **Reject**.
-Nothing is written until you accept. Once you're comfortable, you can switch the
-mode dropdown to **Accept edits** so it stops asking each time.
+Nothing is written until you accept. Once you're comfortable, switch the mode
+dropdown to **Accept edits** so it stops asking every time.
 
-### Step 3 — Look at the page
-
-This is the part the old process couldn't do. Ask:
+### 3. Look at the page
 
 > show me the page
 
-The site opens in a **Browser pane** right next to the chat — the real page,
-with the fonts and the owl logo, exactly as a visitor would see it. If it
-doesn't appear, click the `index.html` link in the chat, or press
-**Cmd+Shift+B** (Mac) / **Ctrl+Shift+B** (Windows).
+The site opens in a **Browser pane** next to the chat — the real page, with the
+fonts and the owl logo, exactly as a visitor sees it. If it doesn't appear,
+click the `index.html` link in the chat or press **Cmd+Shift+B**.
 
-Claude also checks its own work as it goes: after an edit it looks at the page,
-spots things like text overflowing or a broken image, and fixes them before
-handing back to you.
+Claude also checks its own work: after an edit it looks at the page, catches
+things like text overflowing or a broken image, and fixes them before handing
+back to you.
 
-Look at it properly. Ask for adjustments in plain English — "that heading is too
-close to the photo," "the new FAQ answer is too long" — and watch it update.
-Stay in this loop until it looks right. Nobody sees any of this yet.
+Ask for adjustments in plain English — "that heading is too close to the photo,"
+"the new FAQ answer is too long" — and watch it update. Stay here until it looks
+right. Nobody sees any of this yet.
 
-### Step 4 — Check the actual changes
+### 4. Check what actually changed
 
-Click the small **`+12 −4`** indicator (lines added and removed) to see exactly
-what changed, old against new.
+Click the small **`+12 −4`** indicator (lines added and removed) to see the
+change, old against new.
 
 You're checking one thing: **did it change what you asked for, and nothing
 else?** A one-sentence edit should touch a handful of lines. If you asked for
-one sentence and see fifty lines changed, say so in the chat and ask it to
-redo the change more narrowly.
+one sentence and see fifty lines changed, say so and ask it to redo the change
+more narrowly.
 
-### Step 5 — Send it to Aditya
+### 5. Send it to Aditya
 
-Back in **GitHub Desktop**, your changes are waiting.
+> commit this and open a pull request
 
-> If GitHub Desktop shows nothing to commit, Claude already committed for you.
-> That's fine — skip to step 3 below. If you'd rather it didn't, tell it
-> "don't commit anything, I'll do that myself."
+Claude writes up what changed and opens it for review. A pull request means
+"here's a proposed change, please take a look." Aditya gets your exact changes
+highlighted.
 
-1. Bottom left, write a short summary: "Update March council milestone"
-2. Click **Commit to `your-branch-name`**
-3. Click **Publish branch** (top right)
-4. Click **Create Pull Request** — this opens your browser
-5. Click **Create pull request** on that page
+**This does not put anything on the live site.**
 
-A pull request means "here's a proposed change, please review it." Aditya gets
-your exact changes highlighted. **This does not put anything on the live site.**
+If something needs fixing after that, just say so — the pull request updates.
 
 ---
 
 ## Doing several changes at once
 
-Stay on the same branch and keep going — make the next change in Claude, then
-commit it in GitHub Desktop alongside the first. Everything collects into one
-pull request, which is one thing for Aditya to review instead of six.
+Stay on the same branch and keep going. Make the next change, look at it, and
+ask Claude to commit again when it's right. Everything collects into one pull
+request, which is one thing for Aditya to review instead of six.
 
-Start a new branch only when the work is genuinely unrelated. Once a pull
-request is merged, make a new branch for your next piece of work.
+Start a new branch only when the work is genuinely unrelated, or after a pull
+request has been merged.
 
 ---
 
 ## Adding an image
 
-Put the image file into the `assets` folder inside your
-`fight_glare_movement` folder — drag it in like any other file. Then tell
-Claude the filename:
+Drag the image file into the `assets` folder inside your
+`fight_glare_movement` folder, then tell Claude the filename:
 
 > put `council-meeting-march.jpg` at the top of the progress section
 
@@ -190,22 +136,72 @@ Two content rules that matter more than they look:
 
 There's no emergency. Nothing reaches fightglare.org without Aditya merging it.
 
-- **The page looks wrong in the preview**: say so in the chat and ask for a fix.
-  This is the normal loop, not a failure.
-- **You want to throw the whole thing away**: in GitHub Desktop, switch
-  **Current Branch** back to `main`. Your branch stays where it is and nothing
-  you did affects anything.
-- **You already opened the pull request and want to abandon it**: open it on
-  GitHub and click **Close pull request**. That discards it cleanly.
+- **The page looks wrong in the preview**: say so and ask for a fix. That's the
+  normal loop, not a failure.
+- **You want to throw the whole thing away**: ask Claude to "switch back to main
+  and forget this branch." Nothing you did affects anything.
+- **You already opened the pull request and want to abandon it**: ask Claude to
+  close it, or open it on GitHub and click **Close pull request**.
 - **You're stuck**: comment on the pull request describing what you expected
   versus what you got, and Aditya will sort it out.
+- **It says something about "author identity" or asks for a password**: that's
+  setup, not you. Send it to Aditya.
 
 ---
 
 ## Why Aditya reviews everything
 
 Claude is good at this but not perfect. The usual failure is quietly changing
-something you didn't ask about — which is exactly what Step 4 catches.
+something you didn't ask about — which is exactly what step 4 catches.
 
 The review step isn't about trusting you. It's about the tool, and it stays in
 place for Aditya's own changes too.
+
+---
+---
+
+## Appendix — one-time machine setup
+
+**Aditya does this once, on her Mac.** She doesn't need to read this section.
+
+```sh
+# 1. Command Line Tools (provides git)
+xcode-select --install
+
+# 2. Clone somewhere she can find it
+git clone https://github.com/arphysics/fight_glare_movement.git \
+  ~/Documents/fight_glare_movement
+
+# 3. GitHub access — SIGN IN AS HER, not as Aditya.
+#    Install gh first: gh_*_macOS_universal.pkg from
+#    https://github.com/cli/cli/releases/latest
+gh auth login     # her browser, her GitHub account
+                  # answer yes to "Authenticate Git with your GitHub credentials?"
+
+# 4. Her identity on commits — without this the first commit fails with
+#    "Author identity unknown", which is a confusing wall to hit alone.
+git config --global user.name  "Her Name"
+git config --global user.email "her@example.com"   # email on her GitHub account
+```
+
+Then install the Claude desktop app, have her sign in with her own Max account,
+open the **Code** tab, choose **Local**, and select the
+`~/Documents/fight_glare_movement` folder.
+
+Why sign in as her rather than reusing Aditya's credentials: every commit and PR
+would otherwise be attributed to Aditya, so he'd be reviewing PRs from himself —
+and his token would sit on her machine with access to every repo he can reach.
+She already has write access as a collaborator, so her own login just works.
+
+Verify before leaving her machine:
+
+```sh
+cd ~/Documents/fight_glare_movement
+gh auth status              # shows HER username
+git config user.email       # shows HER email
+git checkout -b setup-test && git push -u origin setup-test
+git push origin --delete setup-test && git checkout main
+```
+
+If that push succeeds without prompting for a password, she's ready. Doing this
+yourself takes two minutes; discovering it broken mid-edit costs her an evening.
