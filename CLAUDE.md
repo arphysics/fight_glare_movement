@@ -64,19 +64,32 @@ and an unsourced number is a liability.
 
 ## Contributors
 
-Aditya works in Claude Code locally. One teammate edits through Claude Code on
-the web (claude.ai/code) against this repo and opens a PR — see `EDITING.md`,
-which is written for a non-technical reader. She needs Claude Pro for that;
-it isn't available on free accounts.
+Aditya works in Claude Code locally. One teammate (Claude Max) uses the Claude
+desktop app in a Local session on a clone of this repo, with GitHub Desktop for
+branch/commit/PR — see `EDITING.md`, written for a non-technical reader.
 
-This file is loaded into her sessions too, so the conventions above are the
-actual guardrails on her edits — that's the reason they're written out rather
-than left implicit. Still review incoming PRs for unrelated drift before
-merging.
+This file loads into her sessions too, so the conventions above are the actual
+guardrails on her edits — that's why they're written out rather than left
+implicit. Still review incoming PRs for unrelated drift before merging.
 
-The earlier workflow was copy `index.html` into claude.ai and paste the whole
-file back. It was replaced because whole-file paste-back invites truncation and
-silent edits to untouched sections; the web flow produces a targeted diff.
+Two earlier approaches and why they were dropped:
+
+- Copy `index.html` into claude.ai and paste the whole file back. Whole-file
+  paste-back invites truncation and silent edits to untouched sections.
+- Claude Code on the web (claude.ai/code). Produces a clean targeted diff, but
+  a cloud session gives her no way to *see* the rendered page — only a diff.
+  Desktop Local sessions open static HTML in the Browser pane and auto-verify
+  with screenshots, which is the whole reason for the extra setup cost.
+
+Her working copy is a real clone, so `main` is checkable out locally and
+pushable. `EDITING.md` leads with "make a branch first" because branch
+protection is off — a commit straight to `main` from her machine would deploy.
+That risk didn't exist in the browser-only flow, where GitHub's editor forced
+the choice.
+
+Per-PR preview URLs (Cloudflare Pages) are still deferred — see `todo.txt`.
+They'd let her preview from a phone and let a reviewer see a rendered page
+rather than a diff.
 
 Branch protection on `main` is deliberately OFF so direct pushes keep working;
 a stray commit is recoverable with Revert. Cloudflare Pages was considered for

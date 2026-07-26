@@ -31,26 +31,38 @@ CONTENT / POLISH
       page, publicly reachable at /fonts-preview.html.
 
 COLLABORATION — scoped to one teammate doing one cleanup pass
-  [x] Settings -> Collaborators -> teammate added
-  [ ] Confirm she ACCEPTED the invite — a pending invite looks identical from
-      our side, and she can't push branches until she accepts
-  [ ] Confirm she has Claude Pro. Claude Code on the web is Pro/Max only, not
-      available on free accounts. EDITING.md assumes she has it.
-  [ ] Send her EDITING.md. Ask her to keep the whole cleanup pass in ONE
-      claude.ai/code session so it lands as ONE pull request, not six
+  [x] Settings -> Collaborators -> teammate added, invite accepted
+  [x] She has Claude Max
+  [ ] Send her EDITING.md and let her do the ~20 min install (GitHub Desktop +
+      Claude desktop app). Offer to sit on a call for it — two apps with
+      different jobs is the confusing part, not the editing
+  [ ] Ask her to keep the whole cleanup pass on ONE branch so it lands as ONE
+      pull request, not six
   [ ] Review the diff, merge, confirm the site updates (~1 min after merge)
 
-  Editing flow is now Claude Code on the web (claude.ai/code) against this
-  repo, not copy/pasting index.html into claude.ai. Claude edits the real file
-  and opens the PR itself, so no truncation risk and the diff stays targeted.
+  Editing flow is the Claude desktop app in a Local session on a clone, with
+  GitHub Desktop for branch/commit/PR. Chosen over Claude Code on the web
+  because a cloud session can't show her the rendered page — only a diff. The
+  desktop Browser pane opens index.html directly and screenshots its own work.
   Our CLAUDE.md loads into her sessions, so the content and accessibility rules
   apply automatically.
 
+  Watch for: she has a real clone, so a commit straight to main from her
+  machine would deploy without review. EDITING.md leads with "branch first"
+  for that reason. If it ever happens, Revert on GitHub fixes it.
+
   Deliberately skipped for now, revisit if more people join:
   - Branch protection on main. It would block Aditya's own direct pushes too,
-    and a stray commit to main is recoverable with a one-click Revert.
-  - Cloudflare Pages PR previews. A diff is the right review surface for
-    wording changes; only worth it once someone edits layout.
+    and a stray commit to main is recoverable with a one-click Revert. Slightly
+    more tempting now that a second machine can push to main, but the fix is
+    still one click and the cost is every push Aditya makes.
+  - Cloudflare Pages PR previews. DEFERRED BY CHOICE, not because the need is
+    gone — the desktop app covers her own previewing, which was the actual
+    concern. Still worth doing for: previewing from a phone, and letting a
+    reviewer look at a rendered page instead of a diff. Can be added WITHOUT
+    touching production — connect the repo to Cloudflare Pages for branch
+    builds and leave DNS pointing at GitHub Pages. That's additive and
+    reversible; it is NOT the same as the full migration under LATER.
 
 LATER
   [ ] Aditya wants a walkthrough of how GitHub Actions works
