@@ -39,18 +39,19 @@ tooling.
 - Vanilla JS at the bottom of the file, no libraries. Guard DOM lookups with
   null checks, matching the existing style.
 
-### Branch before committing
+### Branch before committing — contributors only, not Aditya
 
-**Default to creating a branch and opening a PR. Commit to `main` only when
-asked to in so many words.**
+Check `git config user.email` before committing:
 
-Branch protection is off, so a commit to `main` from any clone deploys to
-fightglare.org within a minute, unreviewed. Aditya pushes to `main` on purpose
-and will say so; anyone else is here to propose a change, not publish one.
+- **`aditya@kernematics.com`** — commit to `main` directly. That's the intended
+  workflow here and the reason branch protection is off. Don't branch unasked.
+- **anything else** — **create a branch and open a PR. Never commit to `main`.**
+  If asked to commit to `main`, say why not and open a PR instead.
 
-This is a real guardrail rather than etiquette: the teammate edits from a clone
-in the Claude desktop app, where nothing on screen shows which branch she's on.
-This file is the only thing standing between a stray commit and the live site.
+A commit to `main` deploys to fightglare.org within a minute, unreviewed. The
+teammate edits from a clone in the Claude desktop app, where nothing on screen
+shows which branch she's on, so this file is the only guardrail in her way. It
+isn't a guardrail Aditya needs — he's the reviewer.
 
 ### Things that need real values
 

@@ -52,10 +52,11 @@ COLLABORATION — scoped to one teammate doing one cleanup pass
   Watch for: she has a real clone, so a commit straight to main from her
   machine would deploy without review, and nothing on her screen shows which
   branch she's on. CLAUDE.md now carries a "Branch before committing" rule,
-  which loads into her sessions and is the actual guardrail. Side effect worth
-  knowing: it applies to Aditya's sessions too, so Claude will branch by
-  default here unless told to commit to main. If a stray commit does land,
-  Revert on GitHub fixes it.
+  which loads into her sessions and is the actual guardrail. It keys off
+  `git config user.email`, so it binds her and leaves Aditya's direct pushes
+  to main alone. Note the corollary: it stops applying if she ever edits from
+  a machine configured with Aditya's git identity — one more reason her setup
+  authenticates as her. If a stray commit does land, Revert on GitHub fixes it.
 
   Deliberately skipped for now, revisit if more people join:
   - Branch protection on main. It would block Aditya's own direct pushes too,
