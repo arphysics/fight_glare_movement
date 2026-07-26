@@ -113,7 +113,19 @@
 
   .owl-wrap { display: flex; justify-content: center; position: relative; }
   .owl-glow { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(230,145,56,0.35), transparent 68%); filter: blur(18px); z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-  .owl-wrap img { width: 100%; max-width: 360px; height: auto; filter: drop-shadow(0 18px 40px rgba(0,0,0,0.5)); animation: float 6s ease-in-out infinite; }
+  /* The logo is a circular medallion whose night-sky interior sits lighter and
+     cooler than --navy-deep. Darken it a touch, then fade its rim into the page
+     background so it reads as part of the sky rather than a disc on top of it. */
+  .owl-medallion { position: relative; width: 100%; max-width: 360px; animation: float 6s ease-in-out infinite; }
+  .owl-medallion img { display: block; width: 100%; height: auto; filter: brightness(0.9) saturate(1.06) drop-shadow(0 18px 40px rgba(0,0,0,0.5)); }
+  .owl-medallion::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle closest-side,
+      rgba(11,28,51,0) 58%,
+      rgba(11,28,51,0.22) 82%,
+      rgba(11,28,51,0.5) 96%,
+      rgba(11,28,51,0.6) 100%);
+  }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
   /* ---------- Sections ---------- */
@@ -121,6 +133,8 @@
   .section-tag { font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 500; color: var(--periwinkle-soft); margin-bottom: 12px; }
   h2.section-title { font-size: clamp(1.7rem, 3.6vw, 2.3rem); margin-bottom: 12px; letter-spacing: -1px; }
   .section-intro { color: var(--ink-dim); font-size: 1.08rem; max-width: 62ch; margin-bottom: clamp(32px, 5vw, 42px); }
+  /* For sections with no intro paragraph — the title carries the gap instead. */
+  h2.section-title.lead-in { margin-bottom: clamp(32px, 5vw, 42px); }
   .subhead { font-family: var(--font-head); font-size: 1.15rem; font-weight: 600; letter-spacing: -0.5px; margin: 44px 0 18px; color: var(--ink); }
 
   /* Cards (problem, q&a) */
@@ -206,7 +220,7 @@
     .hero p.lead { max-width: none; margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
     .owl-wrap { order: -1; }
-    .owl-wrap img { max-width: 220px; }
+    .owl-medallion { max-width: 220px; }
     .cards, .rs, .milestones, .qa { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .nav-links.open { display: flex; position: absolute; top: calc(100% + 8px); right: 16px; left: 16px; flex-direction: column; align-items: stretch; background: var(--navy); border: 1px solid var(--card-border); border-radius: 16px; padding: 12px; gap: 4px; box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
@@ -226,7 +240,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .owl-wrap img { animation: none; }
+    .owl-medallion { animation: none; }
     *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   }
 </style>
@@ -260,7 +274,7 @@
     <div>
       <span class="eyebrow">Irvine &amp; Orange County, CA</span>
       <h1>Irvine, let's <span class="accent">fight glare!</span></h1>
-      <p class="lead">Since 2024, Irvine has been swapping warm streetlights for harsh blue-white LEDs — and the city has no lighting ordinance governing glare, brightness, or color. We're residents working to change that.</p>
+      <p class="lead">Since 2024, Irvine has been trading warm-hued streetlights for harsh blue-white LEDs. And the city has no lighting ordinance governing glare, brightness, or color. We are a group of concerned residents working to change that.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#petition-link" data-petition><span aria-hidden="true">✍️</span> Sign the Petition</a>
         <a class="btn btn-ghost" href="#goal">Read our ask</a>
@@ -268,7 +282,9 @@
     </div>
     <div class="owl-wrap">
       <div class="owl-glow" aria-hidden="true"></div>
-      <img src="assets/owl-logo.png" alt="Fight Glare owl perched beside a warm-lit lamp against a night sky" />
+      <div class="owl-medallion">
+        <img src="assets/owl-logo.png" alt="Fight Glare owl perched beside a warm-lit lamp against a night sky" />
+      </div>
     </div>
   </div>
 </div>
@@ -277,23 +293,22 @@
 <section id="problem">
   <div class="wrap">
     <div class="section-tag">The Problem</div>
-    <h2 class="section-title">Irvine's new streetlights are brighter, bluer, and unshielded</h2>
-    <p class="section-intro">Since 2024, the city has been replacing thousands of warm high-pressure-sodium lamps with cool blue-white LEDs. They're brighter and harsher — and nothing on the books limits how much light spills where it isn't wanted.</p>
+    <h2 class="section-title lead-in">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to:</h2>
     <div class="cards">
       <div class="card">
         <div class="icon" aria-hidden="true">👁️</div>
         <h3>Visual stress</h3>
-        <p>Intense glare and blue-white light strain the eyes and cast harsh shadows that make it harder — not easier — to see at night.</p>
+        <p>Intense glare and blue-white light strain the eyes and cast harsh shadows that make it harder, not easier, to see at night.</p>
       </div>
       <div class="card">
         <div class="icon" aria-hidden="true">😴</div>
         <h3>Sleep and health</h3>
-        <p>Blue-heavy light at night disrupts sleep and circadian rhythms, and hits hardest for older adults and residents with migraine, autism, or light sensitivity.</p>
+        <p>Blue-heavy light at night disrupts sleep and circadian rhythms and hits hardest for older adults and residents with migraine, autism, or light sensitivity.</p>
       </div>
       <div class="card">
         <div class="icon" aria-hidden="true">🏠</div>
-        <h3>Light in your home</h3>
-        <p>Unshielded fixtures spill into bedrooms and yards, lighting up homes that never asked for it and washing out the night sky.</p>
+        <h3>Light spillage</h3>
+        <p>Unshielded fixtures spill into the sky and into bedrooms and yards, causing unwelcome nuisance in homes and washing out the night sky.</p>
       </div>
     </div>
   </div>
@@ -305,12 +320,12 @@
     <div class="section-tag">The Goal</div>
     <h2 class="section-title">Irvine's first lighting ordinance</h2>
     <div class="goal-panel">
-      <p class="goal-lead">Right now, Irvine has <strong>no outdoor lighting ordinance at all.</strong> Our goal is to establish one — a city-wide standard that limits excessive glare and brightness and promotes responsible lighting that is:</p>
+      <p class="goal-lead">As of July 2026, Irvine still has <strong>no outdoor lighting ordinance in place.</strong> Our goal is to help establish a city-wide standard that limits excessive glare and brightness and promotes responsible lighting that is:</p>
       <ul class="goal-list">
-        <li><strong>Well-shielded</strong> — aimed downward where it's needed, not into eyes, windows, and the sky</li>
-        <li><strong>Warm in tone</strong> — 2700K and under, easy on the eyes</li>
-        <li><strong>Right-sized</strong> — only as much light as the task needs, dimmed or off when it isn't</li>
-        <li><strong>Considerate</strong> — mindful of neighbors and of residents with light sensitivity</li>
+        <li><strong>Well-shielded</strong> — is aimed downward where it's needed, not into the eyes, windows, or the sky.</li>
+        <li><strong>Warm in tone</strong> — is capped at 2700K and no higher; ideally ranging between 1800K and 2400K.</li>
+        <li><strong>Right-sized</strong> — is not a whit more than what the task absolutely requires; dimmed or turned off when not actively lighting a pathway or a task.</li>
+        <li><strong>Considerate</strong> — is mindful of neighbors and passersby with light sensitivity.</li>
       </ul>
     </div>
 
