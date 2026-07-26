@@ -470,8 +470,9 @@
 </footer>
 
 <script>
-  // Central place to set the real petition URL. Replace "#" with your live petition link.
-  var PETITION_URL = "#";
+  // Central place to set the real petition URL. Every "Sign the Petition" button
+  // points here; set it back to "#" to disable them all with a placeholder alert.
+  var PETITION_URL = "https://www.change.org/p/irvine-residents-let-s-fight-glare";
   document.querySelectorAll('[data-petition]').forEach(function (el) {
     if (PETITION_URL && PETITION_URL !== "#") {
       el.setAttribute('href', PETITION_URL);

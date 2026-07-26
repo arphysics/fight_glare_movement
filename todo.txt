@@ -17,10 +17,11 @@ DONE
   return 200 and the live page matches the committed index.html.
 
 BLOCKING SHARING THE LINK
-  [ ] Replace PETITION_URL in index.html — currently "#", so petition buttons
-      pop an alert instead of navigating. Do this before sharing the link.
+  [x] PETITION_URL set to the change.org petition. All four buttons navigate;
+      opens in a new tab. Tracking param (?source_location=...) stripped — it
+      was an artifact of where the link was copied from, not part of the link.
   [ ] Set up mail for hello@fightglare.org (footer links it; GoDaddy can
-      forward). Right now that address goes nowhere.
+      forward). Right now that address goes nowhere. LAST blocker.
 
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
