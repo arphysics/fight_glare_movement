@@ -31,6 +31,36 @@ BLOCKING SHARING THE LINK
   If a branded address is ever wanted, GoDaddy forwarding for
   hello@fightglare.org is still the path — it would land in the same mailbox.
 
+NEXT SESSION — START HERE
+  [ ] Her push doesn't work. Two of her commits had to be relayed as a patch
+      and applied by hand.
+      DO NOT start from "fix her local git credentials" — that was the first
+      guess and the evidence says otherwise. Her commits carry a
+      "Claude-Session: https://claude.ai/code/session_..." trailer, which only
+      CLOUD sessions add, and the author was Claude <noreply@anthropic.com>
+      rather than an unset-identity failure. So she was on a Cloud session in
+      the desktop app, where pushes go through her Claude account's GitHub
+      connection and her Mac's git credentials are not involved at all.
+      Look at: whether her Claude account has GitHub connected, whether the
+      Claude GitHub App can reach arphysics/fight_glare_movement, and the
+      verbatim push error (still never seen — the artifact she generated was
+      never shared, so it couldn't be opened).
+      Worth deciding too: is she better off on Local sessions after all?
+      EDITING.md is written for Local (Browser pane preview, drag images into
+      assets/). If she's actually using Cloud, parts of that guide don't match
+      what she sees, which is its own problem.
+
+  [ ] Two claims from her copy went live UNSOURCED, merged knowingly. Either
+      cite or soften — CLAUDE.md's rule is no dates/statistics about Irvine's
+      position without a link, and this page is aimed at a city council:
+        - "As of July 2026, Irvine still has no outdoor lighting ordinance in
+          place" — dated, checkable, and goes stale on its own
+        - "capped at 2700K and no higher; ideally ranging between 1800K and
+          2400K" — the 1800-2400K range is new and cited nowhere
+  [ ] Copy nits in the goal list, hers to decide: the lead-in ends "lighting
+      that is:" and every bullet then repeats "is" ("Well-shielded — is aimed
+      downward"). Also "not a whit more" reads archaic for a council audience.
+
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
       544x544. Social cards want ~1200x630, so previews will crop oddly.
