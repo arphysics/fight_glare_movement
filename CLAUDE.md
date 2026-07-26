@@ -12,7 +12,7 @@ root via `.github/workflows/deploy.yml`.
 ```
 index.html          Entire site — markup, <style>, and <script> in one file
 fonts-preview.html  Scratch page for comparing font pairings; not linked from the site
-assets/             owl-logo.png (favicon + og:image), owl-logo-v1.png, IMG_3840.png
+assets/             owl-logo.png — favicon + og:image, the only image on the site
 CNAME               fightglare.org — required by Pages, do not delete
 EDITING.md          Browser-only guide for non-technical teammates
 todo.txt            Open items — check this first, it's kept current
