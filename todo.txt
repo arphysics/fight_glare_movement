@@ -34,8 +34,9 @@ BLOCKING SHARING THE LINK
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
       544x544. Social cards want ~1200x630, so previews will crop oddly.
-  [ ] Remove unused assets: owl-logo-v1.png is referenced nowhere, and
-      IMG_3840.png is byte-identical to owl-logo.png.
+  [x] Removed unused assets — owl-logo-v1.png (referenced nowhere) and
+      IMG_3840.png (byte-identical to owl-logo.png, same md5). 322KB. Done on
+      a branch on purpose, as the first real test of Cloudflare previews.
   [ ] Decide whether fonts-preview.html stays in the repo — it's a scratch
       page, publicly reachable at /fonts-preview.html.
 
