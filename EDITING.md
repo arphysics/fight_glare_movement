@@ -86,6 +86,35 @@ highlighted.
 
 If something needs fixing after that, just say so — the pull request updates.
 
+### 6. See your version on a real web address
+
+A minute or so after the pull request opens, a comment appears on it from
+**Cloudflare Workers** with a **Preview URL**. Click it.
+
+That's your version of the site, on the real internet, at an address like:
+
+```
+https://your-branch-name-fight-glare-irvine.aditya-14a.workers.dev
+```
+
+This is genuinely useful for three things the preview in Claude can't do:
+
+- **Check it on your phone.** Most people who read this site will be on one.
+- **Send it to someone.** The link works for anyone you give it to.
+- **Let Aditya look at the page** rather than at the code.
+
+Two things to know:
+
+- **This is not the live site.** fightglare.org is untouched and still shows the
+  old version until Aditya merges your change. The preview is a copy for
+  looking at.
+- **It updates itself.** Ask Claude for another change and commit it, and the
+  same link shows the new version a minute later. You don't need a new link.
+
+Preview addresses are deliberately hidden from Google, so nobody stumbles onto
+a half-finished version of the campaign. Since the branch name becomes part of
+the address, keep branch names short and plain.
+
 ---
 
 ## Doing several changes at once

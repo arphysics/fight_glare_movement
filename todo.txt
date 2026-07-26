@@ -90,23 +90,28 @@ CLOUDFLARE BRANCH PREVIEWS — in progress
   [x] _headers rewritten for workers.dev. The first version used Pages
       placeholder syntax (:project.pages.dev), which does not match a
       workers.dev host and would have silently done nothing.
-  [ ] PUSH. _headers exists only in local commits. Until it is pushed and
-      built, the workers.dev copies are indexable and can compete with
-      fightglare.org in search results. This is the time-sensitive one.
-  [ ] Verify noindex landed. Run from a normal terminal, NOT the devcontainer —
-      workers.dev is blocked by the sandbox firewall:
+  [x] _headers pushed and built
+  [x] Cloudflare's own autoconfig PR (#1) merged — adds wrangler.jsonc pinning
+      the config in the repo instead of only in the dashboard, plus wrangler
+      entries in .gitignore. Reviewed before merging; nothing surprising.
+  [x] Branch builds CONFIRMED working. Cloudflare comments on each PR with a
+      preview URL, in two forms:
+        <commit-hash>-fight-glare-irvine.aditya-14a.workers.dev   per commit
+        <branch-name>-fight-glare-irvine.aditya-14a.workers.dev   per branch,
+          stable, keeps working as more commits are pushed to the branch
+      Branch name becomes part of the hostname, so keep branch names short.
+  [x] EDITING.md step 6 written against the real URL format
+  [ ] Verify noindex landed. MUST run from a normal terminal, NOT the
+      devcontainer — workers.dev is blocked by the sandbox firewall, so this
+      is the one check that can't be done from inside Claude Code:
         curl -sI https://fight-glare-irvine.aditya-14a.workers.dev/ | grep -i x-robots-tag
         curl -sI https://fightglare.org/ | grep -i x-robots-tag     # expect NOTHING
-  [ ] Confirm the workers.dev URL actually serves the site — owl logo, fonts,
-      petition buttons. A half-built deploy still returns 200.
-  [ ] Confirm branch builds are ON: push a non-production branch and check it
-      gets a *-fight-glare-irvine URL. This is the entire point of the setup;
-      if only the production branch builds, it has bought nothing.
+      (fightglare.org side already verified: no x-robots-tag, correct.)
+  [ ] Open the workers.dev URL in a browser and confirm it serves the real
+      site — owl logo, fonts, petition buttons. A half-built deploy still
+      returns 200, so a status code is not proof.
   [ ] DO NOT add fightglare.org as a custom domain in Cloudflare. That is the
       single step that would move production off GitHub Pages.
-  [ ] Then add a "previewing your branch" section to EDITING.md — deliberately
-      not written yet, since pointing a non-technical editor at a URL that
-      doesn't resolve is worse than not mentioning it
 
 LATER
   [ ] Aditya wants a walkthrough of how GitHub Actions works
