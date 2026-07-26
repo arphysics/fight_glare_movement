@@ -1,16 +1,22 @@
-# Cloudflare Pages only. GitHub Pages ignores this file, so it has no effect on
-# fightglare.org — which is still served by GitHub Pages, not Cloudflare.
+# Cloudflare Workers (static assets) only. GitHub Pages ignores this file
+# entirely, so it has no effect on fightglare.org — which is still served by
+# GitHub Pages, not Cloudflare.
 #
-# Cloudflare builds every branch, including main. That means a full public copy
-# of the site exists at <project>.pages.dev alongside the real one. These rules
-# keep every pages.dev copy out of search results so the two don't compete.
+# Cloudflare builds this repo, so full public copies of the site exist at:
+#   fight-glare-irvine.aditya-14a.workers.dev      (production build)
+#   *-fight-glare-irvine.aditya-14a.workers.dev    (one per branch preview)
 #
-# The patterns match pages.dev hostnames only. If fightglare.org is ever moved
-# onto Cloudflare Pages as a custom domain, it will NOT be caught by these and
-# will index normally, which is what you want.
+# The rule below keeps all of them out of search results, so none of them
+# compete with fightglare.org for the same content.
+#
+# Why this pattern: both URL shapes are two labels in front of workers.dev, so
+# :version matches "fight-glare-irvine" and the "<hash>-fight-glare-irvine"
+# preview names alike, and :subdomain matches "aditya-14a".
+#
+# DO NOT replace this with a bare "/*" rule. It would still work today, but if
+# fightglare.org is ever moved onto Cloudflare as a custom domain it would
+# noindex the real site. The hostname scoping is what makes that migration
+# safe: a custom domain is not a workers.dev host, so it will index normally.
 
-https://:project.pages.dev/*
-  X-Robots-Tag: noindex
-
-https://:version.:project.pages.dev/*
+https://:version.:subdomain.workers.dev/*
   X-Robots-Tag: noindex

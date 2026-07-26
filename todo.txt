@@ -72,34 +72,40 @@ COLLABORATION — scoped to one teammate doing one cleanup pass
     more tempting now that a second machine can push to main, but the fix is
     still one click and the cost is every push Aditya makes.
 
-CLOUDFLARE PAGES PREVIEWS — in progress
+CLOUDFLARE BRANCH PREVIEWS — in progress
   Goal: a URL per branch, so a branched version can be opened next to the live
   site and compared. A diff can't answer "does this look right."
+
+  Ended up on Cloudflare WORKERS (static assets), not Pages — Cloudflare now
+  steers new projects to Workers. Same outcome, different hostnames:
+    fight-glare-irvine.aditya-14a.workers.dev      production build
+    *-fight-glare-irvine.aditya-14a.workers.dev    branch previews
 
   ADDITIVE, NOT A MIGRATION. fightglare.org keeps being served by GitHub Pages,
   DNS is not touched, nothing about the live site changes. Reversible by
   deleting the Cloudflare project. This is NOT the migration under LATER.
 
-  [x] _headers file added — keeps every *.pages.dev copy out of search results
-      so it can't compete with fightglare.org. Inert until Cloudflare is
-      connected; GitHub Pages ignores the file entirely.
-  [ ] Cloudflare account (free tier is enough)
-  [ ] Workers & Pages -> Create -> Pages -> Connect to Git -> authorize the
-      Cloudflare GitHub app -> pick arphysics/fight_glare_movement
-  [ ] Build settings — the defaults assume a build step and this repo has none:
-        Framework preset:        None
-        Build command:           (leave empty)
-        Build output directory:  /
-  [ ] DO NOT add fightglare.org as a custom domain. That is the step that would
-      move production off GitHub Pages.
-  [ ] Confirm <project>.pages.dev serves the site, then push any branch and
-      confirm it gets its own preview URL
-  [ ] Verify noindex is working:
-        curl -sI https://<project>.pages.dev/ | grep -i x-robots-tag
-        curl -sI https://fightglare.org/     | grep -i x-robots-tag   # expect nothing
-  [ ] Once the project name is known, add a "previewing your branch" section to
-      EDITING.md — deliberately not written yet, since the URL isn't known and
-      pointing her at a dead link is worse than not mentioning it
+  [x] Cloudflare account + project connected to the repo
+  [x] _headers rewritten for workers.dev. The first version used Pages
+      placeholder syntax (:project.pages.dev), which does not match a
+      workers.dev host and would have silently done nothing.
+  [ ] PUSH. _headers exists only in local commits. Until it is pushed and
+      built, the workers.dev copies are indexable and can compete with
+      fightglare.org in search results. This is the time-sensitive one.
+  [ ] Verify noindex landed. Run from a normal terminal, NOT the devcontainer —
+      workers.dev is blocked by the sandbox firewall:
+        curl -sI https://fight-glare-irvine.aditya-14a.workers.dev/ | grep -i x-robots-tag
+        curl -sI https://fightglare.org/ | grep -i x-robots-tag     # expect NOTHING
+  [ ] Confirm the workers.dev URL actually serves the site — owl logo, fonts,
+      petition buttons. A half-built deploy still returns 200.
+  [ ] Confirm branch builds are ON: push a non-production branch and check it
+      gets a *-fight-glare-irvine URL. This is the entire point of the setup;
+      if only the production branch builds, it has bought nothing.
+  [ ] DO NOT add fightglare.org as a custom domain in Cloudflare. That is the
+      single step that would move production off GitHub Pages.
+  [ ] Then add a "previewing your branch" section to EDITING.md — deliberately
+      not written yet, since pointing a non-technical editor at a URL that
+      doesn't resolve is worse than not mentioning it
 
 LATER
   [ ] Aditya wants a walkthrough of how GitHub Actions works

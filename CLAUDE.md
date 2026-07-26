@@ -112,11 +112,24 @@ attribution is hers and no credential of his sits on her machine.
 Branch protection on `main` is deliberately OFF so direct pushes keep working;
 a stray commit is recoverable with Revert.
 
-Cloudflare Pages is being added for per-branch preview URLs — see `todo.txt`.
-It is **additive**: fightglare.org stays on GitHub Pages, DNS is untouched.
-The `_headers` file at the repo root belongs to it and is inert under GitHub
-Pages. Adding fightglare.org as a Cloudflare custom domain is the one step
-that would move production; don't do it by accident.
+Cloudflare is being added for per-branch preview URLs — on **Workers** with
+static assets, not Pages, since Cloudflare now steers new projects there. See
+`todo.txt`. It is **additive**: fightglare.org stays on GitHub Pages and DNS is
+untouched. The `_headers` file at the repo root belongs to Cloudflare and is
+inert under GitHub Pages, which ignores it.
+
+Two things about `_headers` that are easy to get wrong:
+
+- Its rules are scoped to `workers.dev` hostnames on purpose, so they keep the
+  Cloudflare copies out of search results without touching the real domain.
+  Simplifying it to a bare `/*` rule works today but would noindex
+  fightglare.org itself the moment production moved to Cloudflare.
+- Pages and Workers use different placeholder syntax. `:project.pages.dev`
+  patterns do not match a `workers.dev` host, and the failure is silent — the
+  file parses, the header just never appears.
+
+Adding fightglare.org as a Cloudflare custom domain is the one step that would
+move production off GitHub Pages; don't do it by accident.
 
 ## Deploying
 
