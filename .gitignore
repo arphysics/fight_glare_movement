@@ -12,3 +12,10 @@ Icon?
 
 # Claude Code local settings (machine-specific; .claude/settings.json is shared)
 .claude/settings.local.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
