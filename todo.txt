@@ -71,13 +71,35 @@ COLLABORATION — scoped to one teammate doing one cleanup pass
     and a stray commit to main is recoverable with a one-click Revert. Slightly
     more tempting now that a second machine can push to main, but the fix is
     still one click and the cost is every push Aditya makes.
-  - Cloudflare Pages PR previews. DEFERRED BY CHOICE, not because the need is
-    gone — the desktop app covers her own previewing, which was the actual
-    concern. Still worth doing for: previewing from a phone, and letting a
-    reviewer look at a rendered page instead of a diff. Can be added WITHOUT
-    touching production — connect the repo to Cloudflare Pages for branch
-    builds and leave DNS pointing at GitHub Pages. That's additive and
-    reversible; it is NOT the same as the full migration under LATER.
+
+CLOUDFLARE PAGES PREVIEWS — in progress
+  Goal: a URL per branch, so a branched version can be opened next to the live
+  site and compared. A diff can't answer "does this look right."
+
+  ADDITIVE, NOT A MIGRATION. fightglare.org keeps being served by GitHub Pages,
+  DNS is not touched, nothing about the live site changes. Reversible by
+  deleting the Cloudflare project. This is NOT the migration under LATER.
+
+  [x] _headers file added — keeps every *.pages.dev copy out of search results
+      so it can't compete with fightglare.org. Inert until Cloudflare is
+      connected; GitHub Pages ignores the file entirely.
+  [ ] Cloudflare account (free tier is enough)
+  [ ] Workers & Pages -> Create -> Pages -> Connect to Git -> authorize the
+      Cloudflare GitHub app -> pick arphysics/fight_glare_movement
+  [ ] Build settings — the defaults assume a build step and this repo has none:
+        Framework preset:        None
+        Build command:           (leave empty)
+        Build output directory:  /
+  [ ] DO NOT add fightglare.org as a custom domain. That is the step that would
+      move production off GitHub Pages.
+  [ ] Confirm <project>.pages.dev serves the site, then push any branch and
+      confirm it gets its own preview URL
+  [ ] Verify noindex is working:
+        curl -sI https://<project>.pages.dev/ | grep -i x-robots-tag
+        curl -sI https://fightglare.org/     | grep -i x-robots-tag   # expect nothing
+  [ ] Once the project name is known, add a "previewing your branch" section to
+      EDITING.md — deliberately not written yet, since the URL isn't known and
+      pointing her at a dead link is worse than not mentioning it
 
 LATER
   [ ] Aditya wants a walkthrough of how GitHub Actions works

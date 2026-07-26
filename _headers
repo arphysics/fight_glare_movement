@@ -1,0 +1,16 @@
+# Cloudflare Pages only. GitHub Pages ignores this file, so it has no effect on
+# fightglare.org — which is still served by GitHub Pages, not Cloudflare.
+#
+# Cloudflare builds every branch, including main. That means a full public copy
+# of the site exists at <project>.pages.dev alongside the real one. These rules
+# keep every pages.dev copy out of search results so the two don't compete.
+#
+# The patterns match pages.dev hostnames only. If fightglare.org is ever moved
+# onto Cloudflare Pages as a custom domain, it will NOT be caught by these and
+# will index normally, which is what you want.
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex

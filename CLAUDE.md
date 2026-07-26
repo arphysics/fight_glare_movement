@@ -110,9 +110,13 @@ Her clone authenticates as her own GitHub account, not Aditya's, so PR
 attribution is hers and no credential of his sits on her machine.
 
 Branch protection on `main` is deliberately OFF so direct pushes keep working;
-a stray commit is recoverable with Revert. Per-PR preview URLs (Cloudflare
-Pages) are deferred — they'd let her preview from a phone and let a reviewer
-see a rendered page rather than a diff. See `todo.txt`.
+a stray commit is recoverable with Revert.
+
+Cloudflare Pages is being added for per-branch preview URLs — see `todo.txt`.
+It is **additive**: fightglare.org stays on GitHub Pages, DNS is untouched.
+The `_headers` file at the repo root belongs to it and is inert under GitHub
+Pages. Adding fightglare.org as a Cloudflare custom domain is the one step
+that would move production; don't do it by accident.
 
 ## Deploying
 
