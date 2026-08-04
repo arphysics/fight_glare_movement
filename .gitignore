@@ -13,6 +13,11 @@ Icon?
 # Claude Code local settings (machine-specific; .claude/settings.json is shared)
 .claude/settings.local.json
 
+# Internal verification checklist. MUST stay untracked: both GitHub Pages and
+# Cloudflare serve the repo root, so committing it would publish a list of the
+# site's unverified claims at fightglare.org/VERIFY.md.
+VERIFY.md
+
 # wrangler files
 .wrangler
 .dev.vars*
