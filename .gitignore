@@ -17,6 +17,7 @@ Icon?
 # Cloudflare serve the repo root, so committing it would publish a list of the
 # site's unverified claims at fightglare.org/VERIFY.md.
 VERIFY.md
+fact-check-report.md
 
 # wrangler files
 .wrangler
