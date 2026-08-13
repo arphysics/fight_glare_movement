@@ -145,6 +145,12 @@
   .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
   .card p { color: var(--ink-dim); font-size: 0.98rem; }
 
+  /* Video embed — vertical (YouTube Shorts) aspect, capped so it doesn't dominate */
+  .video-block { margin-top: clamp(32px, 5vw, 42px); display: grid; justify-items: center; text-align: center; }
+  .video-frame { width: 100%; max-width: 320px; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; border: 1px solid var(--card-border); background: rgba(11,20,33,0.55); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-caption { margin-top: 14px; color: var(--ink-dim); font-size: 0.95rem; max-width: 46ch; }
+
   /* Goal */
   .goal-panel { background: linear-gradient(135deg, rgba(22,50,79,0.9), rgba(14,40,65,0.6)); border: 1px solid var(--card-border); border-radius: 24px; padding: 48px; }
   .goal-lead { font-size: 1.18rem; color: var(--ink); max-width: 64ch; }
@@ -188,6 +194,11 @@
   .step p { color: var(--ink-dim); font-size: 0.98rem; }
   .step .step-actions { margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .btn-sm { padding: 10px 18px; font-size: 0.92rem; }
+  /* The one step that asks for more than a signature — sized to match the ask. */
+  .step-feature { border-color: rgba(230,145,56,0.5); background: linear-gradient(135deg, rgba(230,145,56,0.14), rgba(150,167,244,0.08)); }
+  .step-feature h3 { font-size: 1.5rem; margin-bottom: 10px; }
+  .step-feature p { font-size: 1.08rem; color: var(--ink); }
+  .step-feature .step-num { background: var(--amber); color: #23140a; }
   .inline-link { color: var(--periwinkle-soft); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; font-size: 0.95rem; }
 
   .email-box { margin-top: 14px; background: rgba(11,20,33,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
@@ -209,6 +220,8 @@
   footer { position: relative; z-index: 1; border-top: 1px solid rgba(180,192,255,0.12); padding: 40px 0; text-align: center; color: var(--ink-dim); font-size: 0.9rem; }
   footer .brand { justify-content: center; margin-bottom: 14px; font-size: 1rem; }
   footer a { color: var(--periwinkle-soft); text-decoration: none; }
+
+  .disclaimer { margin: 20px auto 0; max-width: 70ch; font-size: 0.82rem; line-height: 1.6; color: var(--ink-dim); opacity: 0.8; }
 
   .note-placeholder { display: inline-block; font-size: 0.7rem; color: var(--amber-bright); border: 1px dashed rgba(244,169,74,0.5); border-radius: 6px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.3px; }
 
@@ -312,6 +325,19 @@
         <h3>Light spillage</h3>
         <p>Unshielded fixtures spill into the sky and into bedrooms and yards, causing unwelcome nuisance in homes and washing out the night sky.</p>
       </div>
+    </div>
+
+    <div class="video-block">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/vzAf7-G94lM"
+          title="Fight Glare — a short video about the movement"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">A short look at the movement — what Irvine residents are seeing, and what we're asking the city for.</p>
     </div>
   </div>
 </section>
@@ -454,6 +480,16 @@
           <p>Pass this page and our videos to your neighbors and keep watch with us. The more residents of Irvine who recognize this intrusion, the heavier our collective demand becomes.</p>
         </div>
       </div>
+      <div class="step step-feature">
+        <div class="step-num" aria-hidden="true">5</div>
+        <div>
+          <h3>Join our team</h3>
+          <p>We need numbers. A city adopts a standard when enough residents keep showing up — writing, speaking, and bringing neighbors with them. Every name behind this ask makes it harder to set aside. If you can give even an occasional hour, we want to hear from you.</p>
+          <div class="step-actions">
+            <a class="btn btn-primary btn-sm" href="mailto:fightglareirvine@gmail.com?subject=I%20want%20to%20join%20the%20Fight%20Glare%20team">Join our team</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -481,6 +517,7 @@
     </div>
     <p>A resident-led movement for responsible outdoor lighting in Irvine &amp; Orange County, CA.</p>
     <p style="margin-top:8px;">fightglare.org &middot; <a href="mailto:fightglareirvine@gmail.com">fightglareirvine@gmail.com</a></p>
+    <p class="disclaimer">Fight Glare is an independent, resident-led campaign. We are not affiliated with, endorsed by, or speaking on behalf of the City of Irvine or any other agency or organization. The opinions and recommendations on this page are our own. Where we cite outside research or public codes we link to the source so you can read it yourself, and nothing here is intended as legal, medical, or professional advice.</p>
   </div>
 </footer>
 
