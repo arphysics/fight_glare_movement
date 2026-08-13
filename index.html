@@ -145,13 +145,12 @@
   .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
   .card p { color: var(--ink-dim); font-size: 0.98rem; }
 
-  /* Video embed — a vertical (Shorts) 9/16 frame centered in the container would
-     leave most of the row empty, so it sits right and copy fills the space left. */
-  .video-block { margin-top: clamp(32px, 5vw, 42px); display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: clamp(24px, 4vw, 48px); align-items: center; }
-  .video-copy h3 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 12px; }
-  .video-copy p { color: var(--ink-dim); font-size: 1.02rem; max-width: 52ch; }
+  /* Video embed — a vertical (Shorts) 9/16 frame is tall, so it sits beside the
+     stacked three R's, which are the only column on the page of similar height. */
+  .rs-row { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: clamp(24px, 4vw, 44px); align-items: start; }
   .video-frame { width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; border: 1px solid var(--card-border); background: rgba(11,20,33,0.55); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
   .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-caption { margin-top: 14px; color: var(--ink-dim); font-size: 0.95rem; }
 
   /* Goal */
   .goal-panel { background: linear-gradient(135deg, rgba(22,50,79,0.9), rgba(14,40,65,0.6)); border: 1px solid var(--card-border); border-radius: 24px; padding: 48px; }
@@ -162,8 +161,8 @@
   .goal-list li strong { color: var(--ink); font-weight: 500; }
   .goal-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(230,145,56,0.18); color: var(--amber-bright); font-size: 0.8rem; font-weight: 700; }
 
-  /* 3 Rs */
-  .rs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  /* 3 Rs — stacked, forming the left column of .rs-row beside the video */
+  .rs { display: grid; grid-template-columns: 1fr; gap: 18px; }
   .r-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s; }
   .r-card:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
   .r-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--amber); }
@@ -229,7 +228,7 @@
 
   /* Responsive */
   @media (max-width: 1024px) and (min-width: 861px) {
-    .cards, .rs, .milestones { grid-template-columns: repeat(2, 1fr); }
+    .cards, .milestones { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 860px) {
     .hero { padding: 60px 0 56px; }
@@ -238,10 +237,10 @@
     .hero-actions { justify-content: center; }
     .owl-wrap { order: -1; }
     .owl-medallion { max-width: 220px; }
-    .cards, .rs, .milestones, .qa { grid-template-columns: 1fr; }
-    .video-block { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 26px; }
-    .video-copy p { margin-left: auto; margin-right: auto; }
-    .video-frame { max-width: 280px; }
+    .cards, .milestones, .qa { grid-template-columns: 1fr; }
+    .rs-row { grid-template-columns: 1fr; gap: 26px; }
+    .video-frame { max-width: 280px; margin-left: auto; margin-right: auto; }
+    .video-caption { text-align: center; }
     .nav-links { display: none; }
     .nav-links.open { display: flex; position: absolute; top: calc(100% + 8px); right: 16px; left: 16px; flex-direction: column; align-items: stretch; background: var(--navy); border: 1px solid var(--card-border); border-radius: 16px; padding: 12px; gap: 4px; box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
     .nav-links.open a { padding: 12px 16px; font-size: 1rem; }
@@ -332,22 +331,6 @@
       </div>
     </div>
 
-    <div class="video-block">
-      <div class="video-copy">
-        <h3>See it for yourself</h3>
-        <p>A short look at the movement — what Irvine residents are living with after dark, and what we are asking the city to change. Watch it, then pass it to a neighbor.</p>
-        <p style="margin-top:14px;"><a class="inline-link" href="https://youtube.com/shorts/vzAf7-G94lM" target="_blank" rel="noopener">Watch on YouTube →</a></p>
-      </div>
-      <div class="video-frame">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/vzAf7-G94lM"
-          title="Fight Glare — a short video about the movement"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -367,18 +350,32 @@
     </div>
 
     <h3 class="subhead">Responsible lighting asks that you</h3>
-    <div class="rs">
-      <div class="r-card">
-        <h3>Reduce</h3>
-        <p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p>
+    <div class="rs-row">
+      <div class="rs">
+        <div class="r-card">
+          <h3>Reduce</h3>
+          <p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p>
+        </div>
+        <div class="r-card">
+          <h3>Restrict</h3>
+          <p>Use timers, dimmers, and sensors so light runs only when and where it's actually needed.</p>
+        </div>
+        <div class="r-card">
+          <h3>Redirect</h3>
+          <p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p>
+        </div>
       </div>
-      <div class="r-card">
-        <h3>Restrict</h3>
-        <p>Use timers, dimmers, and sensors so light runs only when and where it's actually needed.</p>
-      </div>
-      <div class="r-card">
-        <h3>Redirect</h3>
-        <p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p>
+      <div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/vzAf7-G94lM"
+            title="Fight Glare — a short video about the movement"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">A short look at the movement.<br /><a class="inline-link" href="https://youtube.com/shorts/vzAf7-G94lM" target="_blank" rel="noopener">Watch on YouTube →</a></p>
       </div>
     </div>
     <p class="darksky-note">Our three R's distill <a href="https://darksky.org/resources/guides-and-how-tos/lighting-principles/" target="_blank" rel="noopener">the Five Principles for Responsible Outdoor Lighting</a>, published jointly by DarkSky International and the Illuminating Engineering Society. Irvine can build on them.</p>
