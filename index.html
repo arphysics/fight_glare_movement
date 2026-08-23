@@ -147,6 +147,7 @@
   .card .icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: rgba(230,145,56,0.16); border: 1px solid rgba(230,145,56,0.22); margin-bottom: 18px; font-size: 1.5rem; line-height: 1; }
   .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
   .card p { color: var(--ink-dim); font-size: 0.98rem; }
+  .card p + p { margin-top: 12px; }
 
   /* Video embed — a vertical (Shorts) 9/16 frame is tall, so it sits beside the
      stacked three R's, which are the only column on the page of similar height. */
@@ -212,6 +213,14 @@
   .email-box { margin-top: 14px; background: rgba(11,20,33,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
   .email-box p { font-size: 0.96rem; color: var(--ink-dim); margin: 0 0 10px; }
   .email-box p:last-of-type { margin-bottom: 0; }
+  /* Letter merge fields — the writer types three things and the sign-off,
+     the copied text, and the mailto body all fill in together. */
+  .letter-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+  .letter-form label { display: block; font-size: 0.8rem; color: var(--ink-dim); margin-bottom: 5px; }
+  .letter-form input { width: 100%; background: rgba(11,20,33,0.6); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; }
+  .letter-form input::placeholder { color: var(--ink-dim); opacity: 0.55; }
+  .letter-form input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+  .letter-fill { color: var(--heading); }
   .copy-btn { margin-top: 16px; background: transparent; border: 1.5px solid rgba(180,192,255,0.4); color: var(--ink); padding: 9px 18px; border-radius: 999px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
   .copy-btn:hover { border-color: var(--periwinkle); background: rgba(150,167,244,0.1); }
 
@@ -263,6 +272,9 @@
     .cta-inner { padding: 44px 24px; }
     .step { grid-template-columns: 1fr; gap: 12px; }
   }
+  @media (max-width: 620px) {
+    .letter-form { grid-template-columns: 1fr; }
+  }
   @media (max-width: 400px) {
     .wrap { padding: 0 18px; }
     .nav-inner { padding: 12px 18px; }
@@ -305,7 +317,7 @@
     <div>
       <span class="eyebrow">Irvine &amp; Orange County, CA</span>
       <h1>Irvine, let's <span class="accent">fight glare!</span></h1>
-      <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. Currently, the city's code offers no ceiling on how bright a light may be and no limit on its unnatural, piercing blue. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
+      <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. Currently, the city's code offers no ceiling on how bright a light may be and no limit on its unnatural, piercing blue. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets and accessibility of public spaces to all our residents.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#petition-link" data-petition><span aria-hidden="true">✍️</span> Sign the Petition</a>
         <a class="btn btn-ghost" href="#goal">Learn about our ask</a>
@@ -333,7 +345,7 @@
       </div>
       <div class="card">
         <div class="icon" aria-hidden="true">😴</div>
-        <h3>Sleep and health</h3>
+        <h3>Compromised sleep and health</h3>
         <p>This stark, blue-rich light disrupts our natural circadian rhythms and suppresses melatonin, while unshielded fixtures bleed this glare directly into the rooms where we sleep. For residents living with migraines, autism, or photophobia, this relentless illumination takes an even heavier toll.</p>
       </div>
       <div class="card">
@@ -352,7 +364,7 @@
     <div class="section-tag">The Goal</div>
     <h2 class="section-title">Irvine's first lighting ordinance</h2>
     <div class="goal-panel">
-      <p class="goal-lead">Irvine's current code promises that outdoor lighting will be contained and neighbors protected from the glare — yet these protections are hollow, <strong>offering no way to measure the intrusion</strong> and setting absolutely no limit on the harsh color temperature. We seek a city-wide standard anchored in firm, enforceable numbers, demanding illumination that is</p>
+      <p class="goal-lead">Irvine's current code promises that outdoor lighting will be contained and neighbors protected from the glare. Yet these protections are hollow, <strong>offering no way to measure the intrusion</strong> and setting absolutely no limit on the harsh color temperature. We seek a city-wide standard anchored in firm, enforceable numbers, demanding illumination that is</p>
       <ul class="goal-list">
         <li><strong>Well-shielded</strong>: Directed strictly downward where it belongs, never allowed to pierce the eyes, bleed into our windows, or erase the night sky.</li>
         <li><strong>Warm in tone</strong>: Capped at 2700K to restore a gentler glow, with a softer amber preferred near our parks, quiet trails, and open spaces.</li>
@@ -399,8 +411,8 @@
     <h2 class="section-title lead-in">What we ask for is no radical departure but a necessary restraint that other cities have already recognized and woven into the fabric of their own codes.</h2>
 
     <div class="fact-callout">
-      <p><strong>The American Medical Association</strong> itself urges that community streetlamps be shielded and capped at 3000K to tame the piercing glare and protect the quiet sanctity of our sleep. We are asking Irvine to go further, demanding a gentler limit of 2700K or below. <a href="https://www.ama-assn.org/press-center/ama-press-releases/ama-adopts-guidance-reduce-harm-high-intensity-street-lights" target="_blank" rel="noopener">(AMA, 2016)</a></p>
-      <p>Even California's own building codes point the same way: CALGreen's voluntary tier measures cap general hardscape lighting at 3000K, while the state energy code curbs the backlight, uplight, and glare that spill from large outdoor fixtures. Both, however, carve out public street lighting — and that omission is precisely the gap a city standard exists to fill. The state has already turned back toward a warmer dusk; we ask Irvine to finish the turn.</p>
+      <p><strong>The American Medical Association</strong> calls for community streetlamps to be shielded and capped at 3000K or below. We urge Irvine to go further, to a gentler 2700K. <a href="https://www.ama-assn.org/press-center/ama-press-releases/ama-adopts-guidance-reduce-harm-high-intensity-street-lights" target="_blank" rel="noopener">(AMA, 2016)</a></p>
+      <p>CALGreen's voluntary tier holds general hardscape lighting to 3000K, and the state energy code reins in the backlight, uplight, and glare that spill from large outdoor fixtures. But public street lighting falls outside the reach of both, an omission only a city standard can correct. Irvine must hold every streetlight to this standard.</p>
     </div>
     <div class="fact-callout">
       We want Irvine to join a growing list of <strong>dark-sky-friendly communities</strong> which include Malibu, CA; Tucson, AZ; Flagstaff, AZ; Chesterfield, MO.
@@ -410,11 +422,12 @@
     <div class="qa">
       <div class="card">
         <h3>"But isn't brighter safer?"</h3>
-        <p>We do not ask Irvine to plunge our streets into darkness, for we recognize that illumination guards our roads — the true question is how we bind and guide this light. The harsh glare of an unshielded fixture does not reveal the path; instead, it scatters sharply within the eye, washing out contrast and blinding us to what lies ahead. Fracturing the streets into pools of stark radiance against chasms of sudden black makes the shadows deeper and harder to pierce than a steady, even glow. True safety is found not in a merciless blaze, but in the careful, quiet quality of the light.</p>
+        <p>We recognize that our streets should not be plunged into darkness. The question is how much light our roads actually need, and where that light should be aimed. An unshielded fixture scatters light inside the eye, laying a haze over everything we are trying to see. It also leaves the street in bright pools with dark between them, and eyes that must keep readjusting see less than they would under a steady, even glow. Brightness alone does not make a street safe.</p>
       </div>
       <div class="card">
         <h3>"Won't this be expensive?"</h3>
-        <p>Not in any true measure. A warmer hue and a well-shielded fixture are not luxuries bought at a premium — the color of the light is simply a choice made at the time of order. Though a softer, warmer glow may draw a breath more power, this slight difference fades into shadow when weighed against the vast savings these new lights already deliver over the old lamps they replace.</p>
+        <p>Less than expected. Edison's LS-1 Option E form offers Irvine 2700K, 3000K, or 4000K at the city's discretion, with no price attached to any of the three. Choosing the warmest takes a checkbox and a signature.</p>
+        <p>The lights already standing will cost something to correct, and we are asking for that anyway. Shields bolt onto fixtures already on the poles. Warmer lamps go in during the maintenance visits Edison is already making, across a service life measured in decades rather than in a single budget year. Irvine chose 4000K when the warm option was offered at no charge, and the price of undoing that choice belongs in the same conversation as the price of making it.</p>
       </div>
     </div>
   </div>
@@ -462,19 +475,37 @@
         <div class="step-num" aria-hidden="true">2</div>
         <div>
           <h3>Write to the City Council</h3>
-          <p>A quiet, resolute note from a single resident carries genuine weight. Use the template below, append your name, and send it to the Irvine City Council.</p>
+          <p>A quiet, resolute note from a single resident carries genuine weight. Fill in the three fields below and the letter writes itself — then copy it, or open it straight in your email app.</p>
           <div class="email-box">
-            <div id="emailTemplate">
-              <p>Dear Irvine City Council,</p>
-              <p>I am an Irvine resident writing to express my deep concern regarding the harsh glare and piercing brightness of the city's new LED streetlights. I am asking the Council to establish an outdoor lighting standard that requires a warmer tone (2700K or below), proper shielding, and sensible dimming — the very restraints the American Medical Association recommends.</p>
-              <p>While this is not a demand for darkness, it is a request that the illumination we pay for is cast downward onto the pavement, rather than into our eyes and the quiet of our bedrooms or yards.</p>
-              <p>Thank you for your time and your attention to this matter.</p>
-              <p>[Your name], [Your neighborhood]</p>
+            <div class="letter-form">
+              <div>
+                <label for="fName">Your name</label>
+                <input id="fName" type="text" autocomplete="name" placeholder="Jane Diaz" />
+              </div>
+              <div>
+                <label for="fStreet">Your street or neighborhood</label>
+                <input id="fStreet" type="text" autocomplete="address-level3" placeholder="Turtle Rock" />
+              </div>
+              <div>
+                <label for="fEmail">Your email</label>
+                <input id="fEmail" type="email" autocomplete="email" placeholder="jane@example.com" />
+              </div>
             </div>
-            <button class="copy-btn" id="copyEmail" type="button">Copy template</button>
+            <div id="emailTemplate">
+              <p>Dear Mayor and Members of the City Council,</p>
+              <p>I am an Irvine resident writing about the glare from the city's new LED streetlights. These lights reach past the pavement and into our homes.</p>
+              <p>I am asking the Council to adopt an outdoor lighting standard with three requirements: a color temperature of 2700K or below, full shielding so the light falls on the pavement instead of into windows and yards, and dimming through the late night hours.</p>
+              <p>Southern California Edison offers Irvine a choice of 2700K, 3000K, or 4000K on these fixtures at the city's discretion, with no price attached to any of the three. The city chose otherwise.</p>
+              <p>The American Medical Association recommends shielded fixtures at 3000K or below. Irvine's code currently sets no ceiling on brightness or color temperature, which is why this belongs in a written standard rather than in a complaint queue.</p>
+              <p>I would appreciate a reply telling me when the Council intends to take this up.</p>
+              <p><span class="letter-fill" id="signName">[Your name]</span><br />
+                 <span class="letter-fill" id="signStreet">[Your street or neighborhood]</span><br />
+                 <span class="letter-fill" id="signEmail">[Your email]</span></p>
+            </div>
+            <button class="copy-btn" id="copyEmail" type="button">Copy letter</button>
           </div>
           <div class="step-actions">
-            <a class="btn btn-ghost btn-sm" href="mailto:irvinecitycouncil@cityofirvine.org?subject=Please%20adopt%20an%20outdoor%20lighting%20ordinance">Email the council</a>
+            <a class="btn btn-ghost btn-sm" id="mailtoCouncil" href="mailto:irvinecitycouncil@cityofirvine.org?subject=Please%20adopt%20an%20outdoor%20lighting%20ordinance">Open in your email app</a>
             <a class="inline-link" href="https://cityofirvine.org/city-council" target="_blank" rel="noopener">Find your council members →</a>
           </div>
         </div>
@@ -500,7 +531,7 @@
         <div class="step-num" aria-hidden="true">5</div>
         <div>
           <h3>Join our team</h3>
-          <p>We need numbers. A city adopts a standard when enough residents keep showing up — writing, speaking, and bringing neighbors with them. Every name behind this ask makes it harder to set aside. If you can give even an occasional hour, we want to hear from you.</p>
+          <p>We need numbers. A council that hears from one resident has a complaint on its hands. A council that hears from two hundred is faced with an agenda item. Send the letter, make a public comment, tell a neighbor. If you can spare even an hour, we want to hear from you.</p>
           <div class="step-actions">
             <a class="btn btn-primary btn-sm" href="mailto:fightglareirvine@gmail.com?subject=I%20want%20to%20join%20the%20Fight%20Glare%20team">Join our team</a>
           </div>
@@ -554,7 +585,37 @@
     }
   });
 
-  // Copy email template
+  // Letter merge fields. Typing once updates the sign-off shown on the page,
+  // and the same text feeds both the clipboard copy and the mailto body.
+  var LETTER_FIELDS = [
+    ['fName', 'signName', '[Your name]'],
+    ['fStreet', 'signStreet', '[Your street or neighborhood]'],
+    ['fEmail', 'signEmail', '[Your email]']
+  ];
+  var mailtoLink = document.getElementById('mailtoCouncil');
+  var letterEl = document.getElementById('emailTemplate');
+
+  function syncLetter() {
+    LETTER_FIELDS.forEach(function (f) {
+      var input = document.getElementById(f[0]);
+      var slot = document.getElementById(f[1]);
+      if (!input || !slot) return;
+      slot.textContent = input.value.trim() || f[2];
+    });
+    if (mailtoLink && letterEl) {
+      mailtoLink.setAttribute('href',
+        'mailto:irvinecitycouncil@cityofirvine.org?subject=' +
+        encodeURIComponent('Please adopt an outdoor lighting ordinance') +
+        '&body=' + encodeURIComponent(letterEl.innerText.trim()));
+    }
+  }
+  LETTER_FIELDS.forEach(function (f) {
+    var input = document.getElementById(f[0]);
+    if (input) input.addEventListener('input', syncLetter);
+  });
+  syncLetter();
+
+  // Copy letter
   var copyBtn = document.getElementById('copyEmail');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
