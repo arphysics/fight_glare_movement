@@ -19,19 +19,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy-deep: #0b1c33;
-    --navy: #0e2841;
-    --navy-soft: #16324f;
-    --periwinkle: #96a7f4;
-    --periwinkle-soft: #b4c0ff;
-    --amber: #e69138;
-    --amber-bright: #f4a94a;
-    --gold: #c9862a;
+    /* Sampled from assets/owl-logo.png — the six colours the mark contains.
+       Everything below is one of those six or a shade derived from one. */
+    --navy-deep: #0c1824;      /* disc shadow */
+    --navy: #1e2637;           /* disc shadow lightened, mobile menu surface */
+    --navy-soft: #3e4155;      /* disc interior */
+    --periwinkle: #6b72a6;     /* owl body */
+    --periwinkle-soft: #aeb5dc;/* owl highlight */
+    --amber: #de9a45;          /* lantern flame, darkened for button fills */
+    --amber-bright: #e9ac5c;   /* lantern flame */
+    --gold: #7b5735;           /* ring bronze */
     --ink: #efe7da;
     --ink-dim: #c8bbaa;
     --heading: #eacc8b;
     --card: rgba(255, 255, 255, 0.05);
-    --card-border: rgba(180, 192, 255, 0.18);
+    --card-border: rgba(174,181,220, 0.18);
     --maxw: 1080px;
     --focus-ring: var(--amber-bright);
     /* Fonts — see fonts-preview.html for the compared options. Fraunces is a
@@ -87,15 +89,15 @@
   header.nav {
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(10px);
-    background: rgba(11, 28, 51, 0.72);
-    border-bottom: 1px solid rgba(180,192,255,0.12);
+    background: rgba(12,24,36, 0.72);
+    border-bottom: 1px solid rgba(174,181,220,0.12);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; max-width: var(--maxw); margin: 0 auto; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.5px; }
   .brand img { width: 40px; height: 40px; border-radius: 50%; }
   .nav-links { display: flex; gap: 6px; align-items: center; }
   .nav-links a { text-decoration: none; color: var(--ink-dim); font-size: 0.88rem; font-weight: 400; transition: color 0.2s, background 0.2s; padding: 8px 12px; border-radius: 999px; }
-  .nav-links a:hover { color: var(--periwinkle-soft); background: rgba(150,167,244,0.08); }
+  .nav-links a:hover { color: var(--periwinkle-soft); background: rgba(107,114,166,0.08); }
   .nav-cta { background: var(--amber); color: #23140a !important; padding: 9px 18px !important; border-radius: 999px; font-weight: 500; margin-left: 6px; }
   .nav-cta:hover { background: var(--amber-bright) !important; color: #23140a !important; }
   .menu-toggle { display: none; line-height: 1; }
@@ -109,13 +111,13 @@
   .hero p.lead { margin-top: 22px; font-size: 1.16rem; color: var(--ink-dim); max-width: 40ch; }
   .hero-actions { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 500; text-decoration: none; font-size: 1rem; transition: transform 0.15s, background 0.2s, box-shadow 0.2s; cursor: pointer; border: none; font-family: var(--font-body); }
-  .btn-primary { background: var(--amber); color: #23140a; box-shadow: 0 8px 28px rgba(230,145,56,0.35); }
+  .btn-primary { background: var(--amber); color: #23140a; box-shadow: 0 8px 28px rgba(233,172,92,0.35); }
   .btn-primary:hover { background: var(--amber-bright); transform: translateY(-2px); }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid rgba(180,192,255,0.4); }
-  .btn-ghost:hover { border-color: var(--periwinkle); background: rgba(150,167,244,0.1); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid rgba(174,181,220,0.4); }
+  .btn-ghost:hover { border-color: var(--periwinkle); background: rgba(107,114,166,0.1); transform: translateY(-2px); }
 
   .owl-wrap { display: flex; justify-content: center; position: relative; }
-  .owl-glow { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(230,145,56,0.35), transparent 68%); filter: blur(18px); z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  .owl-glow { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(233,172,92,0.35), transparent 68%); filter: blur(18px); z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%); }
   /* The logo is a circular medallion whose night-sky interior sits lighter and
      cooler than --navy-deep. Darken it a touch, then fade its rim into the page
      background so it reads as part of the sky rather than a disc on top of it. */
@@ -124,10 +126,10 @@
   .owl-medallion::after {
     content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
     background: radial-gradient(circle closest-side,
-      rgba(11,28,51,0) 58%,
-      rgba(11,28,51,0.22) 82%,
-      rgba(11,28,51,0.5) 96%,
-      rgba(11,28,51,0.6) 100%);
+      rgba(12,24,36,0) 58%,
+      rgba(12,24,36,0.22) 82%,
+      rgba(12,24,36,0.5) 96%,
+      rgba(12,24,36,0.6) 100%);
   }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
@@ -143,8 +145,8 @@
   /* Cards (problem, q&a) */
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; transition: transform 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s; }
-  .card:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
-  .card .icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: rgba(230,145,56,0.16); border: 1px solid rgba(230,145,56,0.22); margin-bottom: 18px; font-size: 1.5rem; line-height: 1; }
+  .card:hover { transform: translateY(-4px); border-color: rgba(233,172,92,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .card .icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: rgba(233,172,92,0.16); border: 1px solid rgba(233,172,92,0.22); margin-bottom: 18px; font-size: 1.5rem; line-height: 1; }
   .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
   .card p { color: var(--ink-dim); font-size: 0.98rem; }
   .card p + p { margin-top: 12px; }
@@ -156,31 +158,31 @@
      bottom. Centering instead would align them to the column, caption included,
      which sits the stack ~50px low. */
   .rs-row { display: grid; grid-template-columns: 1fr minmax(0, 300px); grid-template-rows: auto auto; column-gap: clamp(24px, 4vw, 44px); row-gap: 0; align-items: stretch; }
-  .video-frame { grid-column: 2; grid-row: 1; width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; border: 1px solid var(--card-border); background: rgba(11,20,33,0.55); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .video-frame { grid-column: 2; grid-row: 1; width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; border: 1px solid var(--card-border); background: rgba(8,16,26,0.55); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
   .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
   .video-caption { grid-column: 2; grid-row: 2; margin-top: 14px; color: var(--ink-dim); font-size: 0.95rem; }
 
   /* Goal */
-  .goal-panel { background: linear-gradient(135deg, rgba(22,50,79,0.9), rgba(14,40,65,0.6)); border: 1px solid var(--card-border); border-radius: 24px; padding: 48px; }
+  .goal-panel { background: linear-gradient(135deg, rgba(62,65,85,0.55), rgba(30,38,55,0.6)); border: 1px solid var(--card-border); border-radius: 24px; padding: 48px; }
   .goal-lead { font-size: 1.18rem; color: var(--ink); max-width: 64ch; }
   .goal-lead strong { color: var(--amber-bright); font-weight: 600; }
   .goal-list { list-style: none; margin-top: 26px; display: grid; gap: 14px; }
   .goal-list li { position: relative; padding-left: 38px; font-size: 1.05rem; color: var(--ink-dim); }
   .goal-list li strong { color: var(--ink); font-weight: 500; }
-  .goal-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(230,145,56,0.18); color: var(--amber-bright); font-size: 0.8rem; font-weight: 700; }
+  .goal-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(233,172,92,0.18); color: var(--amber-bright); font-size: 0.8rem; font-weight: 700; }
 
   /* 3 Rs — stacked, forming the left column of .rs-row beside the video */
   .rs { display: grid; grid-template-columns: 1fr; gap: 18px; grid-column: 1; grid-row: 1; align-content: space-between; }
   .r-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s; }
-  .r-card:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .r-card:hover { transform: translateY(-4px); border-color: rgba(233,172,92,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
   .r-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--amber); }
   .r-card h3 { font-size: 1.2rem; color: var(--amber-bright); margin-bottom: 8px; }
   .r-card p { color: var(--ink-dim); font-size: 0.98rem; }
-  .darksky-note { margin-top: 30px; padding: 20px 24px; border-left: 3px solid var(--periwinkle); background: rgba(150,167,244,0.08); border-radius: 0 14px 14px 0; color: var(--ink-dim); font-size: 1rem; }
+  .darksky-note { margin-top: 30px; padding: 20px 24px; border-left: 3px solid var(--periwinkle); background: rgba(107,114,166,0.08); border-radius: 0 14px 14px 0; color: var(--ink-dim); font-size: 1rem; }
   .darksky-note a { color: var(--periwinkle-soft); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
 
   /* Facts / credibility */
-  .fact-callout { padding: 26px 30px; background: rgba(230,145,56,0.08); border: 1px solid rgba(230,145,56,0.25); border-radius: 18px; margin-bottom: 22px; font-size: 1.08rem; color: var(--ink); }
+  .fact-callout { padding: 26px 30px; background: rgba(233,172,92,0.08); border: 1px solid rgba(233,172,92,0.25); border-radius: 18px; margin-bottom: 22px; font-size: 1.08rem; color: var(--ink); }
   .fact-callout strong { color: var(--amber-bright); font-weight: 600; }
   .fact-callout p { margin: 0 0 14px; }
   .fact-callout p:last-child { margin-bottom: 0; }
@@ -191,42 +193,42 @@
   /* Progress milestones */
   .milestones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .milestone { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; transition: transform 0.2s, border-color 0.2s, background 0.2s; }
-  .milestone:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); }
+  .milestone:hover { transform: translateY(-4px); border-color: rgba(233,172,92,0.5); background: rgba(255,255,255,0.07); }
   .milestone .m-label { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.5px; color: var(--amber-bright); margin-bottom: 10px; }
   .milestone p { color: var(--ink-dim); font-size: 0.98rem; }
 
   /* Action ladder */
   .ladder { display: grid; gap: 18px; counter-reset: step; }
   .step { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 26px 28px; }
-  .step-num { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(230,145,56,0.18); color: var(--amber-bright); }
+  .step-num { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(233,172,92,0.18); color: var(--amber-bright); }
   .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
   .step p { color: var(--ink-dim); font-size: 0.98rem; }
   .step .step-actions { margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .btn-sm { padding: 10px 18px; font-size: 0.92rem; }
   /* The one step that asks for more than a signature — sized to match the ask. */
-  .step-feature { border-color: rgba(230,145,56,0.5); background: linear-gradient(135deg, rgba(230,145,56,0.14), rgba(150,167,244,0.08)); }
+  .step-feature { border-color: rgba(233,172,92,0.5); background: linear-gradient(135deg, rgba(233,172,92,0.14), rgba(107,114,166,0.08)); }
   .step-feature h3 { font-size: 1.5rem; margin-bottom: 10px; }
   .step-feature p { font-size: 1.08rem; color: var(--ink); }
   .step-feature .step-num { background: var(--amber); color: #23140a; }
   .inline-link { color: var(--periwinkle-soft); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; font-size: 0.95rem; }
 
-  .email-box { margin-top: 14px; background: rgba(11,20,33,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
+  .email-box { margin-top: 14px; background: rgba(8,16,26,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
   .email-box p { font-size: 0.96rem; color: var(--ink-dim); margin: 0 0 10px; }
   .email-box p:last-of-type { margin-bottom: 0; }
   /* Letter merge fields — the writer types three things and the sign-off,
      the copied text, and the mailto body all fill in together. */
   .letter-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
   .letter-form label { display: block; font-size: 0.8rem; color: var(--ink-dim); margin-bottom: 5px; }
-  .letter-form input { width: 100%; background: rgba(11,20,33,0.6); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; }
+  .letter-form input { width: 100%; background: rgba(8,16,26,0.6); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; }
   .letter-form input::placeholder { color: var(--ink-dim); opacity: 0.55; }
   .letter-form input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
   .letter-fill { color: var(--heading); }
-  .copy-btn { margin-top: 16px; background: transparent; border: 1.5px solid rgba(180,192,255,0.4); color: var(--ink); padding: 9px 18px; border-radius: 999px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-  .copy-btn:hover { border-color: var(--periwinkle); background: rgba(150,167,244,0.1); }
+  .copy-btn { margin-top: 16px; background: transparent; border: 1.5px solid rgba(174,181,220,0.4); color: var(--ink); padding: 9px 18px; border-radius: 999px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .copy-btn:hover { border-color: var(--periwinkle); background: rgba(107,114,166,0.1); }
 
   /* CTA */
   .cta { text-align: center; padding: 84px 0; }
-  .cta-inner { background: linear-gradient(135deg, rgba(230,145,56,0.16), rgba(150,167,244,0.1)); border: 1px solid rgba(230,145,56,0.3); border-radius: 28px; padding: 60px 40px; }
+  .cta-inner { background: linear-gradient(135deg, rgba(233,172,92,0.16), rgba(107,114,166,0.1)); border: 1px solid rgba(233,172,92,0.3); border-radius: 28px; padding: 60px 40px; }
   .cta h2 { font-size: clamp(1.9rem, 5vw, 2.8rem); margin-bottom: 14px; letter-spacing: -1px; }
   .cta p { color: var(--ink-dim); font-size: 1.12rem; max-width: 48ch; margin: 0 auto 30px; }
   .cta .contact { margin-top: 26px; font-size: 0.96rem; color: var(--ink-dim); }
@@ -234,13 +236,13 @@
   .cta .contact a:hover { text-decoration: underline; }
 
   /* Footer */
-  footer { position: relative; z-index: 1; border-top: 1px solid rgba(180,192,255,0.12); padding: 40px 0; text-align: center; color: var(--ink-dim); font-size: 0.9rem; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(174,181,220,0.12); padding: 40px 0; text-align: center; color: var(--ink-dim); font-size: 0.9rem; }
   footer .brand { justify-content: center; margin-bottom: 14px; font-size: 1rem; }
   footer a { color: var(--periwinkle-soft); text-decoration: none; }
 
   .disclaimer { margin: 20px auto 0; max-width: 70ch; font-size: 0.82rem; line-height: 1.6; color: var(--ink-dim); opacity: 0.8; }
 
-  .note-placeholder { display: inline-block; font-size: 0.7rem; color: var(--amber-bright); border: 1px dashed rgba(244,169,74,0.5); border-radius: 6px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.3px; }
+  .note-placeholder { display: inline-block; font-size: 0.7rem; color: var(--amber-bright); border: 1px dashed rgba(233,172,92,0.5); border-radius: 6px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.3px; }
 
   /* Responsive */
   @media (max-width: 1024px) and (min-width: 861px) {
@@ -267,7 +269,7 @@
     .nav-links.open a { padding: 12px 16px; font-size: 1rem; }
     .nav-links.open .nav-cta { text-align: center; margin: 4px 0 0; }
     .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; background: none; border: 1px solid var(--card-border); border-radius: 12px; color: var(--ink); font-size: 1.4rem; cursor: pointer; }
-    .menu-toggle:hover { background: rgba(150,167,244,0.08); }
+    .menu-toggle:hover { background: rgba(107,114,166,0.08); }
     .goal-panel { padding: 30px 22px; }
     .cta-inner { padding: 44px 24px; }
     .step { grid-template-columns: 1fr; gap: 12px; }
