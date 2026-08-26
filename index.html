@@ -21,9 +21,9 @@
   :root {
     /* Sampled from assets/owl-logo.png — the six colours the mark contains.
        Everything below is one of those six or a shade derived from one. */
-    --navy-deep: #0c1824;      /* disc shadow */
-    --navy: #1e2637;           /* disc shadow lightened, mobile menu surface */
-    --navy-soft: #3e4155;      /* disc interior */
+    --navy-deep: #2a2f3e;      /* disc interior — the sky inside the mark */
+    --navy: #363c4d;           /* disc interior lifted, mobile menu surface */
+    --navy-soft: #0c1824;      /* disc shadow */
     --periwinkle: #6b72a6;     /* owl body */
     --periwinkle-soft: #aeb5dc;/* owl highlight */
     --amber: #de9a45;          /* lantern flame, darkened for button fills */
@@ -89,7 +89,7 @@
   header.nav {
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(10px);
-    background: rgba(12,24,36, 0.72);
+    background: rgba(42,47,62, 0.72);
     border-bottom: 1px solid rgba(174,181,220,0.12);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; max-width: var(--maxw); margin: 0 auto; gap: 16px; }
@@ -118,19 +118,20 @@
 
   .owl-wrap { display: flex; justify-content: center; position: relative; }
   .owl-glow { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(233,172,92,0.35), transparent 68%); filter: blur(18px); z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-  /* The logo is a circular medallion whose night-sky interior sits lighter and
-     cooler than --navy-deep. Darken it a touch, then fade its rim into the page
-     background so it reads as part of the sky rather than a disc on top of it. */
+  /* --navy-deep is sampled from this medallion's own sky, so the disc and the
+     page are the same colour and the mark reads as a window rather than a disc
+     laid on top. It previously needed brightness() and a heavy vignette to fake
+     that against a darker page; neither is necessary now. */
   .owl-medallion { position: relative; width: 100%; max-width: 360px; animation: float 6s ease-in-out infinite; }
-  .owl-medallion img { display: block; width: 100%; height: auto; filter: brightness(0.9) saturate(1.06) drop-shadow(0 18px 40px rgba(0,0,0,0.5)); }
+  .owl-medallion img { display: block; width: 100%; height: auto; filter: saturate(1.02); }
   .owl-medallion::after {
     content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+    /* Only the outermost rim needs easing now; the disc and the page share a colour. */
     background: radial-gradient(circle closest-side,
-      rgba(12,24,36,0) 58%,
-      rgba(12,24,36,0.22) 82%,
-      rgba(12,24,36,0.5) 96%,
-      rgba(12,24,36,0.6) 100%);
+      rgba(42,47,62,0) 92%,
+      rgba(42,47,62,0.55) 100%);
   }
+
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
   /* ---------- Sections ---------- */
@@ -200,7 +201,7 @@
   /* Action ladder */
   .ladder { display: grid; gap: 18px; counter-reset: step; }
   .step { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 26px 28px; }
-  .step-num { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(233,172,92,0.18); color: var(--amber-bright); }
+  .step-num { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(12,24,36,0.5); color: var(--amber-bright); }
   .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
   .step p { color: var(--ink-dim); font-size: 0.98rem; }
   .step .step-actions { margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
