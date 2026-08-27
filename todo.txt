@@ -54,17 +54,29 @@ NEXT SESSION — START HERE
 
   [ ] NEW, same rule, same risk: the cost answer and the council letter both
       assert things about SCE and about Irvine with nothing to link.
-        - "Edison's LS-1 Option E form offers Irvine 2700K, 3000K, or 4000K
-          at the city's discretion, with no price attached to any of the three"
-        - "Irvine chose 4000K when the warm option was offered at no charge"
-      Checked as far as a sandboxed session can: SCE does describe three
+        - "Edison offers 2700K, 3000K, or 4000K for the same price"
+        - "Irvine chose the harsh 4000K light when the warm option was offered
+          free of charge"
+      PROVENANCE (Aditya, Aug 2026): both come from a meeting with Kevin
+      Corrigan. So the claims are believed true, but the source is verbal and
+      therefore not linkable — which is exactly what CLAUDE.md's rule is about.
+      Claude checked what it could and got nowhere: SCE does publish three
       colour temperatures and Ventura adopted 2700K as "the warmest colour
-      offered by SCE", so the choice claim is plausible. The no-price-
-      difference claim and Irvine's own 4000K decision could NOT be verified —
+      offered by SCE", so the choice claim is plausible, but the no-price-
+      difference point and Irvine's own 4000K decision could not be confirmed.
       sce.com, docs.cpuc.ca.gov and every city-document host are blocked by the
-      sandbox firewall, so this is inconclusive rather than negative.
-      Aditya has a primary source. Get the URL and cite it the way the AMA
-      line is cited. This is the strongest argument on the page; arm it.
+      sandbox firewall, so that check was inconclusive, not negative.
+      Options, best first:
+        1. Find it in writing — a follow-up email, meeting notes, a staff
+           report, or the LS-1 election form. Makes it checkable, like the AMA
+           line. Worth one email to ask.
+        2. Attribute in the copy: "City staff have confirmed to us that ..."
+           Honest about provenance, survives a challenge, needs no URL.
+        3. Leave as bare assertion. Weakest, and it is the page's strongest
+           argument — worth more than that.
+      Do NOT name Kevin Corrigan on the page. He spoke in a meeting, not for
+      publication, and the campaign is in ongoing dialogue with city staff.
+      "City staff" carries the same weight without costing that relationship.
 
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
