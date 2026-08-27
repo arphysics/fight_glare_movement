@@ -1,5 +1,5 @@
 FIGHT GLARE — TODO
-Updated 2026-07-26
+Updated 2026-08-27
 
 DONE
   [x] Repo created, site pushed to github.com/arphysics/fight_glare_movement
@@ -32,43 +32,88 @@ BLOCKING SHARING THE LINK
   hello@fightglare.org is still the path — it would land in the same mailbox.
 
 NEXT SESSION — START HERE
-  [ ] Her push doesn't work. Two of her commits had to be relayed as a patch
-      and applied by hand.
-      DO NOT start from "fix her local git credentials" — that was the first
-      guess and the evidence says otherwise. Her commits carry a
-      "Claude-Session: https://claude.ai/code/session_..." trailer, which only
-      CLOUD sessions add, and the author was Claude <noreply@anthropic.com>
-      rather than an unset-identity failure. So she was on a Cloud session in
-      the desktop app, where pushes go through her Claude account's GitHub
-      connection and her Mac's git credentials are not involved at all.
-      Look at: whether her Claude account has GitHub connected, whether the
-      Claude GitHub App can reach arphysics/fight_glare_movement, and the
-      verbatim push error (still never seen — the artifact she generated was
-      never shared, so it couldn't be opened).
-      Worth deciding too: is she better off on Local sessions after all?
-      EDITING.md is written for Local (Browser pane preview, drag images into
-      assets/). If she's actually using Cloud, parts of that guide don't match
-      what she sees, which is its own problem.
+  [x] Her push doesn't work — SOLVED, and it was never her machine.
+      A cloud session hit the identical failure with no Mac and no local git
+      credentials involved, which rules out the local-credentials theory this
+      entry was already sceptical of. The verbatim error this note said had
+      never been seen:
+        Permission to arphysics/fight_glare_movement.git denied to arphysics
+      (git-receive-pack 403, git-upload-pack 200 — reads fine, writes refused.)
+      The GitHub App reported "Resource not accessible by integration" on
+      create_branch and create_pull_request too. Aditya fixed it by changing
+      repo permissions mid-session; pushes have worked since.
+      So: have her retry. If it fails again it is repo permissions, not her.
 
-  [ ] Two claims from her copy went live UNSOURCED, merged knowingly. Either
-      cite or soften — CLAUDE.md's rule is no dates/statistics about Irvine's
-      position without a link, and this page is aimed at a city council:
-        - "As of July 2026, Irvine still has no outdoor lighting ordinance in
-          place" — dated, checkable, and goes stale on its own
-        - "capped at 2700K and no higher; ideally ranging between 1800K and
-          2400K" — the 1800-2400K range is new and cited nowhere
-  [ ] Copy nits in the goal list, hers to decide: the lead-in ends "lighting
-      that is:" and every bullet then repeats "is" ("Well-shielded — is aimed
-      downward"). Also "not a whit more" reads archaic for a council audience.
+  [x] Two claims from her copy went live UNSOURCED — both gone.
+      The "As of July 2026" date and the 1800-2400K range were in the passage
+      the Aug 2026 copy pass rewrote. Neither string is in index.html now.
+
+  [x] Copy nits in the goal list — fixed. Bullets are "Label: ..." instead of
+      "Label — is ...", so the lead-in no longer supplies a doubled "is", and
+      "not a whit more" is gone.
+
+  [ ] NEW, same rule, same risk: the cost answer and the council letter both
+      assert things about SCE and about Irvine with nothing to link.
+        - "Edison's LS-1 Option E form offers Irvine 2700K, 3000K, or 4000K
+          at the city's discretion, with no price attached to any of the three"
+        - "Irvine chose 4000K when the warm option was offered at no charge"
+      Checked as far as a sandboxed session can: SCE does describe three
+      colour temperatures and Ventura adopted 2700K as "the warmest colour
+      offered by SCE", so the choice claim is plausible. The no-price-
+      difference claim and Irvine's own 4000K decision could NOT be verified —
+      sce.com, docs.cpuc.ca.gov and every city-document host are blocked by the
+      sandbox firewall, so this is inconclusive rather than negative.
+      Aditya has a primary source. Get the URL and cite it the way the AMA
+      line is cited. This is the strongest argument on the page; arm it.
 
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
       544x544. Social cards want ~1200x630, so previews will crop oddly.
-  [x] Removed unused assets — owl-logo-v1.png (referenced nowhere) and
-      IMG_3840.png (byte-identical to owl-logo.png, same md5). 322KB. Done on
-      a branch on purpose, as the first real test of Cloudflare previews.
+  [ ] og:description still carries the pre-Aug-2026 framing. Not wrong, but it
+      no longer matches the hero copy. That string is what shows when the link
+      is shared.
+  [x] Removed unused assets — owl-logo-v1.png and IMG_3840.png. 322KB.
   [ ] Decide whether fonts-preview.html stays in the repo — it's a scratch
-      page, publicly reachable at /fonts-preview.html.
+      page, publicly reachable at /fonts-preview.html. More pointed now: it was
+      rebuilt into a six-option heading-font comparison, so it is a bigger
+      public page than it was.
+  [ ] Hero H1 keeps letter-spacing: -1.5px, which was tuned for Roboto Mono.
+      The heading font is Fraunces now. Check whether it wants loosening.
+
+AUG 2026 COPY + DESIGN PASS — on branch, NOT merged
+  Branch: claude/irvine-streetlight-standards-21g9cy. main untouched, so
+  fightglare.org is unchanged until this merges.
+
+  [x] Two rounds of copy rewrites through hero, problem, goal, facts, Q&A,
+      council letter, and the take-action steps
+  [x] CALGreen paragraph corrected — it had been rewritten to say 3000K was an
+      "absolute ceiling". It is a voluntary tier measure, and the street-
+      lighting carve-out is the reason a city ordinance is needed at all
+  [x] YouTube Short embedded beside the three R's, which stack into a column of
+      matching height. youtube-nocookie, lazy-loaded, 9/16 frame
+  [x] "Join our team" added as an emphasised fifth action step
+  [x] Footer legal disclaimer
+  [x] Council letter is now a mail merge — name/street/email fill the sign-off,
+      the clipboard copy, and the mailto body from one set of fields
+  [x] Heading font Roboto Mono -> Fraunces (a reviewer read mono as futuristic)
+  [x] Palette rebuilt from colours sampled out of assets/owl-logo.png, incl.
+      the ~36 hardcoded rgba() values that were shades of the old tokens
+  [x] Page background is the sky INSIDE the medallion (#2a2f3e), not the disc
+      shadow. First attempt used the shadow, which is near-black like the old
+      background, so the change was invisible and read as "colours never
+      changed". Matching the interior let brightness(0.9), the heavy rim
+      vignette, and the drop shadow come out — all three existed only to fake
+      that blend
+  [x] Hero headline is one colour instead of splitting gold/amber mid-phrase
+
+  NOT VERIFIED BY CLAUDE — check on the preview before merging:
+  - Fraunces and the palette. Webfonts do not register in the sandbox, so every
+    screenshot Claude produced is a fallback serif. Nobody has seen the real
+    thing yet
+  - That the video actually plays (YouTube is firewalled from the sandbox;
+    Aditya confirmed playback separately)
+  - The mailto path in a real mail client. Assembled URL is ~1459 chars and
+    Outlook historically caps near 2083, so there is headroom but not much
 
 COLLABORATION — scoped to one teammate doing one cleanup pass
   [x] Settings -> Collaborators -> teammate added, invite accepted
@@ -103,7 +148,7 @@ COLLABORATION — scoped to one teammate doing one cleanup pass
     more tempting now that a second machine can push to main, but the fix is
     still one click and the cost is every push Aditya makes.
 
-CLOUDFLARE BRANCH PREVIEWS — in progress
+CLOUDFLARE BRANCH PREVIEWS — working, one check left
   Goal: a URL per branch, so a branched version can be opened next to the live
   site and compared. A diff can't answer "does this look right."
 
@@ -115,6 +160,32 @@ CLOUDFLARE BRANCH PREVIEWS — in progress
   ADDITIVE, NOT A MIGRATION. fightglare.org keeps being served by GitHub Pages,
   DNS is not touched, nothing about the live site changes. Reversible by
   deleting the Cloudflare project. This is NOT the migration under LATER.
+
+  [x] Cloudflare account + project connected to the repo
+  [x] _headers rewritten for workers.dev (Pages placeholder syntax does not
+      match a workers.dev host and would have silently done nothing)
+  [x] _headers pushed and built
+  [x] Cloudflare's own autoconfig PR (#1) merged
+  [x] Branch builds CONFIRMED working
+  [x] END-TO-END CONFIRMED Aug 2026. A branch-only string returned 1 from the
+      preview URL, which is stronger proof than a 200 — a half-built or stale
+      deploy also returns 200. Use that test, not the status code:
+        curl -s "<preview-url>/?cb=$RANDOM" | grep -c "<string only on the branch>"
+      Slashes in a branch name become dashes in the hostname, and the label has
+      to fit in 63 characters — claude/irvine-streetlight-standards-21g9cy came
+      out at 61. Keep branch names short.
+      Cache-bust and hard-reload; a stale browser copy reads exactly like a
+      failed deploy.
+  [ ] Verify noindex landed. MUST run from a normal terminal, NOT a Claude
+      session — workers.dev is blocked by the sandbox firewall, confirmed
+      again this session:
+        curl -sI https://fight-glare-irvine.aditya-14a.workers.dev/ | grep -i x-robots-tag
+        curl -sI https://fightglare.org/ | grep -i x-robots-tag     # expect NOTHING
+      (fightglare.org side already verified: no x-robots-tag, correct.)
+  [ ] DO NOT add fightglare.org as a custom domain in Cloudflare. That is the
+      single step that would move production off GitHub Pages.
+
+LATER.
 
   [x] Cloudflare account + project connected to the repo
   [x] _headers rewritten for workers.dev. The first version used Pages
