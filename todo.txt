@@ -57,9 +57,9 @@ NEXT SESSION — START HERE
         - "Edison offers 2700K, 3000K, or 4000K for the same price"
         - "Irvine chose the harsh 4000K light when the warm option was offered
           free of charge"
-      PROVENANCE (Aditya, Aug 2026): both come from a meeting with Kevin
-      Corrigan. So the claims are believed true, but the source is verbal and
-      therefore not linkable — which is exactly what CLAUDE.md's rule is about.
+      PROVENANCE (Aditya, Aug 2026): both come from a meeting with city staff.
+      So the claims are believed true, but the source is verbal and therefore
+      not linkable — which is exactly what CLAUDE.md's rule is about.
       Claude checked what it could and got nowhere: SCE does publish three
       colour temperatures and Ventura adopted 2700K as "the warmest colour
       offered by SCE", so the choice claim is plausible, but the no-price-
@@ -74,9 +74,12 @@ NEXT SESSION — START HERE
            Honest about provenance, survives a challenge, needs no URL.
         3. Leave as bare assertion. Weakest, and it is the page's strongest
            argument — worth more than that.
-      Do NOT name Kevin Corrigan on the page. He spoke in a meeting, not for
-      publication, and the campaign is in ongoing dialogue with city staff.
-      "City staff" carries the same weight without costing that relationship.
+      Do NOT name the individual staff member, here or on the page. They spoke
+      in a meeting, not for publication, and the campaign is in ongoing dialogue
+      with the city. "City staff" carries the same weight without costing that
+      relationship. NOTE this file is itself published — deploy.yml uploads the
+      repo root, so todo.txt is served at fightglare.org/todo.txt. Anything
+      written here is public.
 
 CONTENT / POLISH
   [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
