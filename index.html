@@ -218,6 +218,8 @@
   .email-box { margin-top: 14px; background: rgba(8,16,26,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
   .email-box p { font-size: 0.96rem; color: var(--ink-dim); margin: 0 0 10px; }
   .email-box p:last-of-type { margin-bottom: 0; }
+  .email-box ul { margin: 0 0 10px 22px; }
+  .email-box li { font-size: 0.96rem; color: var(--ink-dim); margin-bottom: 4px; }
   /* Letter merge fields — the writer types three things and the sign-off,
      the copied text, and the mailto body all fill in together. */
   .letter-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
@@ -432,8 +434,8 @@
       </div>
       <div class="card">
         <h3>"Won't this be expensive?"</h3>
-        <p>Less than expected. Edison's LS-1 Option E form offers Irvine 2700K, 3000K, or 4000K at the city's discretion, with no price attached to any of the three. Choosing the warmest takes a checkbox and a signature.</p>
-        <p>The lights already standing will cost something to correct, and we are asking for that anyway. Shields bolt onto fixtures already on the poles. Warmer lamps go in during the maintenance visits Edison is already making, across a service life measured in decades rather than in a single budget year. Irvine chose 4000K when the warm option was offered at no charge, and the price of undoing that choice belongs in the same conversation as the price of making it.</p>
+        <p>It costs nothing extra to choose warm light. Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warmer tone requires only a checkmark and a signature.</p>
+        <p>The lights already standing will cost money to correct, but the work is simple. Shields bolt onto the existing poles, and warmer bulbs can go in during routine maintenance over the coming months. Irvine chose the harsh 4000K light when the warm option was offered free of charge. The cost to fix it now is part of that same choice.</p>
       </div>
     </div>
   </div>
@@ -499,14 +501,19 @@
             </div>
             <div id="emailTemplate">
               <p>Dear Mayor and Members of the City Council,</p>
-              <p>I am an Irvine resident writing about the glare from the city's new LED streetlights. These lights reach past the pavement and into our homes.</p>
-              <p>I am asking the Council to adopt an outdoor lighting standard with three requirements: a color temperature of 2700K or below, full shielding so the light falls on the pavement instead of into windows and yards, and dimming through the late night hours.</p>
-              <p>Southern California Edison offers Irvine a choice of 2700K, 3000K, or 4000K on these fixtures at the city's discretion, with no price attached to any of the three. The city chose otherwise.</p>
-              <p>The American Medical Association recommends shielded fixtures at 3000K or below. Irvine's code currently sets no ceiling on brightness or color temperature, which is why this belongs in a written standard rather than in a complaint queue.</p>
-              <p>I would appreciate a reply telling me when the Council intends to take this up.</p>
-              <p><span class="letter-fill" id="signName">[Your name]</span><br />
-                 <span class="letter-fill" id="signStreet">[Your street or neighborhood]</span><br />
-                 <span class="letter-fill" id="signEmail">[Your email]</span></p>
+              <p>I live in Irvine. The city's new LED streetlights are too bright. The glare leaks off the pavement and shines straight into our eyes, windows and yards.</p>
+              <p>I ask the Council to pass a clear lighting standard with three rules:</p>
+              <ul>
+                <li>Cap color temperature at 2700K or lower.</li>
+                <li>Require full shielding so light points down, not out.</li>
+                <li>Dim the lights late at night.</li>
+              </ul>
+              <p>Southern California Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warm light costs the city nothing extra. The American Medical Association recommends 3000K or lower to protect public health. Right now, Irvine has no limits on brightness or color temperature.</p>
+              <p>Please reply and let me know when the Council will discuss this.</p>
+              <p>Sincerely,<br />
+                 <span class="letter-fill" id="signName">[Your Name]</span><br />
+                 <span class="letter-fill" id="signStreet">[Your Street or Neighborhood]</span><br />
+                 <span class="letter-fill" id="signEmail">[Your Email]</span></p>
             </div>
             <button class="copy-btn" id="copyEmail" type="button">Copy letter</button>
           </div>
@@ -594,12 +601,31 @@
   // Letter merge fields. Typing once updates the sign-off shown on the page,
   // and the same text feeds both the clipboard copy and the mailto body.
   var LETTER_FIELDS = [
-    ['fName', 'signName', '[Your name]'],
-    ['fStreet', 'signStreet', '[Your street or neighborhood]'],
-    ['fEmail', 'signEmail', '[Your email]']
+    ['fName', 'signName', '[Your Name]'],
+    ['fStreet', 'signStreet', '[Your Street or Neighborhood]'],
+    ['fEmail', 'signEmail', '[Your Email]']
   ];
   var mailtoLink = document.getElementById('mailtoCouncil');
   var letterEl = document.getElementById('emailTemplate');
+
+  // innerText drops <li> markers, so the three rules would copy as bare lines.
+  // Walk the blocks instead and prefix list items.
+  function letterText() {
+    if (!letterEl) return '';
+    var blocks = [];
+    Array.prototype.forEach.call(letterEl.children, function (node) {
+      if (node.tagName === 'UL') {
+        var items = [];
+        Array.prototype.forEach.call(node.querySelectorAll('li'), function (li) {
+          items.push('- ' + li.innerText.trim());
+        });
+        blocks.push(items.join('\n'));
+      } else {
+        blocks.push(node.innerText.trim());
+      }
+    });
+    return blocks.join('\n\n');
+  }
 
   function syncLetter() {
     LETTER_FIELDS.forEach(function (f) {
@@ -608,11 +634,11 @@
       if (!input || !slot) return;
       slot.textContent = input.value.trim() || f[2];
     });
-    if (mailtoLink && letterEl) {
+    if (mailtoLink) {
       mailtoLink.setAttribute('href',
         'mailto:irvinecitycouncil@cityofirvine.org?subject=' +
         encodeURIComponent('Please adopt an outdoor lighting ordinance') +
-        '&body=' + encodeURIComponent(letterEl.innerText.trim()));
+        '&body=' + encodeURIComponent(letterText()));
     }
   }
   LETTER_FIELDS.forEach(function (f) {
@@ -625,8 +651,7 @@
   var copyBtn = document.getElementById('copyEmail');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
-      var tmpl = document.getElementById('emailTemplate');
-      var text = tmpl.innerText.trim();
+      var text = letterText();
       navigator.clipboard.writeText(text).then(function () {
         var original = copyBtn.textContent;
         copyBtn.textContent = "Copied ✓";
