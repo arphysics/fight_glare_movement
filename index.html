@@ -16,25 +16,30 @@
 <link rel="icon" type="image/png" href="assets/owl-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy-deep: #0b1c33;
-    --navy: #0e2841;
-    --navy-soft: #16324f;
-    --periwinkle: #96a7f4;
-    --periwinkle-soft: #b4c0ff;
-    --amber: #e69138;
-    --amber-bright: #f4a94a;
-    --gold: #c9862a;
-    --ink: #f3f4fb;
-    --ink-dim: #cdd4e8;
+    /* Sampled from assets/owl-logo.png — the six colours the mark contains.
+       Everything below is one of those six or a shade derived from one. */
+    --navy-deep: #2a2f3e;      /* disc interior — the sky inside the mark */
+    --navy: #363c4d;           /* disc interior lifted, mobile menu surface */
+    --navy-soft: #0c1824;      /* disc shadow */
+    --periwinkle: #6b72a6;     /* owl body */
+    --periwinkle-soft: #aeb5dc;/* owl highlight */
+    --amber: #de9a45;          /* lantern flame, darkened for button fills */
+    --amber-bright: #e9ac5c;   /* lantern flame */
+    --gold: #7b5735;           /* ring bronze */
+    --ink: #efe7da;
+    --ink-dim: #c8bbaa;
+    --heading: #eacc8b;
     --card: rgba(255, 255, 255, 0.05);
-    --card-border: rgba(180, 192, 255, 0.18);
+    --card-border: rgba(174,181,220, 0.18);
     --maxw: 1080px;
     --focus-ring: var(--amber-bright);
-    /* Fonts — swap --font-body to 'EB Garamond', Georgia, serif to try the serif option */
-    --font-head: 'Roboto Mono', ui-monospace, 'SFMono-Regular', monospace;
+    /* Fonts — see fonts-preview.html for the compared options. Fraunces is a
+       warm high-contrast serif; its thin strokes shrink optically light-on-dark,
+       so headings run 600–700 here, never 400. */
+    --font-head: 'Fraunces', Georgia, 'Times New Roman', serif;
     --font-body: 'Lexend', system-ui, -apple-system, sans-serif;
   }
 
@@ -52,7 +57,7 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3 { font-family: var(--font-head); line-height: 1.12; font-weight: 600; letter-spacing: -0.5px; }
+  h1, h2, h3 { font-family: var(--font-head); line-height: 1.12; font-weight: 600; letter-spacing: -0.5px; color: var(--heading); }
 
   a { color: inherit; }
 
@@ -84,15 +89,15 @@
   header.nav {
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(10px);
-    background: rgba(11, 28, 51, 0.72);
-    border-bottom: 1px solid rgba(180,192,255,0.12);
+    background: rgba(42,47,62, 0.72);
+    border-bottom: 1px solid rgba(174,181,220,0.12);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; max-width: var(--maxw); margin: 0 auto; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.5px; }
   .brand img { width: 40px; height: 40px; border-radius: 50%; }
   .nav-links { display: flex; gap: 6px; align-items: center; }
   .nav-links a { text-decoration: none; color: var(--ink-dim); font-size: 0.88rem; font-weight: 400; transition: color 0.2s, background 0.2s; padding: 8px 12px; border-radius: 999px; }
-  .nav-links a:hover { color: var(--periwinkle-soft); background: rgba(150,167,244,0.08); }
+  .nav-links a:hover { color: var(--periwinkle-soft); background: rgba(107,114,166,0.08); }
   .nav-cta { background: var(--amber); color: #23140a !important; padding: 9px 18px !important; border-radius: 999px; font-weight: 500; margin-left: 6px; }
   .nav-cta:hover { background: var(--amber-bright) !important; color: #23140a !important; }
   .menu-toggle { display: none; line-height: 1; }
@@ -100,72 +105,87 @@
   /* ---------- Hero ---------- */
   .hero { position: relative; z-index: 1; padding: 84px 0 72px; }
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
-  .eyebrow { display: inline-block; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 500; color: var(--amber-bright); margin-bottom: 18px; }
-  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; }
-  .hero h1 .accent { color: var(--amber-bright); }
+  .eyebrow { display: inline-block; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 600; color: var(--amber-bright); margin-bottom: 18px; }
+  /* One colour across the whole headline — the lantern flame from the mark.
+     It used to split gold/amber mid-phrase, which read as two half-headings. */
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; color: var(--amber-bright); }
+  .hero h1 .accent { color: inherit; }
   .hero p.lead { margin-top: 22px; font-size: 1.16rem; color: var(--ink-dim); max-width: 40ch; }
   .hero-actions { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 500; text-decoration: none; font-size: 1rem; transition: transform 0.15s, background 0.2s, box-shadow 0.2s; cursor: pointer; border: none; font-family: var(--font-body); }
-  .btn-primary { background: var(--amber); color: #23140a; box-shadow: 0 8px 28px rgba(230,145,56,0.35); }
+  .btn-primary { background: var(--amber); color: #23140a; box-shadow: 0 8px 28px rgba(233,172,92,0.35); }
   .btn-primary:hover { background: var(--amber-bright); transform: translateY(-2px); }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid rgba(180,192,255,0.4); }
-  .btn-ghost:hover { border-color: var(--periwinkle); background: rgba(150,167,244,0.1); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid rgba(174,181,220,0.4); }
+  .btn-ghost:hover { border-color: var(--periwinkle); background: rgba(107,114,166,0.1); transform: translateY(-2px); }
 
   .owl-wrap { display: flex; justify-content: center; position: relative; }
-  .owl-glow { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(230,145,56,0.35), transparent 68%); filter: blur(18px); z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-  /* The logo is a circular medallion whose night-sky interior sits lighter and
-     cooler than --navy-deep. Darken it a touch, then fade its rim into the page
-     background so it reads as part of the sky rather than a disc on top of it. */
+  .owl-glow { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(233,172,92,0.35), transparent 68%); filter: blur(18px); z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  /* --navy-deep is sampled from this medallion's own sky, so the disc and the
+     page are the same colour and the mark reads as a window rather than a disc
+     laid on top. It previously needed brightness() and a heavy vignette to fake
+     that against a darker page; neither is necessary now. */
   .owl-medallion { position: relative; width: 100%; max-width: 360px; animation: float 6s ease-in-out infinite; }
-  .owl-medallion img { display: block; width: 100%; height: auto; filter: brightness(0.9) saturate(1.06) drop-shadow(0 18px 40px rgba(0,0,0,0.5)); }
+  .owl-medallion img { display: block; width: 100%; height: auto; filter: saturate(1.02); }
   .owl-medallion::after {
     content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+    /* Only the outermost rim needs easing now; the disc and the page share a colour. */
     background: radial-gradient(circle closest-side,
-      rgba(11,28,51,0) 58%,
-      rgba(11,28,51,0.22) 82%,
-      rgba(11,28,51,0.5) 96%,
-      rgba(11,28,51,0.6) 100%);
+      rgba(42,47,62,0) 92%,
+      rgba(42,47,62,0.55) 100%);
   }
+
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
   /* ---------- Sections ---------- */
   section { position: relative; z-index: 1; padding: clamp(52px, 8vw, 78px) 0; }
-  .section-tag { font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 500; color: var(--periwinkle-soft); margin-bottom: 12px; }
+  .section-tag { font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 600; color: var(--periwinkle-soft); margin-bottom: 12px; }
   h2.section-title { font-size: clamp(1.7rem, 3.6vw, 2.3rem); margin-bottom: 12px; letter-spacing: -1px; }
   .section-intro { color: var(--ink-dim); font-size: 1.08rem; max-width: 62ch; margin-bottom: clamp(32px, 5vw, 42px); }
   /* For sections with no intro paragraph — the title carries the gap instead. */
   h2.section-title.lead-in { margin-bottom: clamp(32px, 5vw, 42px); }
-  .subhead { font-family: var(--font-head); font-size: 1.15rem; font-weight: 600; letter-spacing: -0.5px; margin: 44px 0 18px; color: var(--ink); }
+  .subhead { font-family: var(--font-head); font-size: 1.15rem; font-weight: 600; letter-spacing: -0.5px; margin: 44px 0 18px; color: var(--heading); }
 
   /* Cards (problem, q&a) */
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; transition: transform 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s; }
-  .card:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
-  .card .icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: rgba(230,145,56,0.16); border: 1px solid rgba(230,145,56,0.22); margin-bottom: 18px; font-size: 1.5rem; line-height: 1; }
+  .card:hover { transform: translateY(-4px); border-color: rgba(233,172,92,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .card .icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: rgba(233,172,92,0.16); border: 1px solid rgba(233,172,92,0.22); margin-bottom: 18px; font-size: 1.5rem; line-height: 1; }
   .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
   .card p { color: var(--ink-dim); font-size: 0.98rem; }
+  .card p + p { margin-top: 12px; }
+
+  /* Video embed — a vertical (Shorts) 9/16 frame is tall, so it sits beside the
+     stacked three R's, which are the only column on the page of similar height. */
+  /* Two explicit rows: the frame owns row 1 and the caption row 2, so the cards
+     span only row 1 and stretch to exactly the frame's height — flush top and
+     bottom. Centering instead would align them to the column, caption included,
+     which sits the stack ~50px low. */
+  .rs-row { display: grid; grid-template-columns: 1fr minmax(0, 300px); grid-template-rows: auto auto; column-gap: clamp(24px, 4vw, 44px); row-gap: 0; align-items: stretch; }
+  .video-frame { grid-column: 2; grid-row: 1; width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; border: 1px solid var(--card-border); background: rgba(8,16,26,0.55); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-caption { grid-column: 2; grid-row: 2; margin-top: 14px; color: var(--ink-dim); font-size: 0.95rem; }
 
   /* Goal */
-  .goal-panel { background: linear-gradient(135deg, rgba(22,50,79,0.9), rgba(14,40,65,0.6)); border: 1px solid var(--card-border); border-radius: 24px; padding: 48px; }
+  .goal-panel { background: linear-gradient(135deg, rgba(62,65,85,0.55), rgba(30,38,55,0.6)); border: 1px solid var(--card-border); border-radius: 24px; padding: 48px; }
   .goal-lead { font-size: 1.18rem; color: var(--ink); max-width: 64ch; }
   .goal-lead strong { color: var(--amber-bright); font-weight: 600; }
   .goal-list { list-style: none; margin-top: 26px; display: grid; gap: 14px; }
   .goal-list li { position: relative; padding-left: 38px; font-size: 1.05rem; color: var(--ink-dim); }
   .goal-list li strong { color: var(--ink); font-weight: 500; }
-  .goal-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(230,145,56,0.18); color: var(--amber-bright); font-size: 0.8rem; font-weight: 700; }
+  .goal-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(233,172,92,0.18); color: var(--amber-bright); font-size: 0.8rem; font-weight: 700; }
 
-  /* 3 Rs */
-  .rs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  /* 3 Rs — stacked, forming the left column of .rs-row beside the video */
+  .rs { display: grid; grid-template-columns: 1fr; gap: 18px; grid-column: 1; grid-row: 1; align-content: space-between; }
   .r-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s; }
-  .r-card:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
+  .r-card:hover { transform: translateY(-4px); border-color: rgba(233,172,92,0.5); background: rgba(255,255,255,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.28); }
   .r-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--amber); }
   .r-card h3 { font-size: 1.2rem; color: var(--amber-bright); margin-bottom: 8px; }
   .r-card p { color: var(--ink-dim); font-size: 0.98rem; }
-  .darksky-note { margin-top: 30px; padding: 20px 24px; border-left: 3px solid var(--periwinkle); background: rgba(150,167,244,0.08); border-radius: 0 14px 14px 0; color: var(--ink-dim); font-size: 1rem; }
+  .darksky-note { margin-top: 30px; padding: 20px 24px; border-left: 3px solid var(--periwinkle); background: rgba(107,114,166,0.08); border-radius: 0 14px 14px 0; color: var(--ink-dim); font-size: 1rem; }
   .darksky-note a { color: var(--periwinkle-soft); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
 
   /* Facts / credibility */
-  .fact-callout { padding: 26px 30px; background: rgba(230,145,56,0.08); border: 1px solid rgba(230,145,56,0.25); border-radius: 18px; margin-bottom: 22px; font-size: 1.08rem; color: var(--ink); }
+  .fact-callout { padding: 26px 30px; background: rgba(233,172,92,0.08); border: 1px solid rgba(233,172,92,0.25); border-radius: 18px; margin-bottom: 22px; font-size: 1.08rem; color: var(--ink); }
   .fact-callout strong { color: var(--amber-bright); font-weight: 600; }
   .fact-callout p { margin: 0 0 14px; }
   .fact-callout p:last-child { margin-bottom: 0; }
@@ -176,29 +196,44 @@
   /* Progress milestones */
   .milestones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .milestone { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 30px 26px; transition: transform 0.2s, border-color 0.2s, background 0.2s; }
-  .milestone:hover { transform: translateY(-4px); border-color: rgba(230,145,56,0.5); background: rgba(255,255,255,0.07); }
+  .milestone:hover { transform: translateY(-4px); border-color: rgba(233,172,92,0.5); background: rgba(255,255,255,0.07); }
   .milestone .m-label { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.5px; color: var(--amber-bright); margin-bottom: 10px; }
   .milestone p { color: var(--ink-dim); font-size: 0.98rem; }
 
   /* Action ladder */
   .ladder { display: grid; gap: 18px; counter-reset: step; }
   .step { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 26px 28px; }
-  .step-num { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(230,145,56,0.18); color: var(--amber-bright); }
+  .step-num { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(12,24,36,0.5); color: var(--amber-bright); }
   .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
   .step p { color: var(--ink-dim); font-size: 0.98rem; }
   .step .step-actions { margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .btn-sm { padding: 10px 18px; font-size: 0.92rem; }
+  /* The one step that asks for more than a signature — sized to match the ask. */
+  .step-feature { border-color: rgba(233,172,92,0.5); background: linear-gradient(135deg, rgba(233,172,92,0.14), rgba(107,114,166,0.08)); }
+  .step-feature h3 { font-size: 1.5rem; margin-bottom: 10px; }
+  .step-feature p { font-size: 1.08rem; color: var(--ink); }
+  .step-feature .step-num { background: var(--amber); color: #23140a; }
   .inline-link { color: var(--periwinkle-soft); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; font-size: 0.95rem; }
 
-  .email-box { margin-top: 14px; background: rgba(11,20,33,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
+  .email-box { margin-top: 14px; background: rgba(8,16,26,0.55); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px 22px; }
   .email-box p { font-size: 0.96rem; color: var(--ink-dim); margin: 0 0 10px; }
   .email-box p:last-of-type { margin-bottom: 0; }
-  .copy-btn { margin-top: 16px; background: transparent; border: 1.5px solid rgba(180,192,255,0.4); color: var(--ink); padding: 9px 18px; border-radius: 999px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-  .copy-btn:hover { border-color: var(--periwinkle); background: rgba(150,167,244,0.1); }
+  .email-box ul { margin: 0 0 10px 22px; }
+  .email-box li { font-size: 0.96rem; color: var(--ink-dim); margin-bottom: 4px; }
+  /* Letter merge fields — the writer types three things and the sign-off,
+     the copied text, and the mailto body all fill in together. */
+  .letter-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+  .letter-form label { display: block; font-size: 0.8rem; color: var(--ink-dim); margin-bottom: 5px; }
+  .letter-form input { width: 100%; background: rgba(8,16,26,0.6); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; }
+  .letter-form input::placeholder { color: var(--ink-dim); opacity: 0.55; }
+  .letter-form input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+  .letter-fill { color: var(--heading); }
+  .copy-btn { margin-top: 16px; background: transparent; border: 1.5px solid rgba(174,181,220,0.4); color: var(--ink); padding: 9px 18px; border-radius: 999px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .copy-btn:hover { border-color: var(--periwinkle); background: rgba(107,114,166,0.1); }
 
   /* CTA */
   .cta { text-align: center; padding: 84px 0; }
-  .cta-inner { background: linear-gradient(135deg, rgba(230,145,56,0.16), rgba(150,167,244,0.1)); border: 1px solid rgba(230,145,56,0.3); border-radius: 28px; padding: 60px 40px; }
+  .cta-inner { background: linear-gradient(135deg, rgba(233,172,92,0.16), rgba(107,114,166,0.1)); border: 1px solid rgba(233,172,92,0.3); border-radius: 28px; padding: 60px 40px; }
   .cta h2 { font-size: clamp(1.9rem, 5vw, 2.8rem); margin-bottom: 14px; letter-spacing: -1px; }
   .cta p { color: var(--ink-dim); font-size: 1.12rem; max-width: 48ch; margin: 0 auto 30px; }
   .cta .contact { margin-top: 26px; font-size: 0.96rem; color: var(--ink-dim); }
@@ -206,33 +241,46 @@
   .cta .contact a:hover { text-decoration: underline; }
 
   /* Footer */
-  footer { position: relative; z-index: 1; border-top: 1px solid rgba(180,192,255,0.12); padding: 40px 0; text-align: center; color: var(--ink-dim); font-size: 0.9rem; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(174,181,220,0.12); padding: 40px 0; text-align: center; color: var(--ink-dim); font-size: 0.9rem; }
   footer .brand { justify-content: center; margin-bottom: 14px; font-size: 1rem; }
   footer a { color: var(--periwinkle-soft); text-decoration: none; }
 
-  .note-placeholder { display: inline-block; font-size: 0.7rem; color: var(--amber-bright); border: 1px dashed rgba(244,169,74,0.5); border-radius: 6px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.3px; }
+  .disclaimer { margin: 20px auto 0; max-width: 70ch; font-size: 0.82rem; line-height: 1.6; color: var(--ink-dim); opacity: 0.8; }
+
+  .note-placeholder { display: inline-block; font-size: 0.7rem; color: var(--amber-bright); border: 1px dashed rgba(233,172,92,0.5); border-radius: 6px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.3px; }
 
   /* Responsive */
   @media (max-width: 1024px) and (min-width: 861px) {
-    .cards, .rs, .milestones { grid-template-columns: repeat(2, 1fr); }
+    .cards, .milestones { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 860px) {
     .hero { padding: 60px 0 56px; }
     .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 32px; }
-    .hero p.lead { max-width: none; margin-left: auto; margin-right: auto; }
+    /* The grid centers the hero, which suits the short h1 and the buttons. The
+       lead is four lines, though, and centered body copy is ragged on both
+       edges — keep it left-aligned. */
+    .hero p.lead { max-width: none; margin-left: auto; margin-right: auto; text-align: left; }
     .hero-actions { justify-content: center; }
     .owl-wrap { order: -1; }
     .owl-medallion { max-width: 220px; }
-    .cards, .rs, .milestones, .qa { grid-template-columns: 1fr; }
+    .cards, .milestones, .qa { grid-template-columns: 1fr; }
+    .rs-row { grid-template-columns: 1fr; grid-template-rows: none; row-gap: 26px; }
+    .rs, .video-frame, .video-caption { grid-column: 1; grid-row: auto; }
+    .rs { align-content: start; }
+    .video-frame { max-width: 280px; margin-left: auto; margin-right: auto; }
+    .video-caption { text-align: center; }
     .nav-links { display: none; }
     .nav-links.open { display: flex; position: absolute; top: calc(100% + 8px); right: 16px; left: 16px; flex-direction: column; align-items: stretch; background: var(--navy); border: 1px solid var(--card-border); border-radius: 16px; padding: 12px; gap: 4px; box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
     .nav-links.open a { padding: 12px 16px; font-size: 1rem; }
     .nav-links.open .nav-cta { text-align: center; margin: 4px 0 0; }
     .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; background: none; border: 1px solid var(--card-border); border-radius: 12px; color: var(--ink); font-size: 1.4rem; cursor: pointer; }
-    .menu-toggle:hover { background: rgba(150,167,244,0.08); }
+    .menu-toggle:hover { background: rgba(107,114,166,0.08); }
     .goal-panel { padding: 30px 22px; }
     .cta-inner { padding: 44px 24px; }
     .step { grid-template-columns: 1fr; gap: 12px; }
+  }
+  @media (max-width: 620px) {
+    .letter-form { grid-template-columns: 1fr; }
   }
   @media (max-width: 400px) {
     .wrap { padding: 0 18px; }
@@ -276,10 +324,11 @@
     <div>
       <span class="eyebrow">Irvine &amp; Orange County, CA</span>
       <h1>Irvine, let's <span class="accent">fight glare!</span></h1>
-      <p class="lead">Irvine's streetlights are being replaced with LEDs, and residents across the city report the newer fixtures as harsher and harder to look at. The city's code sets no ceiling on how bright a light may be and no limit at all on how blue. We are a group of concerned residents asking Irvine for a standard.</p>
+      <p class="lead">Irvine's new LED streetlights are too bright and too blue. They are unpleasant to look at; they hurt our eyes; and city code puts no limit on the glare.</p>
+      <p class="lead">We are a group of residents asking Irvine to set clear lighting standards, lower the harshness, and give us back our quiet nights.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#petition-link" data-petition><span aria-hidden="true">✍️</span> Sign the Petition</a>
-        <a class="btn btn-ghost" href="#goal">Read our ask</a>
+        <a class="btn btn-ghost" href="#goal">Learn about our ask</a>
       </div>
     </div>
     <div class="owl-wrap">
@@ -300,12 +349,12 @@
       <div class="card">
         <div class="icon" aria-hidden="true">👁️</div>
         <h3>Visual stress</h3>
-        <p>Intense glare and blue-white light strain the eyes and leave uneven pools of light and dark that make it harder, not easier, to see at night.</p>
+        <p>The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
       </div>
       <div class="card">
         <div class="icon" aria-hidden="true">😴</div>
-        <h3>Sleep and health</h3>
-        <p>Blue-rich light at night suppresses melatonin and delays circadian timing, and unshielded fixtures put that light where people sleep. Residents with migraine, autism, or photophobia are affected more still.</p>
+        <h3>Compromised sleep and health</h3>
+        <p>This stark, blue-rich light disrupts our natural circadian rhythms and suppresses melatonin, while unshielded fixtures bleed this glare directly into the rooms where we sleep. For residents living with migraines, autism, or photophobia, this relentless illumination takes an even heavier toll.</p>
       </div>
       <div class="card">
         <div class="icon" aria-hidden="true">🏠</div>
@@ -313,6 +362,7 @@
         <p>Unshielded fixtures spill into the sky and into bedrooms and yards, causing unwelcome nuisance in homes and washing out the night sky.</p>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -322,29 +372,41 @@
     <div class="section-tag">The Goal</div>
     <h2 class="section-title">Irvine's first lighting ordinance</h2>
     <div class="goal-panel">
-      <p class="goal-lead">Irvine's code requires that outdoor lighting be confined to the site and that neighbors be protected from glare — but it <strong>gives no way to measure any of that</strong>, and sets no limit on color temperature. Our goal is a city-wide standard with enforceable numbers, for lighting that is</p>
+      <p class="goal-lead">Irvine's current code promises that outdoor lighting will be contained and neighbors protected from the glare. Yet these protections are hollow, <strong>offering no way to measure the intrusion</strong> and setting absolutely no limit on the harsh color temperature. We seek a city-wide standard anchored in firm, enforceable numbers, demanding illumination that is</p>
       <ul class="goal-list">
-        <li><strong>Well-shielded</strong> — is aimed downward where it's needed, not into the eyes, windows, or the sky.</li>
-        <li><strong>Warm in tone</strong> — is capped at 2700K and no higher, with amber preferred near parks, trails, and open space.</li>
-        <li><strong>Right-sized</strong> — is not a whit more than what the task absolutely requires: dimmed or turned off when not actively lighting a pathway or a task.</li>
-        <li><strong>Considerate</strong> — is mindful of neighbors and light-sensitive passersby.</li>
+        <li><strong>Well-shielded</strong>: Directed strictly downward where it belongs, never allowed to pierce the eyes, bleed into our windows, or erase the night sky.</li>
+        <li><strong>Warm in tone</strong>: Capped at 2700K to restore a gentler glow, with a softer amber preferred near our parks, quiet trails, and open spaces.</li>
+        <li><strong>Right-sized</strong>: Emitting not a fraction more brightness than the task demands, dimming or yielding to the dark when pathways are empty.</li>
+        <li><strong>Considerate</strong>: Deeply mindful of our shared spaces, offering a quiet reprieve rather than a harsh assault on neighbors and light-sensitive passersby.</li>
       </ul>
     </div>
 
     <h3 class="subhead">Responsible lighting asks that you</h3>
-    <div class="rs">
-      <div class="r-card">
-        <h3>Reduce</h3>
-        <p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p>
+    <div class="rs-row">
+      <div class="rs">
+        <div class="r-card">
+          <h3>Reduce</h3>
+          <p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p>
+        </div>
+        <div class="r-card">
+          <h3>Restrict</h3>
+          <p>Use timers, dimmers, and sensors so light runs only when and where it's actually needed.</p>
+        </div>
+        <div class="r-card">
+          <h3>Redirect</h3>
+          <p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p>
+        </div>
       </div>
-      <div class="r-card">
-        <h3>Restrict</h3>
-        <p>Use timers, dimmers, and sensors so light runs only when and where it's actually needed.</p>
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/vzAf7-G94lM"
+          title="Fight Glare — a short video about the movement"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
-      <div class="r-card">
-        <h3>Redirect</h3>
-        <p>Shield fixtures to aim light down at the ground — not into eyes, windows, and the sky.</p>
-      </div>
+      <p class="video-caption">A short look at the movement.<br /><a class="inline-link" href="https://youtube.com/shorts/vzAf7-G94lM" target="_blank" rel="noopener">Watch on YouTube →</a></p>
     </div>
     <p class="darksky-note">Our three R's distill <a href="https://darksky.org/resources/guides-and-how-tos/lighting-principles/" target="_blank" rel="noopener">the Five Principles for Responsible Outdoor Lighting</a>, published jointly by DarkSky International and the Illuminating Engineering Society. Irvine can build on them.</p>
   </div>
@@ -354,11 +416,11 @@
 <section id="facts">
   <div class="wrap">
     <div class="section-tag">The Facts</div>
-    <h2 class="section-title lead-in">Our ask is what other cities are already recognizing and incorporating</h2>
+    <h2 class="section-title lead-in">What we ask for is no radical departure but a necessary restraint that other cities have already recognized and woven into the fabric of their own codes.</h2>
 
     <div class="fact-callout">
-      <p><strong>The American Medical Association</strong> recommends that community street lighting be shielded and no higher than 3000K to cut glare and protect sleep. <a href="https://www.ama-assn.org/press-center/ama-press-releases/ama-adopts-guidance-reduce-harm-high-intensity-street-lights" target="_blank" rel="noopener">(AMA, 2016)</a></p>
-      <p>California's building codes already treat warmth and shielding as good practice: CALGreen's voluntary tier measures cap general hardscape lighting at 3000K, and the state energy code limits backlight, uplight, and glare from large outdoor fixtures. Both carve out public street lighting — which is exactly the gap a city standard exists to fill.</p>
+      <p><strong>The American Medical Association</strong> says streetlights should be shielded and capped at 3000K or below. We urge Irvine to cap at a maximum of 2700K. <a href="https://www.ama-assn.org/press-center/ama-press-releases/ama-adopts-guidance-reduce-harm-high-intensity-street-lights" target="_blank" rel="noopener">(AMA, 2016)</a></p>
+      <p>State energy codes regulate light pollution on private property, but public streetlights are exempt. Irvine must close this gap and enforce stricter lighting standards citywide.</p>
     </div>
     <div class="fact-callout">
       We want Irvine to join a growing list of <strong>dark-sky-friendly communities</strong> which include Malibu, CA; Tucson, AZ; Flagstaff, AZ; Chesterfield, MO.
@@ -368,11 +430,12 @@
     <div class="qa">
       <div class="card">
         <h3>"But isn't brighter safer?"</h3>
-        <p>Lighting does make roads safer, and we're not asking Irvine to turn anything off — the question is where the light goes. Glare from an unshielded fixture scatters inside the eye and washes out contrast rather than adding to what you can see. Bright pools next to dark gaps are harder to see into than steady, even light. Good lighting is quality lighting.</p>
+        <p>We recognize that our streets should not be plunged into darkness. The question is how much light our roads actually need, and where that light should be aimed. An unshielded fixture scatters light inside the eye, laying a haze over everything we are trying to see. It also leaves the street in bright pools with dark between them, and eyes that must keep readjusting see less than they would under a steady, even glow. Brightness alone does not make a street safe.</p>
       </div>
       <div class="card">
         <h3>"Won't this be expensive?"</h3>
-        <p>Not meaningfully. Warm and shielded aren't upgrades you pay extra for — color temperature is an ordering option, and modern LED streetlights are full-cutoff by design. Warm LEDs are slightly less efficient, but the difference is small next to the savings LEDs already deliver over the lights they replace.</p>
+        <p>It costs nothing extra to choose warm light. Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warmer tone requires only a checkmark and a signature.</p>
+        <p>The lights already standing will cost money to correct, but the work is simple. Shields bolt onto the existing poles, and warmer bulbs can go in during routine maintenance over the coming months. Irvine chose the harsh 4000K light when the warm option was offered free of charge. The cost to fix it now is part of that same choice.</p>
       </div>
     </div>
   </div>
@@ -386,7 +449,7 @@
     <div class="milestones">
       <div class="milestone">
         <div class="m-label">400+ signatures</div>
-        <p>Residents across Orange County have signed our petition — and the list keeps growing.</p>
+        <p>Residents across Orange County have signed our petition, and the list keeps growing.</p>
       </div>
       <div class="milestone">
         <div class="m-label">One neighborhood fixed</div>
@@ -419,20 +482,43 @@
       <div class="step">
         <div class="step-num" aria-hidden="true">2</div>
         <div>
-          <h3>Email the city council</h3>
-          <p>A short, polite note from a resident carries real weight. Copy our template, add your name, and send it to the Irvine City Council.</p>
+          <h3>Write to the City Council</h3>
+          <p>A quiet, resolute note from a single resident carries genuine weight. Fill in the three fields below and the letter writes itself — then copy it, or open it straight in your email app.</p>
           <div class="email-box">
-            <div id="emailTemplate">
-              <p>Dear Irvine City Council,</p>
-              <p>I'm an Irvine resident concerned about the glare and brightness of the city's new LED streetlights. I'm asking the Council to adopt an outdoor lighting standard requiring warm (2700K or lower), well-shielded, appropriately dimmed lighting — the shielding and warmth the American Medical Association recommends.</p>
-              <p>This isn't a request for less light. It's a request that the light we already pay for lands on the pavement instead of in bedrooms and eyes.</p>
-              <p>Thank you for your time and consideration.</p>
-              <p>[Your name], [Your neighborhood]</p>
+            <div class="letter-form">
+              <div>
+                <label for="fName">Your name</label>
+                <input id="fName" type="text" autocomplete="name" placeholder="Jane Diaz" />
+              </div>
+              <div>
+                <label for="fStreet">Your street or neighborhood</label>
+                <input id="fStreet" type="text" autocomplete="address-level3" placeholder="Turtle Rock" />
+              </div>
+              <div>
+                <label for="fEmail">Your email</label>
+                <input id="fEmail" type="email" autocomplete="email" placeholder="jane@example.com" />
+              </div>
             </div>
-            <button class="copy-btn" id="copyEmail" type="button">Copy template</button>
+            <div id="emailTemplate">
+              <p>Dear Mayor and Members of the City Council,</p>
+              <p>I live in Irvine. The city's new LED streetlights are too bright. The glare leaks off the pavement and shines straight into our eyes, windows and yards.</p>
+              <p>I ask the Council to pass a clear lighting standard with three rules:</p>
+              <ul>
+                <li>Cap color temperature at 2700K or lower.</li>
+                <li>Require full shielding so light points down, not out.</li>
+                <li>Dim the lights late at night.</li>
+              </ul>
+              <p>Southern California Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warm light costs the city nothing extra. The American Medical Association recommends 3000K or lower to protect public health. Right now, Irvine has no limits on brightness or color temperature.</p>
+              <p>Please reply and let me know when the Council will discuss this.</p>
+              <p>Sincerely,<br />
+                 <span class="letter-fill" id="signName">[Your Name]</span><br />
+                 <span class="letter-fill" id="signStreet">[Your Street or Neighborhood]</span><br />
+                 <span class="letter-fill" id="signEmail">[Your Email]</span></p>
+            </div>
+            <button class="copy-btn" id="copyEmail" type="button">Copy letter</button>
           </div>
           <div class="step-actions">
-            <a class="btn btn-ghost btn-sm" href="mailto:irvinecitycouncil@cityofirvine.org?subject=Please%20adopt%20an%20outdoor%20lighting%20ordinance">Email the council</a>
+            <a class="btn btn-ghost btn-sm" id="mailtoCouncil" href="mailto:irvinecitycouncil@cityofirvine.org?subject=Please%20adopt%20an%20outdoor%20lighting%20ordinance">Open in your email app</a>
             <a class="inline-link" href="https://cityofirvine.org/city-council" target="_blank" rel="noopener">Find your council members →</a>
           </div>
         </div>
@@ -441,7 +527,7 @@
         <div class="step-num" aria-hidden="true">3</div>
         <div>
           <h3>Speak up at a council meeting</h3>
-          <p>The Irvine City Council meets on the second and fourth Tuesday of each month, with time set aside for public comment. A minute at the podium from a real resident can move the needle more than anything.</p>
+          <p>The Irvine City Council convenes on the second and fourth Tuesday of each month, carving out time to hear directly from the public. A single, resolute minute at the podium from a resident who lives beneath this harsh glare carries the weight to shift the city's course more than anything else.</p>
           <div class="step-actions">
             <a class="inline-link" href="https://cityofirvine.org/city-council/city-council-meetings" target="_blank" rel="noopener">See upcoming meetings →</a>
           </div>
@@ -451,7 +537,17 @@
         <div class="step-num" aria-hidden="true">4</div>
         <div>
           <h3>Spread the word</h3>
-          <p>Share this page and our videos with neighbors, and follow along. The more Irvine residents who know, the stronger the ask.</p>
+          <p>Pass this page and our videos to your neighbors and keep watch with us. The more residents of Irvine who recognize this intrusion, the heavier our collective demand becomes.</p>
+        </div>
+      </div>
+      <div class="step step-feature">
+        <div class="step-num" aria-hidden="true">5</div>
+        <div>
+          <h3>Join our team</h3>
+          <p>We need numbers. A council that hears from one resident has a complaint on its hands. A council that hears from two hundred is faced with an agenda item. Send the letter, make a public comment, tell a neighbor. If you can spare even an hour, we want to hear from you.</p>
+          <div class="step-actions">
+            <a class="btn btn-primary btn-sm" href="mailto:fightglareirvine@gmail.com?subject=I%20want%20to%20join%20the%20Fight%20Glare%20team">Join our team</a>
+          </div>
         </div>
       </div>
     </div>
@@ -481,6 +577,7 @@
     </div>
     <p>A resident-led movement for responsible outdoor lighting in Irvine &amp; Orange County, CA.</p>
     <p style="margin-top:8px;">fightglare.org &middot; <a href="mailto:fightglareirvine@gmail.com">fightglareirvine@gmail.com</a></p>
+    <p class="disclaimer">Fight Glare is an independent, resident-led campaign. We are not affiliated with, endorsed by, or speaking on behalf of the City of Irvine or any other agency or organization. The opinions and recommendations on this page are our own. Where we cite outside research or public codes we try to link to the source so you can read it yourself, and nothing here is intended as legal, medical, or professional advice.</p>
   </div>
 </footer>
 
@@ -501,12 +598,60 @@
     }
   });
 
-  // Copy email template
+  // Letter merge fields. Typing once updates the sign-off shown on the page,
+  // and the same text feeds both the clipboard copy and the mailto body.
+  var LETTER_FIELDS = [
+    ['fName', 'signName', '[Your Name]'],
+    ['fStreet', 'signStreet', '[Your Street or Neighborhood]'],
+    ['fEmail', 'signEmail', '[Your Email]']
+  ];
+  var mailtoLink = document.getElementById('mailtoCouncil');
+  var letterEl = document.getElementById('emailTemplate');
+
+  // innerText drops <li> markers, so the three rules would copy as bare lines.
+  // Walk the blocks instead and prefix list items.
+  function letterText() {
+    if (!letterEl) return '';
+    var blocks = [];
+    Array.prototype.forEach.call(letterEl.children, function (node) {
+      if (node.tagName === 'UL') {
+        var items = [];
+        Array.prototype.forEach.call(node.querySelectorAll('li'), function (li) {
+          items.push('- ' + li.innerText.trim());
+        });
+        blocks.push(items.join('\n'));
+      } else {
+        blocks.push(node.innerText.trim());
+      }
+    });
+    return blocks.join('\n\n');
+  }
+
+  function syncLetter() {
+    LETTER_FIELDS.forEach(function (f) {
+      var input = document.getElementById(f[0]);
+      var slot = document.getElementById(f[1]);
+      if (!input || !slot) return;
+      slot.textContent = input.value.trim() || f[2];
+    });
+    if (mailtoLink) {
+      mailtoLink.setAttribute('href',
+        'mailto:irvinecitycouncil@cityofirvine.org?subject=' +
+        encodeURIComponent('Please adopt an outdoor lighting ordinance') +
+        '&body=' + encodeURIComponent(letterText()));
+    }
+  }
+  LETTER_FIELDS.forEach(function (f) {
+    var input = document.getElementById(f[0]);
+    if (input) input.addEventListener('input', syncLetter);
+  });
+  syncLetter();
+
+  // Copy letter
   var copyBtn = document.getElementById('copyEmail');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
-      var tmpl = document.getElementById('emailTemplate');
-      var text = tmpl.innerText.trim();
+      var text = letterText();
       navigator.clipboard.writeText(text).then(function () {
         var original = copyBtn.textContent;
         copyBtn.textContent = "Copied ✓";

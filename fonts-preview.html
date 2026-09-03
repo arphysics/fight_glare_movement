@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fight Glare — Font Pairing Test</title>
+<title>Fight Glare — Heading Font Test</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;700&family=Lexend:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500;700&family=Bitter:wght@500;600;700&family=EB+Garamond:wght@500;600;700&family=Fraunces:wght@500;600;700&family=Lexend:wght@300;400;500;600&family=Roboto+Mono:wght@500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --navy-deep: #0b1c33;
@@ -25,92 +25,178 @@
 
   .page-head { text-align: center; margin-bottom: 44px; }
   .page-head h1 { font-family: 'Roboto Mono', monospace; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-  .page-head p { font-family: 'Lexend', sans-serif; color: var(--ink-dim); margin-top: 10px; font-size: 0.95rem; }
+  .page-head p { font-family: 'Lexend', sans-serif; color: var(--ink-dim); margin-top: 10px; font-size: 0.95rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
 
   /* Each variant panel */
   .variant { background: var(--navy); border: 1px solid var(--card-border); border-radius: 20px; padding: 40px; margin-bottom: 28px; }
   .variant-label { font-family: 'Roboto Mono', monospace; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; color: var(--amber-bright); border: 1px solid rgba(244,169,74,0.4); border-radius: 999px; padding: 5px 14px; display: inline-block; margin-bottom: 28px; }
   .variant-label.warn { color: #f4b4a0; border-color: rgba(244,180,160,0.4); }
 
-  .eyebrow { font-family: 'Roboto Mono', monospace; text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; font-weight: 600; color: var(--amber-bright); display: block; margin-bottom: 14px; }
+  /* Eyebrow / section tag — these use --font-head on the real site, so they swap too */
+  .eyebrow { text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 500; color: var(--amber-bright); display: block; margin-bottom: 14px; }
+  .eyebrow.tag { color: var(--periwinkle-soft); margin-top: 38px; margin-bottom: 12px; }
 
-  /* Headlines always Roboto Mono */
-  .v-h1 { font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: clamp(1.8rem, 4.5vw, 2.6rem); letter-spacing: -1px; line-height: 1.1; }
+  /* Heading sizes/weights mirror index.html; family is swapped per variant */
+  .v-h1 { font-weight: 700; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -1.5px; line-height: 1.12; }
   .v-h1 .accent { color: var(--amber-bright); }
-  .v-h2 { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 1.35rem; letter-spacing: -0.5px; margin: 30px 0 6px; }
-  .v-h3 { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 1.05rem; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .v-h2 { font-weight: 600; font-size: clamp(1.5rem, 3.2vw, 2rem); letter-spacing: -1px; line-height: 1.12; }
+  .v-h3 { font-weight: 600; font-size: 1.12rem; letter-spacing: -0.5px; margin-bottom: 8px; }
 
-  /* Body font swapped per variant via class on .variant */
-  .lead, .body, .card p, .btn { }
-  .lead { font-size: 1.15rem; color: var(--ink-dim); margin-top: 18px; max-width: 46ch; }
-  .body { color: var(--ink-dim); margin-top: 16px; max-width: 60ch; }
+  /* Body copy is Lexend in every variant now — that question is settled */
+  .lead { font-size: 1.16rem; color: var(--ink-dim); margin-top: 22px; max-width: 46ch; line-height: 1.65; }
+  .body { color: var(--ink-dim); margin-top: 16px; max-width: 60ch; line-height: 1.65; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
   .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 22px; }
-  .card p { color: var(--ink-dim); font-size: 0.96rem; }
-  .btn { display: inline-block; margin-top: 28px; background: var(--amber); color: #23140a; padding: 13px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+  .card p { color: var(--ink-dim); font-size: 0.98rem; line-height: 1.65; }
+  .btn { display: inline-block; margin-top: 28px; background: var(--amber); color: #23140a; padding: 13px 26px; border-radius: 999px; font-weight: 500; text-decoration: none; }
 
   /* Body font families */
   .body-lexend .lead, .body-lexend .body, .body-lexend .card p, .body-lexend .btn { font-family: 'Lexend', system-ui, sans-serif; }
-  .body-garamond .lead, .body-garamond .body, .body-garamond .card p { font-family: 'EB Garamond', Georgia, serif; font-size: 1.22rem; }
-  .body-garamond .lead { font-size: 1.35rem; }
-  .body-garamond .btn { font-family: 'EB Garamond', Georgia, serif; font-size: 1.05rem; }
-  .body-avenir .lead, .body-avenir .body, .body-avenir .card p, .body-avenir .btn { font-family: 'Avenir Next', 'Avenir', system-ui, sans-serif; }
 
-  .caveat { font-family: 'Lexend', sans-serif; font-size: 0.85rem; color: #f4b4a0; margin-top: 22px; padding: 12px 16px; background: rgba(244,180,160,0.08); border-left: 3px solid #f4b4a0; border-radius: 0 10px 10px 0; }
+  /* Heading font families — swapped per variant via class on .variant */
+  .head-mono .v-h1, .head-mono .v-h2, .head-mono .v-h3, .head-mono .eyebrow { font-family: 'Roboto Mono', ui-monospace, 'SFMono-Regular', monospace; }
+  .head-fraunces .v-h1, .head-fraunces .v-h2, .head-fraunces .v-h3, .head-fraunces .eyebrow { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  .head-sourceserif .v-h1, .head-sourceserif .v-h2, .head-sourceserif .v-h3, .head-sourceserif .eyebrow { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+  .head-bitter .v-h1, .head-bitter .v-h2, .head-bitter .v-h3, .head-bitter .eyebrow { font-family: 'Bitter', Georgia, 'Times New Roman', serif; }
+  .head-alegreya .v-h1, .head-alegreya .v-h2, .head-alegreya .v-h3, .head-alegreya .eyebrow { font-family: 'Alegreya Sans', system-ui, sans-serif; }
+  .head-ebgaramond .v-h1, .head-ebgaramond .v-h2, .head-ebgaramond .v-h3, .head-ebgaramond .eyebrow { font-family: 'EB Garamond', Georgia, 'Times New Roman', serif; }
+
+  /* Tracking: -1.5px is tuned for mono. Serifs and the humanist sans need it relaxed. */
+  .head-fraunces .v-h1, .head-sourceserif .v-h1, .head-bitter .v-h1, .head-alegreya .v-h1 { letter-spacing: -0.5px; }
+  .head-fraunces .v-h2, .head-sourceserif .v-h2, .head-bitter .v-h2, .head-alegreya .v-h2 { letter-spacing: -0.3px; }
+  .head-fraunces .v-h3, .head-sourceserif .v-h3, .head-bitter .v-h3, .head-alegreya .v-h3 { letter-spacing: 0; }
+  /* EB Garamond is an old-style face with a small x-height — negative tracking
+     closes it up too far, so it gets none at all. */
+  .head-ebgaramond .v-h1, .head-ebgaramond .v-h2, .head-ebgaramond .v-h3 { letter-spacing: 0; }
+
+  .rationale { font-family: 'Lexend', sans-serif; font-size: 0.9rem; color: var(--periwinkle-soft); margin-top: 30px; padding: 12px 16px; background: rgba(180,192,255,0.08); border-left: 3px solid var(--periwinkle-soft); border-radius: 0 10px 10px 0; }
+  .caveat { font-family: 'Lexend', sans-serif; font-size: 0.85rem; color: #f4b4a0; margin-top: 12px; padding: 12px 16px; background: rgba(244,180,160,0.08); border-left: 3px solid #f4b4a0; border-radius: 0 10px 10px 0; }
+  .swap { display: block; font-family: 'Roboto Mono', monospace; font-size: 0.8rem; color: var(--ink-dim); background: rgba(0,0,0,0.28); border: 1px solid var(--card-border); border-radius: 10px; padding: 11px 14px; margin-top: 12px; overflow-x: auto; white-space: pre; }
   @media (max-width: 620px) { .row { grid-template-columns: 1fr; } .variant { padding: 28px 22px; } }
 </style>
 </head>
 <body>
 <div class="page">
   <div class="page-head">
-    <h1>Fight Glare — font pairing test</h1>
-    <p>Same content, three body-font options. Headlines are Roboto Mono in every version. Open on your computer and see which body font you like against the mono headlines.</p>
+    <h1>Fight Glare — heading font test</h1>
+    <p>Same real content, six heading fonts. Body copy is Lexend in every version — that part is settled. The question here is the heading font (<code>--font-head</code>), which a reviewer said reads too futuristic as Roboto Mono. Note that on the live site <code>--font-head</code> also drives the small uppercase tags (&ldquo;Irvine &amp; Orange County, CA&rdquo;, &ldquo;The Problem&rdquo;), so those swap with it here too. Each panel ends with the exact line to paste into <code>:root</code> in <code>index.html</code>.</p>
   </div>
 
-  <!-- VARIANT A: Lexend -->
-  <div class="variant body-lexend">
-    <span class="variant-label">Option A · Roboto Mono + Lexend</span>
+  <!-- CURRENT: Roboto Mono (control) -->
+  <div class="variant body-lexend head-mono">
+    <span class="variant-label warn">Current · Roboto Mono headings (for reference)</span>
     <span class="eyebrow">Irvine &amp; Orange County, CA</span>
     <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
-    <p class="lead">A grassroots movement for warm, well-shielded, night-friendly lighting that protects our health, our comfort, and our night sky.</p>
+    <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
     <a class="btn" href="#">✍️ Sign the Petition</a>
-    <div class="v-h2">The three R's of good lighting</div>
-    <p class="body">You don't need more light to feel safe — you need better light. It comes down to three simple ideas: reduce, restrict, and redirect.</p>
+    <span class="eyebrow tag">The Problem</span>
+    <div class="v-h2">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to</div>
+    <p class="body">The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
     <div class="row">
-      <div class="card"><div class="v-h3">Visual stress</div><p>Intense glare and blue-white light strain the eyes and make it harder to see clearly at night.</p></div>
-      <div class="card"><div class="v-h3">Light in your home</div><p>Unshielded fixtures spill into bedrooms and yards, disrupting sleep for people who never asked for it.</p></div>
+      <div class="card"><div class="v-h3">Reduce</div><p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p></div>
+      <div class="card"><div class="v-h3">Redirect</div><p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p></div>
     </div>
+    <div class="caveat">This is what's live today. Monospace reads as terminal/engineering — the reviewer's &ldquo;futuristic&rdquo; note. It also spaces every letter equally, which is why the long section title above feels mechanical.</div>
+    <code class="swap">--font-head: 'Roboto Mono', ui-monospace, 'SFMono-Regular', monospace;</code>
   </div>
 
-  <!-- VARIANT B: EB Garamond -->
-  <div class="variant body-garamond">
-    <span class="variant-label">Option B · Roboto Mono + EB Garamond</span>
+  <!-- OPTION A: Fraunces (warm serif) -->
+  <div class="variant body-lexend head-fraunces">
+    <span class="variant-label">Option A · Fraunces headings (warm serif)</span>
     <span class="eyebrow">Irvine &amp; Orange County, CA</span>
     <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
-    <p class="lead">A grassroots movement for warm, well-shielded, night-friendly lighting that protects our health, our comfort, and our night sky.</p>
+    <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
     <a class="btn" href="#">✍️ Sign the Petition</a>
-    <div class="v-h2">The three R's of good lighting</div>
-    <p class="body">You don't need more light to feel safe — you need better light. It comes down to three simple ideas: reduce, restrict, and redirect.</p>
+    <span class="eyebrow tag">The Problem</span>
+    <div class="v-h2">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to</div>
+    <p class="body">The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
     <div class="row">
-      <div class="card"><div class="v-h3">Visual stress</div><p>Intense glare and blue-white light strain the eyes and make it harder to see clearly at night.</p></div>
-      <div class="card"><div class="v-h3">Light in your home</div><p>Unshielded fixtures spill into bedrooms and yards, disrupting sleep for people who never asked for it.</p></div>
+      <div class="card"><div class="v-h3">Reduce</div><p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p></div>
+      <div class="card"><div class="v-h3">Redirect</div><p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p></div>
     </div>
+    <p class="rationale">Warmest of the four — soft, slightly hand-cut old-style serif that echoes lamplight rather than LED, and gives the headline a human voice without looking old-fashioned. Its large x-height sits level with Lexend.</p>
+    <div class="caveat">Caveat: Fraunces is a display face with extra axes (optical size, SOFT, WONK). Google Fonts serves sensible defaults for a plain <code>wght</code> request, but it has real personality — check the long section title above, not just the H1. It's also the largest download of the four.</div>
+    <code class="swap">--font-head: 'Fraunces', Georgia, 'Times New Roman', serif;</code>
   </div>
 
-  <!-- VARIANT C: Avenir -->
-  <div class="variant body-avenir">
-    <span class="variant-label warn">Option C · Roboto Mono + Avenir</span>
+  <!-- OPTION B: Source Serif 4 (transitional serif) -->
+  <div class="variant body-lexend head-sourceserif">
+    <span class="variant-label">Option B · Source Serif 4 headings (transitional serif)</span>
     <span class="eyebrow">Irvine &amp; Orange County, CA</span>
     <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
-    <p class="lead">A grassroots movement for warm, well-shielded, night-friendly lighting that protects our health, our comfort, and our night sky.</p>
+    <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
     <a class="btn" href="#">✍️ Sign the Petition</a>
-    <div class="v-h2">The three R's of good lighting</div>
-    <p class="body">You don't need more light to feel safe — you need better light. It comes down to three simple ideas: reduce, restrict, and redirect.</p>
+    <span class="eyebrow tag">The Problem</span>
+    <div class="v-h2">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to</div>
+    <p class="body">The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
     <div class="row">
-      <div class="card"><div class="v-h3">Visual stress</div><p>Intense glare and blue-white light strain the eyes and make it harder to see clearly at night.</p></div>
-      <div class="card"><div class="v-h3">Light in your home</div><p>Unshielded fixtures spill into bedrooms and yards, disrupting sleep for people who never asked for it.</p></div>
+      <div class="card"><div class="v-h3">Reduce</div><p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p></div>
+      <div class="card"><div class="v-h3">Redirect</div><p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p></div>
     </div>
-    <div class="caveat">Note: Avenir isn't a free web font. If it looks right to you here, that's because it's installed on your Mac — most visitors (Windows, Android, many phones) would see a fallback font instead. For a public site I'd recommend Lexend or EB Garamond, which load reliably for everyone.</div>
+    <p class="rationale">The most institutional of the four — this is the register of a staff report or a public comment letter, which is exactly the room this site is arguing in. Trustworthy first, characterful second.</p>
+    <div class="caveat">Caveat: transitional serifs have thin strokes, and thin light-on-dark strokes shrink optically against navy. Use weight 600–700 for headings, never 400. It's also the most reserved option — it can read a little dry next to an H1 that ends in an exclamation mark.</div>
+    <code class="swap">--font-head: 'Source Serif 4', Georgia, 'Times New Roman', serif;</code>
+  </div>
+
+  <!-- OPTION C: Bitter (slab serif) -->
+  <div class="variant body-lexend head-bitter">
+    <span class="variant-label">Option C · Bitter headings (slab serif)</span>
+    <span class="eyebrow">Irvine &amp; Orange County, CA</span>
+    <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
+    <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
+    <a class="btn" href="#">✍️ Sign the Petition</a>
+    <span class="eyebrow tag">The Problem</span>
+    <div class="v-h2">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to</div>
+    <p class="body">The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
+    <div class="row">
+      <div class="card"><div class="v-h3">Reduce</div><p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p></div>
+      <div class="card"><div class="v-h3">Redirect</div><p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p></div>
+    </div>
+    <p class="rationale">The smallest jump from where the site is now: Bitter keeps the sturdy, squared-off, built-infrastructure feel of the mono but reads as printed matter rather than a terminal. Sturdy strokes hold up well as light text on dark navy.</p>
+    <div class="caveat">Caveat: slabs carry a lot of visual weight — the long section title above is the real test, and it may need its size dropped a notch. Bitter's x-height is large like Lexend's, so headings and body can start to look like the same size; keep a clear step between them.</div>
+    <code class="swap">--font-head: 'Bitter', Georgia, 'Times New Roman', serif;</code>
+  </div>
+
+  <!-- OPTION D: Alegreya Sans (humanist sans) -->
+  <div class="variant body-lexend head-alegreya">
+    <span class="variant-label">Option D · Alegreya Sans headings (humanist sans)</span>
+    <span class="eyebrow">Irvine &amp; Orange County, CA</span>
+    <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
+    <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
+    <a class="btn" href="#">✍️ Sign the Petition</a>
+    <span class="eyebrow tag">The Problem</span>
+    <div class="v-h2">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to</div>
+    <p class="body">The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
+    <div class="row">
+      <div class="card"><div class="v-h3">Reduce</div><p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p></div>
+      <div class="card"><div class="v-h3">Redirect</div><p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p></div>
+    </div>
+    <p class="rationale">Keeps the page all-sans and un-fussy, but its flared, pen-drawn letterforms are warm where Lexend is neutral — human without switching the site into serif territory at all.</p>
+    <div class="caveat">Caveat: two things to watch. (1) Alegreya Sans has no weight 600 on Google Fonts — <code>index.html</code> asks for 600 on h1/h2/h3, so the browser silently renders 700 instead; set the weight explicitly rather than leaving it to chance. (2) Its x-height is noticeably smaller than Lexend's, so a heading looks smaller than its size suggests — headings likely need a size bump to keep the step above body copy.</div>
+    <code class="swap">--font-head: 'Alegreya Sans', system-ui, sans-serif;</code>
+  </div>
+
+  <!-- OPTION E: EB Garamond (old-style serif) -->
+  <div class="variant body-lexend head-ebgaramond">
+    <span class="variant-label">Option E · EB Garamond headings (old-style serif)</span>
+    <span class="eyebrow">Irvine &amp; Orange County, CA</span>
+    <div class="v-h1">Irvine, let's <span class="accent">fight glare!</span></div>
+    <p class="lead">Irvine, CA, in replacing its streetlights with LEDs, is trading quiet evening ambience for loud illuminance. Across the city, residents report these newer fixtures as harsh and painful to the eye. We are a group of concerned residents asking Irvine to establish a standard and restore the night to our streets.</p>
+    <a class="btn" href="#">✍️ Sign the Petition</a>
+    <span class="eyebrow tag">The Problem</span>
+    <div class="v-h2">Irvine's new streetlights are too bright, too blue, and too exposed, which leads to</div>
+    <p class="body">The harsh glare and icy blue-white light weary the eyes, fracturing the streets into uneven pools of light and dark. Rather than guiding us, this unnatural contrast obscures the path, making it harder rather than easier to navigate the night.</p>
+    <div class="row">
+      <div class="card"><div class="v-h3">Reduce</div><p>Use only as much light as the task needs; this includes picking the lowest possible color temperature (amber tones wherever possible, and no more than 2700K outdoors at night).</p></div>
+      <div class="card"><div class="v-h3">Redirect</div><p>Shield fixtures to aim light down at the ground, not into eyes, windows, and the sky.</p></div>
+    </div>
+    <p class="rationale">The furthest from futuristic of anything here — an old-style face with a bookish, almost civic-document quality that suits an appeal to a city council. <code>CLAUDE.md</code> already floats EB Garamond as the serif option for <em>body</em> text, so this panel answers the separate question of whether it works as the heading face instead.</p>
+    <div class="caveat">Caveat: the riskiest of the five on a dark background. EB Garamond has a small x-height and genuinely delicate strokes, so light-on-navy it thins out more than any other option here — at 600 the small uppercase tags may look frail, and it likely needs 700 plus a size bump to hold its own. It is also the most decorative choice, which cuts against a page arguing for restraint.</div>
+    <code class="swap">--font-head: 'EB Garamond', Georgia, 'Times New Roman', serif;</code>
+  </div>
+
+  <div class="page-head" style="margin-top: 44px; margin-bottom: 0;">
+    <p>Loading cost, for all five: the site already fetches two families (Roboto Mono + Lexend). Swapping <code>--font-head</code> replaces Roboto Mono rather than adding to it, so the request count doesn't change. It only grows if you keep Roboto Mono around for the small uppercase tags — that's a defensible choice, since mono suits tracked micro-labels, but it's a third family on the wire.</p>
   </div>
 
 </div>

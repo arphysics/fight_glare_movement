@@ -15,7 +15,10 @@ fonts-preview.html  Scratch page for comparing font pairings; not linked from th
 assets/             owl-logo.png — favicon + og:image, the only image on the site
 CNAME               fightglare.org — required by Pages, do not delete
 EDITING.md          Browser-only guide for non-technical teammates
-todo.txt            Open items — check this first, it's kept current
+todo.txt            Open items — check this first, it's kept current.
+                    NOTE: deploy.yml ships the repo root, so this file is
+                    public at fightglare.org/todo.txt. Don't put names,
+                    contact details, or anything private in it.
 ```
 
 ## Working on the site
@@ -30,10 +33,18 @@ tooling.
 ### Conventions
 
 - **Colors and fonts are CSS custom properties** on `:root` (`--navy-deep`,
-  `--periwinkle`, `--amber`, `--font-head`, `--font-body`). Change the variable,
-  never hardcode a hex in a rule.
-- **Fonts** are Roboto Mono (headings) + Lexend (body), loaded from Google Fonts.
-  Swap via `--font-head` / `--font-body`.
+  `--periwinkle`, `--amber`, `--heading`, `--font-head`, `--font-body`). Change
+  the variable, never hardcode a hex in a rule.
+- **The palette is sampled from `assets/owl-logo.png`** — every token is one of
+  six colours in the mark or a shade of one, and `--navy-deep` is the sky inside
+  the medallion, so the disc and the page match. New colours should come from
+  the logo too. The rgba() values inside rules are shades of these tokens, so a
+  palette change has to sweep those as well or the old scheme shows through.
+- **Fonts** are Fraunces (headings) + Lexend (body), loaded from Google Fonts.
+  Swap via `--font-head` / `--font-body`. `fonts-preview.html` compares six
+  heading options against real page content, each with the exact `:root` line
+  to paste. Fraunces is a high-contrast serif: keep headings at 600–700, since
+  thin strokes thin out further light-on-dark.
 - Sections are `<section id="...">`: `problem`, `goal`, `facts`, `progress`,
   `help`. The nav links to these anchors — renaming an id means updating the nav.
 - Vanilla JS at the bottom of the file, no libraries. Guard DOM lookups with
@@ -59,8 +70,8 @@ isn't a guardrail Aditya needs — he's the reviewer.
   Petition" buttons. It's live (change.org). Setting it back to `"#"` disables
   every button at once and restores a placeholder alert — that's the intended
   kill switch if the petition ever moves.
-- `fightglareirvine@gmail.com` appears twice, in the CTA block and the footer.
-  Change both or neither.
+- `fightglareirvine@gmail.com` appears in three places: the CTA block, the
+  footer, and the "Join our team" button. Change all three or none.
 - `.note-placeholder` is a dashed amber badge for marking unfinished values.
   Nothing uses it now. It renders **visibly on the live page**, so anything
   wearing it is public — use it only for things being fixed the same day.
