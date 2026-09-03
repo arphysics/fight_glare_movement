@@ -94,10 +94,28 @@ CONTENT / POLISH
       public page than it was.
   [ ] Hero H1 keeps letter-spacing: -1.5px, which was tuned for Roboto Mono.
       The heading font is Fraunces now. Check whether it wants loosening.
+  [ ] HIGHEST VALUE, NOW LIVE: attribute the Edison / 4000K claims. They are
+      public and they are in the letter residents send to the council, still
+      as bare assertions. One line in two places fixes it:
+        "City staff have confirmed to us that Edison offers 2700K, 3000K, or
+         4000K for the same price."
+      in the "Won't this be expensive?" answer and in the letter template.
+      Costs nothing rhetorically and survives a challenge. Better still, get
+      it in writing (see the PROVENANCE note above) and link it like the AMA
+      line. Do this before the page is pushed widely.
+  [ ] todo.txt is served publicly at fightglare.org/todo.txt — deploy.yml
+      uploads the repo root (path: .). Besides the name that has been removed,
+      this file describes the teammate's setup, that branch protection is off,
+      and the Cloudflare/GoDaddy layout. None of it is dangerous, none of it
+      was written for an audience.
+      Fix if wanted: move planning notes to docs/ and exclude that path in
+      deploy.yml, or keep them out of the repo. Renaming does not help —
+      Pages serves .md too. fonts-preview.html could ride the same exclusion.
 
-AUG 2026 COPY + DESIGN PASS — on branch, NOT merged
-  Branch: claude/irvine-streetlight-standards-21g9cy. main untouched, so
-  fightglare.org is unchanged until this merges.
+AUG 2026 COPY + DESIGN PASS — MERGED to main via PR #3, live on fightglare.org
+  Branch was claude/irvine-streetlight-standards-21g9cy.
+  Work continues; the open items above apply to the live site now, not to a
+  branch nobody can see.
 
   [x] Two rounds of copy rewrites through hero, problem, goal, facts, Q&A,
       council letter, and the take-action steps
