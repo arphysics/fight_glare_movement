@@ -82,35 +82,33 @@ NEXT SESSION — START HERE
       written here is public.
 
 CONTENT / POLISH
-  [ ] Proper og:image — og:image points at assets/owl-logo.png, which is
-      544x544. Social cards want ~1200x630, so previews will crop oddly.
-  [ ] og:description still carries the pre-Aug-2026 framing. Not wrong, but it
-      no longer matches the hero copy. That string is what shows when the link
-      is shared.
+  [x] Proper og:image — assets/og-image.png, 1200x630, generated from
+      assets/og-card.html. NOTE the committed PNG was rendered where webfonts
+      were unreachable, so its headline is a Georgia fallback, not Fraunces.
+      Regenerate locally (command is in og-card.html's header comment) before
+      sharing the link widely — platforms cache scraped cards for a long time.
+  [x] og:description rewritten from the current hero copy. Added
+      og:image:width/height and twitter:card=summary_large_image so the card
+      renders wide rather than as a thumbnail.
   [x] Removed unused assets — owl-logo-v1.png and IMG_3840.png. 322KB.
   [ ] Decide whether fonts-preview.html stays in the repo — it's a scratch
       page, publicly reachable at /fonts-preview.html. More pointed now: it was
       rebuilt into a six-option heading-font comparison, so it is a bigger
       public page than it was.
-  [ ] Hero H1 keeps letter-spacing: -1.5px, which was tuned for Roboto Mono.
-      The heading font is Fraunces now. Check whether it wants loosening.
-  [ ] HIGHEST VALUE, NOW LIVE: attribute the Edison / 4000K claims. They are
-      public and they are in the letter residents send to the council, still
-      as bare assertions. One line in two places fixes it:
-        "City staff have confirmed to us that Edison offers 2700K, 3000K, or
-         4000K for the same price."
-      in the "Won't this be expensive?" answer and in the letter template.
-      Costs nothing rhetorically and survives a challenge. Better still, get
-      it in writing (see the PROVENANCE note above) and link it like the AMA
-      line. Do this before the page is pushed widely.
-  [ ] todo.txt is served publicly at fightglare.org/todo.txt — deploy.yml
-      uploads the repo root (path: .). Besides the name that has been removed,
-      this file describes the teammate's setup, that branch protection is off,
-      and the Cloudflare/GoDaddy layout. None of it is dangerous, none of it
-      was written for an audience.
-      Fix if wanted: move planning notes to docs/ and exclude that path in
-      deploy.yml, or keep them out of the repo. Renaming does not help —
-      Pages serves .md too. fonts-preview.html could ride the same exclusion.
+  [x] Hero H1 tracking relaxed from -1.5px to -0.5px — the value
+      fonts-preview.html uses for every serif option. NOT seen rendered in
+      Fraunces; worth a look.
+  [x] Edison / 4000K claims now attributed: "City staff have confirmed to us
+      that ..." in the cost answer and the council letter, and "By the city's
+      own account ..." on the 4000K decision. Still worth getting in writing
+      and linking it — attribution survives a challenge, a link ends one.
+  [x] Contributor docs no longer published. deploy.yml strips todo.txt,
+      CLAUDE.md, EDITING.md and the two launch scripts from the Pages artifact
+      before upload, with a guard step that fails the build if index.html,
+      CNAME or the logo went missing. The files stay in git; only the
+      published copy changes. Cloudflare builds separately and is unaffected.
+      STILL PUBLIC by choice: README.md, fonts-preview.html (see above),
+      _headers and wrangler.jsonc (Cloudflare needs them).
 
 AUG 2026 COPY + DESIGN PASS — MERGED to main via PR #3, live on fightglare.org
   Branch was claude/irvine-streetlight-standards-21g9cy.

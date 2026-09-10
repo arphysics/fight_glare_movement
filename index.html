@@ -8,10 +8,13 @@
 
 <!-- Social share preview -->
 <meta property="og:title" content="Fight Glare — Warmer, shielded streetlights for Irvine, CA" />
-<meta property="og:description" content="Irvine's code sets no limit on how bright or how blue a streetlight can be. We're residents asking for a standard — warm, shielded, night-friendly light." />
+<meta property="og:description" content="Irvine's new LED streetlights are too bright and too blue, and city code puts no limit on the glare. We're residents asking Irvine to set clear lighting standards and give us back our quiet nights." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fightglare.org" />
-<meta property="og:image" content="https://fightglare.org/assets/owl-logo.png" />
+<meta property="og:image" content="https://fightglare.org/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
 
 <link rel="icon" type="image/png" href="assets/owl-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -108,7 +111,9 @@
   .eyebrow { display: inline-block; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 600; color: var(--amber-bright); margin-bottom: 18px; }
   /* One colour across the whole headline — the lantern flame from the mark.
      It used to split gold/amber mid-phrase, which read as two half-headings. */
-  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; color: var(--amber-bright); }
+  /* -0.5px, not the -1.5px that suited Roboto Mono — fonts-preview.html uses
+     this value for every serif option, since serifs need the tracking relaxed. */
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.5rem); font-weight: 700; letter-spacing: -0.5px; color: var(--amber-bright); }
   .hero h1 .accent { color: inherit; }
   .hero p.lead { margin-top: 22px; font-size: 1.16rem; color: var(--ink-dim); max-width: 40ch; }
   .hero-actions { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
@@ -434,8 +439,8 @@
       </div>
       <div class="card">
         <h3>"Won't this be expensive?"</h3>
-        <p>It costs nothing extra to choose warm light. Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warmer tone requires only a checkmark and a signature.</p>
-        <p>The lights already standing will cost money to correct, but the work is simple. Shields bolt onto the existing poles, and warmer bulbs can go in during routine maintenance over the coming months. Irvine chose the harsh 4000K light when the warm option was offered free of charge. The cost to fix it now is part of that same choice.</p>
+        <p>It costs nothing extra to choose warm light. City staff have confirmed to us that Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warmer tone requires only a checkmark and a signature.</p>
+        <p>The lights already standing will cost money to correct, but the work is simple. Shields bolt onto the existing poles, and warmer bulbs can go in during routine maintenance over the coming months. By the city's own account, Irvine chose the harsh 4000K light when the warm option was offered free of charge. The cost to fix it now is part of that same choice.</p>
       </div>
     </div>
   </div>
@@ -508,7 +513,7 @@
                 <li>Require full shielding so light points down, not out.</li>
                 <li>Dim the lights late at night.</li>
               </ul>
-              <p>Southern California Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warm light costs the city nothing extra. The American Medical Association recommends 3000K or lower to protect public health. Right now, Irvine has no limits on brightness or color temperature.</p>
+              <p>City staff have confirmed that Southern California Edison offers 2700K, 3000K, or 4000K for the same price. Selecting the warm light costs the city nothing extra. The American Medical Association recommends 3000K or lower to protect public health. Right now, Irvine has no limits on brightness or color temperature.</p>
               <p>Please reply and let me know when the Council will discuss this.</p>
               <p>Sincerely,<br />
                  <span class="letter-fill" id="signName">[Your Name]</span><br />
