@@ -31,6 +31,17 @@ jobs:
         with:
           enablement: true
 
+      # The artifact is the repo root, so anything tracked here is published at
+      # fightglare.org/<name>. Strip the files that are for contributors, not
+      # visitors, before uploading. This only touches the runner's checkout —
+      # the files stay in git, and the Cloudflare build is unaffected.
+      - name: Keep contributor docs out of the published site
+        run: rm -f todo.txt CLAUDE.md EDITING.md launch-claude.sh bootstrap-claude-sandbox.sh
+
+      # Fail loudly rather than deploying a site with no page in it
+      - name: Verify the site itself survived
+        run: test -f index.html && test -f CNAME && test -f assets/owl-logo.png
+
       # No build step — the site is plain HTML/CSS/JS served from the repo root
       - uses: actions/upload-pages-artifact@v3
         with:
