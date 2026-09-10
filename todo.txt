@@ -209,41 +209,20 @@ CLOUDFLARE BRANCH PREVIEWS — working, one check left
       out at 61. Keep branch names short.
       Cache-bust and hard-reload; a stale browser copy reads exactly like a
       failed deploy.
+  [x] EDITING.md step 6 written against the real URL format
+  [x] Preview confirmed serving the real site in a browser (Aditya, Sep 2026),
+      not just returning 200. Two URL forms exist:
+        <commit-hash>-fight-glare-irvine.aditya-14a.workers.dev   per commit
+        <branch-name>-fight-glare-irvine.aditya-14a.workers.dev   per branch
+      The per-branch alias is stable but SLOW to update — when it looks stale,
+      read the CSS with curl rather than trusting the render, and use the
+      per-commit URL for an immediate answer.
   [ ] Verify noindex landed. MUST run from a normal terminal, NOT a Claude
       session — workers.dev is blocked by the sandbox firewall, confirmed
       again this session:
         curl -sI https://fight-glare-irvine.aditya-14a.workers.dev/ | grep -i x-robots-tag
         curl -sI https://fightglare.org/ | grep -i x-robots-tag     # expect NOTHING
       (fightglare.org side already verified: no x-robots-tag, correct.)
-  [ ] DO NOT add fightglare.org as a custom domain in Cloudflare. That is the
-      single step that would move production off GitHub Pages.
-
-LATER.
-
-  [x] Cloudflare account + project connected to the repo
-  [x] _headers rewritten for workers.dev. The first version used Pages
-      placeholder syntax (:project.pages.dev), which does not match a
-      workers.dev host and would have silently done nothing.
-  [x] _headers pushed and built
-  [x] Cloudflare's own autoconfig PR (#1) merged — adds wrangler.jsonc pinning
-      the config in the repo instead of only in the dashboard, plus wrangler
-      entries in .gitignore. Reviewed before merging; nothing surprising.
-  [x] Branch builds CONFIRMED working. Cloudflare comments on each PR with a
-      preview URL, in two forms:
-        <commit-hash>-fight-glare-irvine.aditya-14a.workers.dev   per commit
-        <branch-name>-fight-glare-irvine.aditya-14a.workers.dev   per branch,
-          stable, keeps working as more commits are pushed to the branch
-      Branch name becomes part of the hostname, so keep branch names short.
-  [x] EDITING.md step 6 written against the real URL format
-  [ ] Verify noindex landed. MUST run from a normal terminal, NOT the
-      devcontainer — workers.dev is blocked by the sandbox firewall, so this
-      is the one check that can't be done from inside Claude Code:
-        curl -sI https://fight-glare-irvine.aditya-14a.workers.dev/ | grep -i x-robots-tag
-        curl -sI https://fightglare.org/ | grep -i x-robots-tag     # expect NOTHING
-      (fightglare.org side already verified: no x-robots-tag, correct.)
-  [ ] Open the workers.dev URL in a browser and confirm it serves the real
-      site — owl logo, fonts, petition buttons. A half-built deploy still
-      returns 200, so a status code is not proof.
   [ ] DO NOT add fightglare.org as a custom domain in Cloudflare. That is the
       single step that would move production off GitHub Pages.
 
